@@ -21,7 +21,6 @@ const DEFAULT_COLUMNS = [
       { label: "Home", href: "#intro-section" },
       { label: "Our Services", href: "#services-section" },
       { label: "About UPLIFT", href: "#about-section" },
-      { label: "Timeline & Track Record", href: "#experience-section" },
       { label: "Featured Projects", href: "#projects-section" },
       { label: "FAQ & Inquiries", href: "#faq-section" },
       { label: "Contact Us", href: "#contact-section" },

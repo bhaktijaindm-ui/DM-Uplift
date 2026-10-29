@@ -7,7 +7,6 @@ import IntroSection from "../components/ui/IntroSection";
 import HeroSection from "../components/ui/HeroSection";
 import ServicesSection from "../components/ui/ServicesSection";
 import AboutSection from "../components/ui/AboutSection";
-import ExperienceSection from "../components/ui/ExperienceSection";
 import ProjectsSection from "../components/ui/ProjectsSection";
 import CTASection from "../components/ui/CTASection";
 import FAQFormSection from "../components/ui/FAQFormSection";
@@ -91,14 +90,8 @@ export default function PortfolioPage() {
       <AboutSection />
 
       {/* 
-        5. EXPERIENCE (Isolated placeholder timeline section)
-        Scroll-based timeline ready for custom timeline code replacement
-      */}
-      <ExperienceSection />
-
-      {/* 
-        6. OUR PROJECTS (3D showcase)
-        Tilt cards with depth & parallax, video loops on hover, category tags, result metrics
+        5. OUR PROJECTS (3D Polaroid Line Showcase)
+        Instant photos pegged to a sagging string with dynamic physics and sway
       */}
       <ProjectsSection />
 
