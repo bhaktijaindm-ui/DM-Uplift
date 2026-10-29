@@ -810,7 +810,7 @@ export const content = {
       category: "Branding & Social Reach",
       metric: "8.2M Viral Impressions",
       desc: "Rebranded an ultra-luxury eco-resort network with custom typography, 4K video reels, and VIP booking funnels.",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1200",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200",
       videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4",
       tags: ["Cinematic Shoots", "Reels", "Brand Identity"],
     },
