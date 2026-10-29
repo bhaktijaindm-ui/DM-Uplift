@@ -3,7 +3,7 @@ import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import IntroSection from "../components/ui/IntroSection";
+import TopHeroSection from "../components/ui/TopHeroSection";
 import HeroSection from "../components/ui/HeroSection";
 import ServicesSection from "../components/ui/ServicesSection";
 import AboutSection from "../components/ui/AboutSection";
@@ -65,11 +65,11 @@ export default function PortfolioPage() {
   return (
     <div className="relative w-full min-h-screen bg-[#040814] text-white selection:bg-[#00B4FF] selection:text-[#040814] overflow-x-hidden">
       {/* 
-        1. INTRO / WELCOME (Full screen)
-        Text: "Hello, Welcome to Uplift"
-        Sharp high-contrast canvas text, gentle push radius, smooth fade on first scroll
+        1. TOP SECTION: Interactive Dot Field Canvas Hero
+        Headline assembled from flocking dots, cursor push repulsion,
+        electric cyan glow sweep, and scroll-to-scatter transition
       */}
-      <IntroSection />
+      <TopHeroSection />
 
 
       {/* 
