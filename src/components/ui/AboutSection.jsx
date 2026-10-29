@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Sparkles, ShieldCheck, TrendingUp, Layers } from "lucide-react";
 import { content } from "../../data/content";
+import ExperienceJourney from "./ExperienceJourney";
 
 function TiltCard({ children, className = "" }) {
   const cardRef = useRef(null);
@@ -146,6 +147,9 @@ export default function AboutSection() {
             </div>
           ))}
         </div>
+
+        {/* 1-Year Experience Journey with Zig-Zag Pinned Milestone Cards */}
+        <ExperienceJourney />
 
         {/* 3D Tilt Cards for Pillars: Clean 3-column grid with gap-6 sm:gap-8 and mt-10 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-10">
