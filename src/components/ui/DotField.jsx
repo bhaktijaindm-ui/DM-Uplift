@@ -26,8 +26,8 @@ export const DotField = forwardRef(function DotField(
     fontFamily = "Geist, 'Cinzel', ui-sans-serif, system-ui, -apple-system, sans-serif",
     fontWeight = 700,
     repelRadius = 120,
-    scrollScatter = true,
-    scrollHint = { scatter: "Scroll to scatter", gather: "Scroll up to gather" },
+    scrollScatter = false,
+    scrollHint = false,
     onReady,
     className = "",
     style,
@@ -241,14 +241,14 @@ export const DotField = forwardRef(function DotField(
     };
 
     const setCopy = () => {
-      const p = s.scrollP;
+      const p = scrollScatter ? s.scrollP : 0;
       const show = readyRef.current;
       if (copyRef.current) {
         copyRef.current.style.opacity = show
           ? String(Math.max(0, 1 - p * 1.6))
           : "";
       }
-      if (hintRef.current && hintLabelRef.current && scrollHint) {
+      if (hintRef.current && hintLabelRef.current && scrollHint && scrollScatter) {
         const up = p > 0.85;
         hintRef.current.dataset.up = up ? "true" : "false";
         hintLabelRef.current.textContent = up
@@ -467,7 +467,7 @@ export const DotField = forwardRef(function DotField(
   return (
     <section
       ref={outerRef}
-      className={`relative w-full bg-[#040814] text-white ${className}`}
+      className={`relative w-full ${scrollScatter ? "" : "h-[100svh] min-h-[560px]"} bg-[#040814] text-white ${className}`}
       style={{
         height: scrollScatter ? "calc(100svh + 90vh)" : undefined,
         ...style,
@@ -476,7 +476,11 @@ export const DotField = forwardRef(function DotField(
     >
       <div
         ref={stageRef}
-        className="group sticky top-0 h-[100svh] min-h-[560px] w-full overflow-hidden"
+        className={`group w-full overflow-hidden ${
+          scrollScatter
+            ? "sticky top-0 h-[100svh] min-h-[560px]"
+            : "relative h-full w-full"
+        }`}
         style={{ fontFamily }}
       >
         {/* Glow & Dots Canvases */}
@@ -508,7 +512,7 @@ export const DotField = forwardRef(function DotField(
         <div ref={copyRef} className="pointer-events-none absolute inset-0">
           {eyebrow && (
             <div
-              className={`absolute inset-x-0 top-[10vh] sm:top-[12vh] flex justify-center px-4 ${fade}`}
+              className={`absolute inset-x-0 top-[8vh] sm:top-[10vh] flex justify-center px-4 ${fade}`}
             >
               <span className="inline-flex h-[32px] items-center gap-2 rounded-full border border-[#2E7BFF]/35 bg-[#0A1530]/80 px-3.5 text-[12px] sm:text-[13px] font-bold tracking-wider text-[#CBD5E1] backdrop-blur-md shadow-[0_0_15px_rgba(0,180,255,0.2)]">
                 <i
@@ -523,7 +527,7 @@ export const DotField = forwardRef(function DotField(
             </div>
           )}
 
-          <div className="absolute inset-0 flex flex-col items-center justify-end px-5 pb-[max(15vh,100px)] text-center">
+          <div className="absolute inset-0 flex flex-col items-center justify-end px-5 pb-8 sm:pb-12 md:pb-14 text-center">
             {description && (
               <p
                 className={`m-0 max-w-[640px] text-sm sm:text-base md:text-[17px] leading-relaxed sm:leading-[26px] text-[#CBD5E1] ${fade} delay-100 font-sans`}
@@ -534,7 +538,7 @@ export const DotField = forwardRef(function DotField(
 
             {actions && (
               <div
-                className={`pointer-events-auto mt-6 flex flex-wrap justify-center gap-3 ${fade} delay-200`}
+                className={`pointer-events-auto mt-5 sm:mt-6 flex flex-wrap justify-center gap-3 ${fade} delay-200`}
               >
                 {actions}
               </div>

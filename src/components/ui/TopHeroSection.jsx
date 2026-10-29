@@ -39,11 +39,8 @@ export default function TopHeroSection() {
         accent="#00B4FF"
         repelRadius={130}
         grid={[20, 13]}
-        scrollScatter={true}
-        scrollHint={{
-          scatter: "Scroll to scatter",
-          gather: "Scroll up to gather",
-        }}
+        scrollScatter={false}
+        scrollHint={false}
         eyebrow="PERFORMANCE MARKETING & 3D DIGITAL CREATIVE"
         description="Engineered full-funnel acquisition, cinematic 3D web experiences, and high-conversion headless architecture designed for exponential business scale."
         actions={
