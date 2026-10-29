@@ -11,22 +11,16 @@ import { cn } from "@/lib/utils";
 /*  flat, and neighbors curve back along a perspective arc.           */
 /* ------------------------------------------------------------------ */
 
-const CARD_H = 0.38; // front card height, fraction of stage
-const CARD_MAX_W = 0.36; // maximum card width fraction on desktop
 const CARD_RATIO = 1.45; // card width / height
-const STEP = 40; // degrees between cards on the drum
-const DRUM = 2.22; // drum radius in card heights
+const STEP = 42; // degrees between cards on the drum
+const DRUM = 2.2; // drum radius in card heights
 const LENS = 2.7; // perspective distance
-const RING_R = 1.14; // ring radius in card heights
-const BOW = 1.82; // arc radius bow
-const TITLE = 0.124; // ring label and front title ratio
+const RING_R = 1.08; // ring radius in card heights
+const BOW = 1.75; // arc radius bow
+const TITLE = 0.12; // ring label and front title ratio
 const INDEX = 0.038; // index font size ratio
 const CULL = 1.8; // culled by distance
-
-const WHEEL_UNITS = 600;
-const DRAG_UNITS = 350;
-const SETTLE = 150;
-const EASE = 0.14;
+const EASE = 0.12;
 
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const lerp = (a, b, t) => a + (b - a) * t;
@@ -59,7 +53,7 @@ export function WorksWheel({
   const target = React.useRef(0);
   const [active, setActive] = React.useState(0);
   const [stage, setStage] = React.useState({ w: 0, h: 0 });
-  const [isRingMode, setIsRingMode] = React.useState(true);
+  const [isRing, setIsRing] = React.useState(true);
 
   const count = items.length;
   const last = Math.max(count - 1, 0);
@@ -89,19 +83,19 @@ export function WorksWheel({
   const metrics = React.useMemo(() => {
     const { w, h } = stage;
     const isMobile = w > 0 && w < 768;
-    const maxWFactor = isMobile ? 0.74 : CARD_MAX_W;
-    const hFactor = isMobile ? 0.44 : CARD_H;
+    const maxWFactor = isMobile ? 0.68 : 0.30;
+    const hFactor = isMobile ? 0.32 : 0.28;
     const cardW = Math.max(
-      180,
-      Math.min(h * hFactor * CARD_RATIO, (w > 0 ? w * maxWFactor : 340))
+      170,
+      Math.min(h * hFactor * CARD_RATIO, (w > 0 ? w * maxWFactor : 320))
     );
     const cardH = cardW / CARD_RATIO;
     const drumR = cardH * DRUM;
-    const ringR = cardH * (isMobile ? 1.02 : RING_R);
+    const ringR = cardH * (isMobile ? 1.05 : RING_R);
     const ringScale = count
-      ? clamp((((2 * Math.PI * ringR) / count) * 0.85) / (cardW || 1), 0.18, 1)
+      ? clamp((((2 * Math.PI * ringR) / count) * 0.85) / (cardW || 1), 0.2, 1)
       : 1;
-    const bowFactor = isMobile ? cardH * 0.45 : cardH * BOW;
+    const bowFactor = isMobile ? cardH * 0.4 : cardH * BOW;
 
     return {
       cardW,
@@ -111,13 +105,21 @@ export function WorksWheel({
       drumR,
       bow: bowFactor,
       depth: cardH * LENS,
-      title: Math.max(18, Math.min(cardH * TITLE, 38)),
+      title: Math.max(18, Math.min(cardH * TITLE, 36)),
       index: Math.max(11, Math.min(cardH * INDEX, 15)),
       isMobile,
     };
   }, [stage, count]);
 
-  // Main 60fps rAF render loop
+  const to = React.useCallback(
+    (next) => {
+      target.current = clamp(next, 0, count);
+      setIsRing(next < 0.3);
+    },
+    [count]
+  );
+
+  // Main 60fps rAF render loop — purely writes transforms straight to DOM
   React.useEffect(() => {
     if (!stage.h) return;
     let frame = 0;
@@ -135,8 +137,6 @@ export function WorksWheel({
       const t = turn.current;
       const m = clamp(t, 0, 1);
       const pos = Math.max(0, t - 1);
-
-      setIsRingMode(t < 0.3);
 
       if (wheelRef.current) {
         wheelRef.current.style.transform = `translateZ(${-m * drumR}px)`;
@@ -170,6 +170,7 @@ export function WorksWheel({
       }
       if (titleRef.current) {
         titleRef.current.style.opacity = String(m);
+        titleRef.current.style.pointerEvents = m > 0.5 ? "auto" : "none";
       }
 
       const near = clamp(Math.round(pos), 0, last);
@@ -180,40 +181,69 @@ export function WorksWheel({
     return () => cancelAnimationFrame(frame);
   }, [metrics, stage.h, count, last, reduced]);
 
-  const to = React.useCallback(
-    (next) => {
-      target.current = clamp(next, 0, count);
-    },
-    [count]
-  );
-
-  // Wheel listener: cancels wheel only while turning between boundaries, scrolls page at edges
+  // Robust wheel listener: avoids snapping back, cleanly turns card-by-card, and scrolls page at edges
   React.useEffect(() => {
     const el = stageRef.current;
     if (!el) return;
+
+    let accumulatedDelta = 0;
+    let scrollTimeout = null;
+
     const onWheel = (event) => {
-      const next = target.current + event.deltaY / WHEEL_UNITS;
-      if (next > 0 && next < count) {
+      const deltaY = event.deltaY;
+      if (!Number.isFinite(deltaY) || deltaY === 0) return;
+
+      const dir = Math.sign(deltaY);
+
+      // Boundary check:
+      // If at Ring (target <= 0) and scrolling up, allow normal page scroll up
+      if (target.current <= 0 && dir < 0) {
+        return;
+      }
+      // If at last card (target >= count) and scrolling down, allow normal page scroll down
+      if (target.current >= count && dir > 0) {
+        return;
+      }
+
+      // Within wheel range: prevent default page scroll safely
+      if (event.cancelable) {
         event.preventDefault();
       }
-      to(next);
 
-      window.clearTimeout(settling.current);
-      settling.current = window.setTimeout(
-        () => to(Math.round(target.current)),
-        SETTLE
-      );
+      accumulatedDelta += deltaY;
+      const STEP_THRESHOLD = 85;
+
+      if (Math.abs(accumulatedDelta) >= STEP_THRESHOLD) {
+        const step = Math.sign(accumulatedDelta);
+        accumulatedDelta = 0;
+
+        if (target.current === 0 && step > 0) {
+          // First scroll notch blows the ring open to card 1
+          to(1);
+        } else if (target.current <= 1 && step < 0) {
+          // Scrolling up from card 1 returns to ring
+          to(0);
+        } else {
+          // Advance card by card
+          to(clamp(Math.round(target.current + step), 0, count));
+        }
+      }
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        accumulatedDelta = 0;
+      }, 180);
     };
 
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => {
       el.removeEventListener("wheel", onWheel);
-      window.clearTimeout(settling.current);
+      clearTimeout(scrollTimeout);
     };
   }, [to, count]);
 
+  // Pointer drag handler for touch and mouse
   const drag = React.useRef(null);
-  const settling = React.useRef(0);
 
   // Fallback image handler
   const handleImageError = (e, fallback) => {
@@ -235,18 +265,18 @@ export function WorksWheel({
       )}
       {...props}
     >
-      {/* Top Floating Control Bar */}
-      <div className="relative z-30 w-full px-4 sm:px-6 pt-3 pb-2 flex items-center justify-between pointer-events-auto">
-        {/* Ring / Drum Toggle Pills */}
+      {/* Top Floating Control Bar — No bounding box, completely floating */}
+      <div className="relative z-30 w-full px-4 sm:px-8 pt-1 pb-3 flex items-center justify-between pointer-events-auto">
+        {/* Ring / Drum Toggle Buttons */}
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => to(0)}
             className={cn(
-              "px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer",
-              isRingMode
+              "px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer backdrop-blur-md",
+              isRing
                 ? "bg-[#00B4FF] text-[#040814] shadow-[0_0_15px_rgba(0,180,255,0.6)] font-bold"
-                : "bg-[#0A1530]/80 text-[#CBD5E1] border border-white/10 hover:border-[#00B4FF]/50"
+                : "bg-white/5 text-[#CBD5E1] border border-white/10 hover:border-[#00B4FF]/40"
             )}
           >
             <Compass className="w-3.5 h-3.5" />
@@ -257,10 +287,10 @@ export function WorksWheel({
             type="button"
             onClick={() => to(active + 1 || 1)}
             className={cn(
-              "px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer",
-              !isRingMode
+              "px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer backdrop-blur-md",
+              !isRing
                 ? "bg-[#00B4FF] text-[#040814] shadow-[0_0_15px_rgba(0,180,255,0.6)] font-bold"
-                : "bg-[#0A1530]/80 text-[#CBD5E1] border border-white/10 hover:border-[#00B4FF]/50"
+                : "bg-white/5 text-[#CBD5E1] border border-white/10 hover:border-[#00B4FF]/40"
             )}
           >
             <span>Drum View</span>
@@ -268,25 +298,31 @@ export function WorksWheel({
         </div>
 
         {/* Turn Step Stepper & Prev / Next Arrows */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <span className="text-xs font-mono font-bold text-white/60 hidden sm:inline">
-            {isRingMode ? "ALL 07 SERVICES" : `${activeItem.number || `0${active + 1}`} / 07`}
+            {isRing ? "ALL 07 SERVICES" : `${activeItem.number || `0${active + 1}`} / 07`}
           </span>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
             <button
               type="button"
               aria-label="Previous Service"
-              onClick={() => to(Math.max(1, target.current - 1))}
-              className="w-8 h-8 rounded-full bg-[#0A1530]/80 border border-white/10 hover:border-[#00B4FF] text-white flex items-center justify-center transition-colors cursor-pointer"
+              onClick={() => {
+                if (target.current <= 1) to(0);
+                else to(target.current - 1);
+              }}
+              className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:border-[#00B4FF] text-white flex items-center justify-center transition-colors cursor-pointer backdrop-blur-md"
             >
               <ChevronUp className="w-4 h-4 text-[#00B4FF]" />
             </button>
             <button
               type="button"
               aria-label="Next Service"
-              onClick={() => to(Math.min(count, target.current + 1))}
-              className="w-8 h-8 rounded-full bg-[#0A1530]/80 border border-white/10 hover:border-[#00B4FF] text-white flex items-center justify-center transition-colors cursor-pointer"
+              onClick={() => {
+                if (target.current === 0) to(1);
+                else to(Math.min(count, target.current + 1));
+              }}
+              className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:border-[#00B4FF] text-white flex items-center justify-center transition-colors cursor-pointer backdrop-blur-md"
             >
               <ChevronDown className="w-4 h-4 text-[#00B4FF]" />
             </button>
@@ -294,24 +330,29 @@ export function WorksWheel({
         </div>
       </div>
 
-      {/* 3D Wheel Interactive Stage */}
+      {/* 3D Wheel Interactive Stage — Freely on the background with data-lenis-prevent */}
       <div
         ref={stageRef}
+        data-lenis-prevent="wheel"
         tabIndex={0}
         role="region"
         aria-label={label}
-        className="relative w-full h-[540px] sm:h-[620px] lg:h-[680px] cursor-grab active:cursor-grabbing outline-none overflow-hidden touch-pan-x"
+        className="relative w-full h-[600px] sm:h-[680px] lg:h-[740px] cursor-grab active:cursor-grabbing outline-none overflow-hidden touch-pan-x"
         style={{ perspective: `${metrics.depth}px` }}
         onPointerDown={(event) => {
           drag.current = event.clientY;
-          event.currentTarget.setPointerCapture(event.pointerId);
+          try {
+            event.currentTarget.setPointerCapture(event.pointerId);
+          } catch {
+            // ignore
+          }
         }}
         onPointerMove={(event) => {
           if (drag.current === null) return;
           const deltaY = drag.current - event.clientY;
-          const next = target.current + deltaY / DRAG_UNITS;
+          const next = target.current + deltaY / 320;
 
-          // If at boundary, release capture to allow normal page scrolling
+          // If at boundary, release capture so user can scroll page naturally
           if ((next <= 0 && deltaY < 0) || (next >= count && deltaY > 0)) {
             try {
               event.currentTarget.releasePointerCapture(event.pointerId);
@@ -322,23 +363,25 @@ export function WorksWheel({
             return;
           }
 
-          to(next);
+          to(clamp(next, 0, count));
           drag.current = event.clientY;
         }}
         onPointerUp={() => {
           drag.current = null;
-          if (target.current > 0.5) {
-            to(Math.round(target.current));
+          if (target.current > 0.45) {
+            to(clamp(Math.round(target.current), 1, count));
           } else {
             to(0);
           }
         }}
         onKeyDown={(event) => {
           if (event.key === "ArrowDown") {
-            to(Math.min(count, Math.round(target.current) + 1));
+            if (target.current === 0) to(1);
+            else to(Math.min(count, Math.round(target.current) + 1));
             event.preventDefault();
           } else if (event.key === "ArrowUp") {
-            to(Math.max(0, Math.round(target.current) - 1));
+            if (target.current <= 1) to(0);
+            else to(Math.max(0, Math.round(target.current) - 1));
             event.preventDefault();
           }
         }}
@@ -349,7 +392,7 @@ export function WorksWheel({
           className="absolute top-1/2 left-1/2 [transform-style:preserve-3d]"
         >
           {items.map((item, i) => {
-            const isFront = i === active && !isRingMode;
+            const isFront = i === active && !isRing;
             return (
               <div
                 key={item.title || item.id}
@@ -357,7 +400,7 @@ export function WorksWheel({
                   cardRefs.current[i] = node;
                 }}
                 onClick={(e) => {
-                  if (active !== i || isRingMode) {
+                  if (active !== i || isRing) {
                     e.preventDefault();
                     to(i + 1);
                   }
@@ -370,13 +413,13 @@ export function WorksWheel({
                   marginTop: -metrics.cardH / 2,
                 }}
               >
-                {/* Scaled Card Face */}
+                {/* Scaled Card Face — No transition-all so rAF updates instantly */}
                 <div
                   className={cn(
-                    "relative w-full h-full rounded-2xl overflow-hidden bg-[#060F26] transition-all duration-300",
+                    "relative w-full h-full rounded-2xl overflow-hidden bg-[#0A1530] shadow-[0_20px_50px_rgba(0,0,0,0.85)]",
                     isFront
                       ? "border-2 border-[#00B4FF] shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_45px_rgba(0,180,255,0.4)]"
-                      : "border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_35px_rgba(0,180,255,0.15)] group-hover:border-[#00B4FF]"
+                      : "border border-white/15 hover:border-[#00B4FF]/80"
                   )}
                 >
                   {/* Service Cover Art */}
@@ -385,18 +428,18 @@ export function WorksWheel({
                     alt={item.title}
                     draggable={false}
                     onError={(e) => handleImageError(e, item.fallbackImage)}
-                    className="w-full h-full object-cover filter brightness-[0.85] contrast-105 group-hover:brightness-100 transition-all duration-300"
+                    className="w-full h-full object-cover filter brightness-[0.85] contrast-105 group-hover:brightness-100"
                   />
 
-                  {/* Gradient Overlay for Crisp Text Contrast */}
+                  {/* Gradient Overlay for High Text Legibility */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#040814] via-[#040814]/50 to-transparent pointer-events-none" />
 
                   {/* Top Badges */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-                    <span className="font-mono text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-md bg-[#040814]/85 border border-[#00B4FF]/40 text-[#00B4FF] backdrop-blur-md shadow-[0_0_10px_rgba(0,180,255,0.3)]">
+                    <span className="font-mono text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-md bg-[#040814]/90 border border-[#00B4FF]/40 text-[#00B4FF] backdrop-blur-md shadow-[0_0_10px_rgba(0,180,255,0.3)]">
                       {item.number || `0${i + 1}`}
                     </span>
-                    <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-[#CBD5E1] bg-[#040814]/75 px-2 py-0.5 rounded-full border border-white/10 backdrop-blur-md">
+                    <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-[#CBD5E1] bg-[#040814]/80 px-2 py-0.5 rounded-full border border-white/10 backdrop-blur-md">
                       {item.category}
                     </span>
                   </div>
@@ -422,7 +465,7 @@ export function WorksWheel({
                             el.scrollIntoView({ behavior: "smooth" });
                           }
                         }}
-                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#00B4FF] text-[#040814] text-[10px] sm:text-[11px] font-bold shadow-[0_0_12px_rgba(0,180,255,0.7)] group-hover:scale-105 transition-transform pointer-events-auto"
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#00B4FF] text-[#040814] text-[10px] sm:text-[11px] font-bold shadow-[0_0_12px_rgba(0,180,255,0.7)] group-hover:scale-105 pointer-events-auto"
                       >
                         <span>{action}</span>
                         <ArrowUpRight className="w-3 h-3" />
@@ -494,10 +537,10 @@ export function WorksWheel({
           </a>
         </div>
 
-        {/* Right-Hand Index on Desktop */}
+        {/* Right-Hand Index on Desktop — Clean floating list directly on background */}
         <ol className="text-white/60 absolute top-1/2 right-[3%] lg:right-[5%] -translate-y-1/2 text-right leading-[2.2] hidden md:flex flex-col gap-1.5 z-20 pointer-events-auto">
           {items.map((item, i) => {
-            const isSelected = i === active && !isRingMode;
+            const isSelected = i === active && !isRing;
             return (
               <li key={item.title || item.id}>
                 <button
@@ -544,10 +587,10 @@ export function WorksWheel({
       </div>
 
       {/* Mobile Bottom Quick-Jump Horizontal Pills & Detail Banner */}
-      <div className="block md:hidden w-full px-4 pt-2 pb-4">
+      <div className="block md:hidden w-full px-4 pt-1 pb-4">
         {/* Mobile Active Service Card Details */}
-        {!isRingMode && (
-          <div className="p-3 mb-2.5 rounded-xl bg-[#0A1530]/80 border border-[#00B4FF]/30 backdrop-blur-md flex items-center justify-between gap-3">
+        {!isRing && (
+          <div className="p-3 mb-2 rounded-xl bg-white/5 border border-[#00B4FF]/30 backdrop-blur-md flex items-center justify-between gap-3">
             <div className="min-w-0">
               <span className="text-[10px] font-mono text-[#00B4FF] font-bold block">
                 {activeItem.number} · {activeItem.category}
@@ -576,17 +619,17 @@ export function WorksWheel({
         {/* Mobile Horizontal Pill Stepper */}
         <div className="flex overflow-x-auto no-scrollbar gap-2 py-1">
           {items.map((item, i) => {
-            const isSelected = i === active && !isRingMode;
+            const isSelected = i === active && !isRing;
             return (
               <button
                 key={item.title || item.id}
                 type="button"
                 onClick={() => to(i + 1)}
                 className={cn(
-                  "px-3 py-1.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all shrink-0 cursor-pointer",
+                  "px-3 py-1.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all shrink-0 cursor-pointer backdrop-blur-md",
                   isSelected
                     ? "bg-[#00B4FF] text-[#040814] shadow-[0_0_12px_rgba(0,180,255,0.6)] font-bold"
-                    : "bg-[#0A1530]/70 text-[#CBD5E1] border border-white/10 hover:border-[#00B4FF]/40"
+                    : "bg-white/5 text-[#CBD5E1] border border-white/10 hover:border-[#00B4FF]/40"
                 )}
               >
                 {item.number || `0${i + 1}`} {item.title}
