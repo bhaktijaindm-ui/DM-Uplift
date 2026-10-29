@@ -63,7 +63,7 @@ export default function FAQFormSection() {
 
       <div className="site-container relative z-10">
         {/* Two Columns with 64px gap (gap-16), stacks on mobile */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* LEFT COLUMN: Accordion FAQ */}
           <div className="lg:col-span-6 flex flex-col justify-start">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A1530] border border-[#2E7BFF]/30 text-[#00B4FF] text-xs font-bold tracking-widest uppercase mb-4 w-fit shadow-[0_0_15px_rgba(0,180,255,0.2)]">
@@ -128,9 +128,9 @@ export default function FAQFormSection() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Inquiry Form */}
-          <div className="lg:col-span-6 flex flex-col justify-start">
-            <div className="p-6 sm:p-8 rounded-3xl bg-[#0A1530]/75 border border-[#2E7BFF]/40 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(0,180,255,0.15)]">
+          {/* RIGHT COLUMN: Inquiry Form - Centered vertically and horizontally */}
+          <div className="lg:col-span-6 flex flex-col justify-center items-center w-full">
+            <div className="w-full max-w-xl mx-auto p-6 sm:p-8 rounded-3xl bg-[#0A1530]/75 border border-[#2E7BFF]/40 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(0,180,255,0.15)]">
               {submitted ? (
                 <div className="py-12 flex flex-col items-center text-center">
                   <div className="w-16 h-16 rounded-full bg-[#00B4FF]/20 border border-[#00B4FF] flex items-center justify-center text-[#00B4FF] mb-6 shadow-[0_0_30px_rgba(0,180,255,0.5)]">
@@ -161,11 +161,13 @@ export default function FAQFormSection() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
-                  <div className="flex flex-col mb-1">
-                    <span className="text-xs font-bold tracking-widest uppercase text-[#00B4FF] mb-1">
-                      Direct Growth Inquiry
-                    </span>
-                    <h3 className="font-['Cinzel'] text-xl sm:text-2xl font-bold text-white">
+                  {/* Center-aligned Form Header */}
+                  <div className="flex flex-col items-center text-center mb-1">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#040814]/80 border border-[#2E7BFF]/35 text-[#00B4FF] text-[11px] font-bold tracking-widest uppercase mb-2 shadow-[0_0_15px_rgba(0,180,255,0.2)]">
+                      <Sparkles className="w-3 h-3" />
+                      <span>Direct Growth Inquiry</span>
+                    </div>
+                    <h3 className="font-['Cinzel'] text-xl sm:text-2xl font-bold text-white text-center">
                       REQUEST A PROPOSAL
                     </h3>
                   </div>
