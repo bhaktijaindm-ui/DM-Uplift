@@ -71,11 +71,11 @@ export default function FAQFormSection() {
               <span>{faq.badge}</span>
             </div>
 
-            <h2 className="font-['Cinzel'] text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase mb-4">
+            <h2 className="font-['Cinzel'] text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase mb-3">
               {faq.heading}
             </h2>
 
-            <p className="text-base md:text-lg text-[#CBD5E1] font-normal mb-8 leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base text-[#CBD5E1] font-normal mb-8 leading-relaxed">
               {faq.subheading}
             </p>
 
@@ -152,7 +152,7 @@ export default function FAQFormSection() {
                     <span className="text-xs font-bold tracking-widest uppercase text-[#00B4FF] mb-1">
                       Direct Growth Inquiry
                     </span>
-                    <h3 className="font-['Cinzel'] text-2xl md:text-3xl font-bold text-white">
+                    <h3 className="font-['Cinzel'] text-xl sm:text-2xl font-bold text-white">
                       REQUEST A PROPOSAL
                     </h3>
                   </div>

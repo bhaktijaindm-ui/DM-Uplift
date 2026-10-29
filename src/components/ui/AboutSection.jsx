@@ -108,48 +108,48 @@ export default function AboutSection() {
             <span>{about.badge}</span>
           </div>
 
-          <h2 className="font-['Cinzel'] text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase leading-tight mb-4">
+          <h2 className="font-['Cinzel'] text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase leading-tight mb-3">
             WE ARCHITECT <span className="bg-gradient-to-r from-white via-[#00B4FF] to-[#2E7BFF] bg-clip-text text-transparent">DIGITAL SUPREMACY</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#CBD5E1] font-normal leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-[#CBD5E1] font-normal leading-relaxed">
             {about.description}
           </p>
         </div>
 
-        {/* 4 Animated Metric Counters (48px gap from header, 48px gap before pillars) */}
+        {/* 4 Animated Metric Counters (Equal corner padding p-5 sm:p-6) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {about.stats.map((stat, i) => (
             <div
               key={i}
-              className="p-6 sm:p-8 rounded-3xl bg-[#0A1530]/50 border border-white/10 backdrop-blur-md text-center flex flex-col items-center justify-center hover:border-[#00B4FF]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+              className="p-5 sm:p-6 rounded-3xl bg-[#0A1530]/50 border border-white/10 backdrop-blur-md text-center flex flex-col items-center justify-center hover:border-[#00B4FF]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
             >
-              <div className="font-['Cinzel'] text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-2 tracking-tight">
+              <div className="font-['Cinzel'] text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-1.5 tracking-tight">
                 <span className="text-[#00B4FF]">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </span>
               </div>
-              <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#CBD5E1]">
+              <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#CBD5E1]">
                 {stat.label}
               </p>
             </div>
           ))}
         </div>
 
-        {/* 3D Tilt Cards for Pillars: Clean 3-column grid (1 col mobile), equal height, 24px gap */}
+        {/* 3D Tilt Cards for Pillars: Clean 3-column grid (Equal corner padding p-6) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {about.pillars.map((pillar, index) => {
             const Icon = pillarIcons[index] || Sparkles;
             return (
               <TiltCard key={pillar.title}>
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#00B4FF]/10 border border-[#00B4FF]/40 flex items-center justify-center mb-6 text-[#00B4FF] shadow-[0_0_20px_rgba(0,180,255,0.3)]">
-                    <Icon className="w-6 h-6" />
+                  <div className="w-11 h-11 rounded-2xl bg-[#00B4FF]/10 border border-[#00B4FF]/40 flex items-center justify-center mb-5 text-[#00B4FF] shadow-[0_0_15px_rgba(0,180,255,0.25)]">
+                    <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-['Cinzel'] text-xl sm:text-2xl font-bold text-white mb-3">
+                  <h3 className="font-['Cinzel'] text-lg sm:text-xl font-bold text-white mb-2">
                     {pillar.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-[#CBD5E1] font-normal leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#CBD5E1] font-normal leading-relaxed">
                     {pillar.desc}
                   </p>
                 </div>

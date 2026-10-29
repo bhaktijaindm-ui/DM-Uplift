@@ -22,30 +22,30 @@ export default function CTASection() {
           </div>
 
           {/* Fully Visible Headline */}
-          <h2 className="font-['Cinzel'] text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1] mb-4 max-w-3xl">
+          <h2 className="font-['Cinzel'] text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-[1.15] mb-3 max-w-2xl">
             READY TO <span className="bg-gradient-to-r from-white via-[#00B4FF] to-[#2E7BFF] bg-clip-text text-transparent">SCALE YOUR REVENUE</span>?
           </h2>
 
           {/* Subtitle */}
-          <p className="max-w-2xl text-base sm:text-lg md:text-xl text-[#CBD5E1] font-normal leading-relaxed">
+          <p className="max-w-xl text-xs sm:text-sm md:text-base text-[#CBD5E1] font-normal leading-relaxed">
             {cta.description}
           </p>
 
-          {/* Buttons Row: 32px above (mt-8), 16px gap (gap-4) */}
-          <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto justify-center">
+          {/* Buttons Row: 28px above (mt-7), 14px gap (gap-3.5) */}
+          <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto justify-center">
             <a
               href="#contact-section"
-              className="px-8 py-4 rounded-full text-sm md:text-base font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#2E7BFF] via-[#00B4FF] to-[#2E7BFF] bg-[length:200%_auto] hover:bg-right transition-all duration-500 shadow-[0_0_35px_rgba(0,180,255,0.5)] hover:shadow-[0_0_50px_rgba(0,180,255,0.8)] hover:scale-105 flex items-center justify-center gap-2.5 group"
+              className="px-6 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#2E7BFF] via-[#00B4FF] to-[#2E7BFF] bg-[length:200%_auto] hover:bg-right transition-all duration-300 shadow-[0_0_25px_rgba(0,180,255,0.4)] hover:shadow-[0_0_40px_rgba(0,180,255,0.7)] hover:scale-102 flex items-center justify-center gap-2 group"
             >
               <span>{cta.primaryBtn}</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
 
             <a
               href="#projects-section"
-              className="px-8 py-4 rounded-full text-sm md:text-base font-bold uppercase tracking-wider text-white bg-[#040814]/80 hover:bg-[#0A1530] border border-[#2E7BFF]/40 hover:border-[#00B4FF] transition-all duration-300 backdrop-blur-md flex items-center justify-center gap-2 group"
+              className="px-6 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-[#040814]/80 hover:bg-[#0A1530] border border-[#2E7BFF]/40 hover:border-[#00B4FF] transition-all duration-300 backdrop-blur-md flex items-center justify-center gap-2 group"
             >
-              <MessageSquare className="w-4 h-4 text-[#00B4FF]" />
+              <MessageSquare className="w-3.5 h-3.5 text-[#00B4FF]" />
               <span>{cta.secondaryBtn}</span>
             </a>
           </div>

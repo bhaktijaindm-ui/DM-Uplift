@@ -173,7 +173,7 @@ export default function ProjectsSection() {
               <Sparkles className="w-3.5 h-3.5" />
               <span>3D PORTFOLIO SHOWCASE</span>
             </div>
-            <h2 className="font-['Cinzel'] text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase">
+            <h2 className="font-['Cinzel'] text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase">
               FEATURED <span className="bg-gradient-to-r from-white via-[#00B4FF] to-[#2E7BFF] bg-clip-text text-transparent">PROJECTS</span>
             </h2>
           </div>

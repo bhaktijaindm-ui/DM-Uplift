@@ -71,11 +71,11 @@ export default function ContactSection() {
             <span>{contact.badge}</span>
           </div>
 
-          <h2 className="font-['Cinzel'] text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase leading-tight mb-6">
+          <h2 className="font-['Cinzel'] text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase leading-tight mb-3">
             LET'S BUILD <span className="bg-gradient-to-r from-white via-[#00B4FF] to-[#2E7BFF] bg-clip-text text-transparent">SOMETHING ICONIC</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#CBD5E1] font-normal leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-[#CBD5E1] font-normal leading-relaxed">
             {contact.subheading}
           </p>
         </div>

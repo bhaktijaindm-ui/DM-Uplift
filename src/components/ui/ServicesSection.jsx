@@ -33,11 +33,11 @@ export default function ServicesSection() {
             <span>FULL-SPECTRUM MARKETING</span>
           </div>
 
-          <h2 className="font-['Cinzel'] text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase">
+          <h2 className="font-['Cinzel'] text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase">
             OUR <span className="bg-gradient-to-r from-white via-[#00B4FF] to-[#2E7BFF] bg-clip-text text-transparent">SERVICES</span>
           </h2>
 
-          <p className="mt-4 text-base md:text-lg text-[#CBD5E1] max-w-2xl font-normal leading-relaxed">
+          <p className="mt-3 text-xs sm:text-sm md:text-base text-[#CBD5E1] max-w-2xl font-normal leading-relaxed">
             Precision-engineered acquisition funnels, technical supremacy, and 3D creative pipelines designed to scale modern businesses.
           </p>
         </div>
