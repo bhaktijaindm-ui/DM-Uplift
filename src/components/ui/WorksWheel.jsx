@@ -2,25 +2,30 @@
 
 import * as React from "react";
 import { Sparkles, ArrowUpRight, ChevronUp, ChevronDown, Compass } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 /* ------------------------------------------------------------------ */
 /*  WorksWheel: 3D Biomimetic Portfolio Drum & Ring                   */
-/*  At rest (turn = 0), items sit in a ring around a central title.    */
-/*  Turning opens into a vertical 3D drum where the active piece lies  */
-/*  flat, and neighbors curve back along a perspective arc.           */
+/*  Scroll-linked 3D carousel driven by GSAP ScrollTrigger with scrub  */
+/*  smoothing (scrub: 0.8). Zero scroll-hijacking, zero jitter.       */
 /* ------------------------------------------------------------------ */
 
 const CARD_RATIO = 1.45; // card width / height
 const STEP = 42; // degrees between cards on the drum
 const DRUM = 2.2; // drum radius in card heights
 const LENS = 2.7; // perspective distance
-const RING_R = 1.08; // ring radius in card heights
-const BOW = 1.75; // arc radius bow
+const RING_R = 1.06; // ring radius in card heights
+const BOW = 1.7; // arc radius bow
 const TITLE = 0.12; // ring label and front title ratio
 const INDEX = 0.038; // index font size ratio
 const CULL = 1.8; // culled by distance
-const EASE = 0.12;
+const EASE = 0.14; // smooth animation interpolation
 
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const lerp = (a, b, t) => a + (b - a) * t;
@@ -48,6 +53,7 @@ export function WorksWheel({
   const cardRefs = React.useRef([]);
   const labelRef = React.useRef(null);
   const titleRef = React.useRef(null);
+  const scrollTriggerRef = React.useRef(null);
 
   const turn = React.useRef(0);
   const target = React.useRef(0);
@@ -181,68 +187,64 @@ export function WorksWheel({
     return () => cancelAnimationFrame(frame);
   }, [metrics, stage.h, count, last, reduced]);
 
-  // Robust wheel listener: avoids snapping back, cleanly turns card-by-card, and scrolls page at edges
+  // GSAP ScrollTrigger Integration:
+  // Smoothly scrubs the 3D wheel during page scroll with scrub: 0.8 delay smoothing.
+  // Zero scroll-hijacking, natural window scrolling, seamless Lenis harmony.
   React.useEffect(() => {
     const el = stageRef.current;
-    if (!el) return;
+    if (!el || typeof window === "undefined") return;
 
-    let accumulatedDelta = 0;
-    let scrollTimeout = null;
+    const sectionEl = el.closest("#services-section") || el;
+    const isMobile = window.innerWidth < 768;
+    const scrollDistance = isMobile ? 1200 : 1800;
 
-    const onWheel = (event) => {
-      const deltaY = event.deltaY;
-      if (!Number.isFinite(deltaY) || deltaY === 0) return;
+    const st = ScrollTrigger.create({
+      trigger: sectionEl,
+      start: "top top",
+      end: `+=${scrollDistance}`,
+      pin: true,
+      scrub: 0.8, // 0.8s smoothing delay eliminates jumpiness completely
+      anticipatePin: 1,
+      onUpdate: (self) => {
+        // self.progress is smoothly scrubbed from 0 to 1
+        const nextVal = self.progress * count;
+        to(nextVal);
+      },
+    });
 
-      const dir = Math.sign(deltaY);
+    scrollTriggerRef.current = st;
 
-      // Boundary check:
-      // If at Ring (target <= 0) and scrolling up, allow normal page scroll up
-      if (target.current <= 0 && dir < 0) {
-        return;
-      }
-      // If at last card (target >= count) and scrolling down, allow normal page scroll down
-      if (target.current >= count && dir > 0) {
-        return;
-      }
-
-      // Within wheel range: prevent default page scroll safely
-      if (event.cancelable) {
-        event.preventDefault();
-      }
-
-      accumulatedDelta += deltaY;
-      const STEP_THRESHOLD = 85;
-
-      if (Math.abs(accumulatedDelta) >= STEP_THRESHOLD) {
-        const step = Math.sign(accumulatedDelta);
-        accumulatedDelta = 0;
-
-        if (target.current === 0 && step > 0) {
-          // First scroll notch blows the ring open to card 1
-          to(1);
-        } else if (target.current <= 1 && step < 0) {
-          // Scrolling up from card 1 returns to ring
-          to(0);
-        } else {
-          // Advance card by card
-          to(clamp(Math.round(target.current + step), 0, count));
-        }
-      }
-
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        accumulatedDelta = 0;
-      }, 180);
-    };
-
-    el.addEventListener("wheel", onWheel, { passive: false });
     return () => {
-      el.removeEventListener("wheel", onWheel);
-      clearTimeout(scrollTimeout);
+      st.kill();
+      scrollTriggerRef.current = null;
     };
   }, [to, count]);
 
-  // Pointer drag handler for touch and mouse
+  // Scroll to a specific card step using smooth window scroll (integrated with ScrollTrigger)
+  const scrollToCard = React.useCallback(
+    (cardIndex) => {
+      const st = scrollTriggerRef.current;
+      if (st) {
+        const targetProgress = clamp((cardIndex + 1) / count, 0, 1);
+        const targetScroll = st.start + targetProgress * (st.end - st.start);
+        window.scrollTo({ top: targetScroll, behavior: "smooth" });
+      } else {
+        to(cardIndex + 1);
+      }
+    },
+    [count, to]
+  );
+
+  const scrollToRing = React.useCallback(() => {
+    const st = scrollTriggerRef.current;
+    if (st) {
+      window.scrollTo({ top: st.start, behavior: "smooth" });
+    } else {
+      to(0);
+    }
+  }, [to]);
+
+  // Pointer drag for manual touch/mouse interaction
   const drag = React.useRef(null);
 
   // Fallback image handler
@@ -271,7 +273,7 @@ export function WorksWheel({
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => to(0)}
+            onClick={scrollToRing}
             className={cn(
               "px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer backdrop-blur-md",
               isRing
@@ -285,7 +287,7 @@ export function WorksWheel({
 
           <button
             type="button"
-            onClick={() => to(active + 1 || 1)}
+            onClick={() => scrollToCard(active >= 0 ? active : 0)}
             className={cn(
               "px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer backdrop-blur-md",
               !isRing
@@ -308,8 +310,8 @@ export function WorksWheel({
               type="button"
               aria-label="Previous Service"
               onClick={() => {
-                if (target.current <= 1) to(0);
-                else to(target.current - 1);
+                if (active <= 0) scrollToRing();
+                else scrollToCard(active - 1);
               }}
               className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:border-[#00B4FF] text-white flex items-center justify-center transition-colors cursor-pointer backdrop-blur-md"
             >
@@ -319,8 +321,8 @@ export function WorksWheel({
               type="button"
               aria-label="Next Service"
               onClick={() => {
-                if (target.current === 0) to(1);
-                else to(Math.min(count, target.current + 1));
+                if (isRing) scrollToCard(0);
+                else scrollToCard(Math.min(count - 1, active + 1));
               }}
               className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:border-[#00B4FF] text-white flex items-center justify-center transition-colors cursor-pointer backdrop-blur-md"
             >
@@ -330,14 +332,13 @@ export function WorksWheel({
         </div>
       </div>
 
-      {/* 3D Wheel Interactive Stage — Freely on the background with data-lenis-prevent */}
+      {/* 3D Wheel Interactive Stage — Freely on the background, scrubbed smoothly by page scroll */}
       <div
         ref={stageRef}
-        data-lenis-prevent="wheel"
         tabIndex={0}
         role="region"
         aria-label={label}
-        className="relative w-full h-[600px] sm:h-[680px] lg:h-[740px] cursor-grab active:cursor-grabbing outline-none overflow-hidden touch-pan-x"
+        className="relative w-full h-[580px] sm:h-[660px] lg:h-[720px] cursor-grab active:cursor-grabbing outline-none overflow-hidden touch-pan-y"
         style={{ perspective: `${metrics.depth}px` }}
         onPointerDown={(event) => {
           drag.current = event.clientY;
@@ -350,38 +351,21 @@ export function WorksWheel({
         onPointerMove={(event) => {
           if (drag.current === null) return;
           const deltaY = drag.current - event.clientY;
-          const next = target.current + deltaY / 320;
-
-          // If at boundary, release capture so user can scroll page naturally
-          if ((next <= 0 && deltaY < 0) || (next >= count && deltaY > 0)) {
-            try {
-              event.currentTarget.releasePointerCapture(event.pointerId);
-            } catch {
-              // ignore
-            }
-            drag.current = null;
-            return;
-          }
-
-          to(clamp(next, 0, count));
+          // Smoothly scroll window in response to drag
+          window.scrollBy({ top: deltaY * 1.6, behavior: "auto" });
           drag.current = event.clientY;
         }}
         onPointerUp={() => {
           drag.current = null;
-          if (target.current > 0.45) {
-            to(clamp(Math.round(target.current), 1, count));
-          } else {
-            to(0);
-          }
         }}
         onKeyDown={(event) => {
           if (event.key === "ArrowDown") {
-            if (target.current === 0) to(1);
-            else to(Math.min(count, Math.round(target.current) + 1));
+            if (isRing) scrollToCard(0);
+            else scrollToCard(Math.min(count - 1, active + 1));
             event.preventDefault();
           } else if (event.key === "ArrowUp") {
-            if (target.current <= 1) to(0);
-            else to(Math.max(0, Math.round(target.current) - 1));
+            if (active <= 0) scrollToRing();
+            else scrollToCard(active - 1);
             event.preventDefault();
           }
         }}
@@ -402,7 +386,7 @@ export function WorksWheel({
                 onClick={(e) => {
                   if (active !== i || isRing) {
                     e.preventDefault();
-                    to(i + 1);
+                    scrollToCard(i);
                   }
                 }}
                 className="group absolute [backface-visibility:hidden] cursor-pointer"
@@ -493,7 +477,7 @@ export function WorksWheel({
           </h3>
 
           <p className="text-xs sm:text-sm text-[#CBD5E1] tracking-wider uppercase mt-2.5 opacity-85 font-mono">
-            Scroll or drag to rotate
+            Scroll page to explore
           </p>
         </div>
 
@@ -545,7 +529,7 @@ export function WorksWheel({
               <li key={item.title || item.id}>
                 <button
                   type="button"
-                  onClick={() => to(i + 1)}
+                  onClick={() => scrollToCard(i)}
                   className={cn(
                     "group flex items-center gap-2.5 justify-end cursor-pointer transition-all duration-300 outline-none text-xs lg:text-sm font-medium",
                     isSelected
@@ -624,7 +608,7 @@ export function WorksWheel({
               <button
                 key={item.title || item.id}
                 type="button"
-                onClick={() => to(i + 1)}
+                onClick={() => scrollToCard(i)}
                 className={cn(
                   "px-3 py-1.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all shrink-0 cursor-pointer backdrop-blur-md",
                   isSelected

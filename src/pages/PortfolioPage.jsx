@@ -40,7 +40,13 @@ export default function PortfolioPage() {
     };
 
     gsap.ticker.add(updateTicker);
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
+
+    // Initial scroll position: ensure top of page if no anchor hash
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+      lenis.scrollTo(0, { immediate: true });
+    }
 
     // Call ScrollTrigger.refresh after fonts/images load
     if (typeof document !== "undefined" && document.fonts && document.fonts.ready) {

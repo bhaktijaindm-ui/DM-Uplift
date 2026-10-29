@@ -13,7 +13,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services-section"
-      className="site-section bg-[#040814] text-white relative overflow-hidden pt-10 sm:pt-14 pb-12 sm:pb-16"
+      className="site-section bg-[#040814] text-white relative overflow-hidden min-h-screen flex flex-col justify-center py-6 sm:py-8"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[radial-gradient(circle,rgba(0,180,255,0.08)_0%,transparent_70%)] blur-[120px] pointer-events-none z-0" />

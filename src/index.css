@@ -26,7 +26,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth removed to prevent conflict with Lenis smooth scroll */
+  scroll-behavior: auto !important;
   background-color: #040814;
   overflow-x: hidden;
   width: 100%;
