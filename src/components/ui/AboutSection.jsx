@@ -1,44 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { Sparkles, ShieldCheck, TrendingUp, Layers } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { content } from "../../data/content";
 import ExperienceJourney from "./ExperienceJourney";
-
-function TiltCard({ children, className = "" }) {
-  const cardRef = useRef(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -8;
-    const rotateY = ((x - centerX) / centerX) * 8;
-    setTilt({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    setTilt({ x: 0, y: 0 });
-  };
-
-  return (
-    <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-        transition: "transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
-      }}
-      className={`relative rounded-3xl p-6 sm:p-8 bg-[#0A1530]/60 border border-[#2E7BFF]/30 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.6)] hover:border-[#00B4FF] hover:shadow-[0_0_35px_rgba(0,180,255,0.25)] transition-colors h-full flex flex-col justify-between ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
 
 function AnimatedCounter({ value, suffix = "", duration = 2000 }) {
   const [count, setCount] = useState(() => {
@@ -102,7 +65,6 @@ function AnimatedCounter({ value, suffix = "", duration = 2000 }) {
 
 export default function AboutSection() {
   const { about } = content;
-  const pillarIcons = [Layers, TrendingUp, ShieldCheck];
 
   return (
     <section
@@ -150,28 +112,6 @@ export default function AboutSection() {
 
         {/* 1-Year Experience Journey with Zig-Zag Pinned Milestone Cards */}
         <ExperienceJourney />
-
-        {/* 3D Tilt Cards for Pillars: Clean 3-column grid with gap-6 sm:gap-8 and mt-10 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-10">
-          {about.pillars.map((pillar, index) => {
-            const Icon = pillarIcons[index] || Sparkles;
-            return (
-              <TiltCard key={pillar.title}>
-                <div>
-                  <div className="w-11 h-11 rounded-2xl bg-[#00B4FF]/10 border border-[#00B4FF]/40 flex items-center justify-center mb-5 text-[#00B4FF] shadow-[0_0_15px_rgba(0,180,255,0.25)]">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-['Cinzel'] text-base sm:text-lg md:text-xl font-bold text-white mb-2 leading-snug">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#CBD5E1] font-normal leading-relaxed">
-                    {pillar.desc}
-                  </p>
-                </div>
-              </TiltCard>
-            );
-          })}
-        </div>
       </div>
     </section>
   );
