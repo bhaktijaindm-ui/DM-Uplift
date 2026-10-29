@@ -25,9 +25,21 @@ function swingStep(a, w, lineVel, dt, gain) {
   return [clamp(a + nw * dt, -0.6, 0.6), nw];
 }
 
-/** Index of the print nearest the centre for a line offset. */
+/** Infinite circular loop wrapped relative offset from current center */
+function getWrappedDelta(itemIndex, off, spacing, n) {
+  if (n <= 0) return 0;
+  const L = n * spacing;
+  let d = ((itemIndex * spacing - off) % L + L) % L;
+  if (d > L / 2) d -= L;
+  return d;
+}
+
+/** Normalized circular index [0, n - 1] nearest the center for line offset */
 function nearestAt(off, spacing, n) {
-  return clamp(Math.round(off / spacing), 0, Math.max(0, n - 1));
+  if (n <= 0) return 0;
+  const L = n * spacing;
+  const normOff = ((off % L) + L) % L;
+  return Math.round(normOff / spacing) % n;
 }
 
 function pad2(n) {
@@ -222,6 +234,7 @@ export default function PolaroidLineCarousel({
   stringColor = "#00B4FF",
   className = "",
   onChange,
+  onSelectProject,
 }) {
   const n = slides.length;
   const [active, setActive] = useState(0);
@@ -250,7 +263,10 @@ export default function PolaroidLineCarousel({
 
   const goTo = useCallback(
     (i) => {
-      sim.current.target = clamp(i, 0, n - 1) * spacing;
+      if (n <= 0) return;
+      const d = getWrappedDelta(i, sim.current.off, spacing, n);
+      const targetStep = Math.round((sim.current.off + d) / spacing);
+      sim.current.target = targetStep * spacing;
     },
     [n, spacing]
   );
@@ -313,12 +329,16 @@ export default function PolaroidLineCarousel({
       const g = reduce ? 0 : o.swing;
       const near = nearestAt(S.off, spacing, n);
 
+      const L = n * spacing;
       for (let i = 0; i < n; i++) {
         const el = cards.current[i];
         if (!el) continue;
 
-        const x = w / 2 + i * spacing - S.off;
-        if (x < -cw * 1.5 || x > w + cw * 1.5) {
+        let d = ((i * spacing - S.off) % L + L) % L;
+        if (d > L / 2) d -= L;
+
+        const x = w / 2 + d;
+        if (x < -cw * 1.6 || x > w + cw * 1.6) {
           el.style.visibility = "hidden";
           continue;
         }
@@ -334,7 +354,8 @@ export default function PolaroidLineCarousel({
 
         const y = stringY(x, w, y0, o.sag) - 6;
         el.style.transform = `translate(${(x - cw / 2).toFixed(1)}px,${y.toFixed(1)}px) rotate(${a.toFixed(4)}rad)`;
-        el.style.zIndex = String(i === near ? n + 2 : n - Math.abs(i - near));
+        const distSteps = Math.round(Math.abs(d) / spacing);
+        el.style.zIndex = String(Math.max(1, n + 2 - distSteps));
       }
 
       pathRef.current?.setAttribute(
@@ -367,15 +388,16 @@ export default function PolaroidLineCarousel({
     };
   }, [size, spacing, n]);
 
-  // Autoplay loop
+  // Seamless infinite autoplay loop
   useEffect(() => {
     if (!autoplay || n < 2) return;
     const t = window.setInterval(() => {
       if (document.hidden || drag.current || performance.now() - lastTouch.current < autoplay) return;
-      goTo(activeRef.current >= n - 1 ? 0 : activeRef.current + 1);
+      const currentStep = Math.round(sim.current.target / spacing);
+      sim.current.target = (currentStep + 1) * spacing;
     }, autoplay);
     return () => window.clearInterval(t);
-  }, [autoplay, n, goTo]);
+  }, [autoplay, n, spacing]);
 
   const onDown = (e) => {
     if (e.target.closest(".pl-bar") || e.target.closest("button") || e.target.closest("a")) return;
@@ -407,11 +429,8 @@ export default function PolaroidLineCarousel({
     d.lx = e.clientX;
     d.lt = e.timeStamp;
 
-    const max = (n - 1) * spacing;
-    let off = d.off - dx;
-    if (off < 0) off *= 0.35;
-    if (off > max) off = max + (off - max) * 0.35;
-    sim.current.off = off;
+    // Endless infinite loop drag without boundaries
+    sim.current.off = d.off - dx;
   };
 
   const onUp = (e) => {
@@ -424,19 +443,29 @@ export default function PolaroidLineCarousel({
     if (d.moved) {
       setDragging(false);
       sim.current.vel = -d.v * 1000;
-      goTo(nearestAt(sim.current.off - d.v * 180, spacing, n));
+      const landingOff = sim.current.off - d.v * 180;
+      const nearestStep = Math.round(landingOff / spacing);
+      sim.current.target = nearestStep * spacing;
       return;
     }
 
     const card = e.target.closest("[data-i]");
     if (card) {
-      goTo(Number(card.getAttribute("data-i")));
+      const idx = Number(card.getAttribute("data-i"));
+      if (idx === activeRef.current) {
+        if (onSelectProject && slides[idx]) {
+          onSelectProject(slides[idx]);
+        }
+      } else {
+        goTo(idx);
+      }
     }
   };
 
   const step = (dir) => {
     lastTouch.current = performance.now();
-    goTo(clamp(activeRef.current + dir, 0, n - 1));
+    const currentStep = Math.round(sim.current.target / spacing);
+    sim.current.target = (currentStep + dir) * spacing;
   };
 
   const onKey = (e) => {
@@ -495,13 +524,19 @@ export default function PolaroidLineCarousel({
           return (
             <div
               key={proj.id || i}
-              className="pl-card"
+              className="pl-card cursor-pointer"
               data-i={i}
               data-on={isCurrent ? "1" : "0"}
               ref={(el) => {
                 cards.current[i] = el;
               }}
               aria-hidden={!isCurrent}
+              title={isCurrent ? `Open ${proj.name || proj.title} Case Study` : `Switch to ${proj.name || proj.title}`}
+              onClick={() => {
+                if (!dragging && isCurrent && onSelectProject) {
+                  onSelectProject(proj);
+                }
+              }}
             >
               <div className="pl-print">
                 {/* Photo Viewport */}
@@ -553,9 +588,18 @@ export default function PolaroidLineCarousel({
                     </h3>
                   </div>
 
-                  <div className="w-7 h-7 rounded-full bg-[#040814] border border-[#2E7BFF]/40 flex items-center justify-center text-[#00B4FF] shrink-0">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (onSelectProject) onSelectProject(proj);
+                    }}
+                    className="w-7 h-7 rounded-full bg-[#040814] border border-[#2E7BFF]/40 hover:border-[#00B4FF] hover:bg-[#00B4FF] hover:text-[#040814] text-[#00B4FF] flex items-center justify-center transition-all duration-300 shrink-0 cursor-pointer shadow-[0_0_10px_rgba(0,180,255,0.2)]"
+                    title="Open Case Study Subpage"
+                    aria-label={`Open ${proj.name || proj.title} Case Study`}
+                  >
                     <ArrowUpRight className="w-3.5 h-3.5" />
-                  </div>
+                  </button>
                 </div>
               </div>
 
@@ -598,19 +642,28 @@ export default function PolaroidLineCarousel({
           )}
         </div>
 
-        {/* Right Side: Navigation & CTA Action */}
-        <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 shrink-0 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 border-white/10 pt-4 md:pt-0">
+        {/* Right Side: Navigation & Sub-Page Trigger */}
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 border-white/10 pt-4 md:pt-0">
+          <button
+            type="button"
+            onClick={() => onSelectProject && onSelectProject(currentProject)}
+            className="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#040814] bg-gradient-to-r from-[#00B4FF] to-[#38bdf8] hover:from-white hover:to-white transition-all duration-300 shadow-[0_0_20px_rgba(0,180,255,0.5)] flex items-center gap-1.5 cursor-pointer font-sans"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-[#040814]" />
+            <span>Explore Case Study</span>
+          </button>
+
           <a
             href="#contact-section"
-            className="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#2E7BFF] to-[#00B4FF] hover:from-[#00B4FF] hover:to-[#2E7BFF] transition-all duration-300 shadow-[0_0_20px_rgba(0,180,255,0.4)] flex items-center gap-1.5 cursor-pointer text-decoration-none"
+            className="px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#CBD5E1] border border-white/15 bg-[#040814] hover:text-white hover:border-[#00B4FF] transition-all duration-300 flex items-center gap-1.5 cursor-pointer text-decoration-none"
           >
-            <span>Inquire Case Study</span>
+            <span>Inquire</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 ml-1">
             {/* Counter */}
-            <span className="font-mono text-xs tracking-wider text-[#CBD5E1]">
+            <span className="font-mono text-xs tracking-wider text-[#CBD5E1] mr-1">
               <b className="text-[#00B4FF] font-bold text-sm">{pad2(active + 1)}</b> / {pad2(n)}
             </span>
 
@@ -618,7 +671,7 @@ export default function PolaroidLineCarousel({
             <button
               type="button"
               className="w-10 h-10 rounded-full border border-white/15 bg-[#040814] text-[#CBD5E1] hover:text-[#00B4FF] hover:border-[#00B4FF] flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
-              aria-label="Previous Project"
+              aria-label="Previous Project (Infinite Loop)"
               onClick={() => step(-1)}
             >
               <ChevronLeft className="w-4 h-4" />
@@ -628,7 +681,7 @@ export default function PolaroidLineCarousel({
             <button
               type="button"
               className="w-10 h-10 rounded-full border border-white/15 bg-[#040814] text-[#CBD5E1] hover:text-[#00B4FF] hover:border-[#00B4FF] flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
-              aria-label="Next Project"
+              aria-label="Next Project (Infinite Loop)"
               onClick={() => step(1)}
             >
               <ChevronRight className="w-4 h-4" />

@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Sparkles } from "lucide-react";
 import { content } from "../../data/content";
 import PolaroidLineCarousel from "./PolaroidLineCarousel";
+import ProjectDetailModal from "./ProjectDetailModal";
 
 export default function ProjectsSection() {
   const { projects } = content;
   const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const filterCategories = [
     "All",
@@ -33,7 +35,7 @@ export default function ProjectsSection() {
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0A1530] border border-[#2E7BFF]/30 text-[#00B4FF] text-[11px] font-bold tracking-widest uppercase mb-3.5 shadow-[0_0_15px_rgba(0,180,255,0.2)]">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>3D PORTFOLIO SHOWCASE</span>
+              <span>3D PORTFOLIO SHOWCASE (20 FLAGSHIPS)</span>
             </div>
             <h2 className="font-['Cinzel'] text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase">
               FEATURED <span className="bg-gradient-to-r from-white via-[#00B4FF] to-[#2E7BFF] bg-clip-text text-transparent">PROJECTS</span>
@@ -59,9 +61,20 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Polaroid Line Physics Carousel */}
-        <PolaroidLineCarousel key={activeFilter} slides={filteredProjects} />
+        {/* Polaroid Line Physics Carousel with Infinite Loop */}
+        <PolaroidLineCarousel
+          key={activeFilter}
+          slides={filteredProjects}
+          onSelectProject={setSelectedProject}
+        />
       </div>
+
+      {/* Dedicated Personal Sub-Page / Modal for the 20 Projects */}
+      <ProjectDetailModal
+        project={selectedProject}
+        isOpen={Boolean(selectedProject)}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }
