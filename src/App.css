@@ -1,0 +1,50 @@
+/* UPLIFT Portfolio Global Styles */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #040814;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0A1530;
+  border-radius: 4px;
+  border: 1px solid rgba(46, 123, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00B4FF;
+}
+
+/* Fix text contrast & smooth text rendering */
+body {
+  background-color: #040814;
+  color: #ffffff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

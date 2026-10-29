@@ -1,0 +1,105 @@
+.casestudy-section {
+  padding: 8rem 5%;
+  background: #050508;
+  position: relative;
+}
+
+.casestudy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.casestudy-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 40px;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.card-image-wrapper {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.casestudy-card:hover .card-image {
+  transform: scale(1.1);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 5, 8, 0.8), transparent);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+.card-stats {
+  background: #d4af37;
+  color: #000;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.card-info {
+  padding: 2.5rem;
+}
+
+.card-meta {
+  color: #d4af37;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.75rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.read-more-link {
+  background: transparent;
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: gap 0.3s ease;
+}
+
+.read-more-link:hover {
+  gap: 1rem;
+  color: #d4af37;
+}
+
+@media (max-width: 768px) {
+  .casestudy-grid {
+    grid-template-columns: 1fr;
+  }
+}

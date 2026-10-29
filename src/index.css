@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #040814;
+  --background-secondary: #0a1530;
+  --foreground: #ffffff;
+  --primary: #00B4FF; /* Neon Blue */
+  --secondary: #2E7BFF; /* Deep Royal Neon */
+  --accent: #00B4FF;
+  --border: rgba(46, 123, 255, 0.25);
+  --card-glow: rgba(0, 180, 255, 0.2);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #040814;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #040814;
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: 'Cinzel', serif;
+}
+
+/* Global Spacing System */
+.site-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(20px, 5vw, 64px);
+  padding-right: clamp(20px, 5vw, 64px);
+  box-sizing: border-box;
+}
+
+.site-section {
+  width: 100%;
+  padding-top: clamp(72px, 9vw, 120px);
+  padding-bottom: clamp(72px, 9vw, 120px);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Glassmorphism utility helpers */
+.glass-panel {
+  background: rgba(10, 21, 48, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(46, 123, 255, 0.25);
+}
+
+.glass-panel:hover {
+  border-color: rgba(0, 180, 255, 0.6);
+  box-shadow: 0 0 30px rgba(0, 180, 255, 0.2);
+}
+
+/* Neon glow texts */
+.neon-text {
+  color: #00B4FF;
+  text-shadow: 0 0 20px rgba(0, 180, 255, 0.6);
+}
+
