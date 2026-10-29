@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Sparkles, ChevronLeft, ChevronRight, Quote, TrendingUp } from "lucide-react";
 import { cn } from "../../lib/utils";
 
@@ -175,6 +175,21 @@ export default function TestimonialsSection() {
   const [displayedMetric, setDisplayedMetric] = useState(testimonials[0].metric);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isPaused, setIsPaused] = useState(false);
+  const scrollTrackRef = useRef(null);
+
+  // Auto-scroll the active avatar button into center view
+  useEffect(() => {
+    const track = scrollTrackRef.current;
+    if (!track) return;
+    const activeBtn = track.querySelector(`[data-index="${activeIndex}"]`);
+    if (activeBtn) {
+      activeBtn.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [activeIndex]);
 
   const handleSelect = useCallback(
     (index) => {
@@ -238,29 +253,32 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Wide Open Testimonials Display (Borderless, Fluid & Spacious) */}
-        <div className="w-full flex flex-col items-center">
+        {/* Floating Testimonial Wide Card Box */}
+        <div className="max-w-5xl lg:max-w-6xl w-full mx-auto rounded-3xl p-6 sm:p-10 md:p-14 bg-gradient-to-b from-[#0A1530]/85 via-[#060F2B]/90 to-[#040814]/95 border border-[#2E7BFF]/35 backdrop-blur-2xl shadow-[0_25px_60px_rgba(0,0,0,0.85),0_0_50px_rgba(0,180,255,0.16)] flex flex-col items-center relative overflow-hidden">
+          {/* Inner ambient card glow */}
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-[radial-gradient(circle,rgba(0,180,255,0.18)_0%,transparent_70%)] blur-[60px] pointer-events-none" />
+
           {/* Quote Container with Ambient Typography Marks */}
-          <div className="relative w-full max-w-5xl px-6 sm:px-14 md:px-20 py-4">
-            <Quote className="absolute -left-1 sm:left-2 -top-6 sm:-top-8 w-12 sm:w-16 h-12 sm:h-16 text-[#00B4FF]/15 select-none pointer-events-none transform -scale-x-100" />
+          <div className="relative w-full max-w-4xl px-4 sm:px-12 md:px-16 py-2">
+            <Quote className="absolute -left-1 sm:left-2 -top-6 sm:-top-8 w-10 sm:w-14 h-10 sm:h-14 text-[#00B4FF]/18 select-none pointer-events-none transform -scale-x-100" />
 
             <p
               className={cn(
-                "text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-white text-center leading-relaxed tracking-tight transition-all duration-400 ease-out min-h-[110px] sm:min-h-[130px] flex items-center justify-center font-['Cinzel'] [text-wrap:balance]",
+                "text-lg sm:text-xl md:text-2xl lg:text-[28px] font-light text-white text-center leading-relaxed tracking-tight transition-all duration-400 ease-out min-h-[90px] sm:min-h-[110px] flex items-center justify-center font-['Cinzel'] [text-wrap:balance]",
                 isAnimating ? "opacity-0 blur-sm scale-[0.98]" : "opacity-100 blur-0 scale-100"
               )}
             >
               &ldquo;{displayedQuote}&rdquo;
             </p>
 
-            <Quote className="absolute -right-1 sm:right-2 -bottom-6 sm:-bottom-8 w-12 sm:w-16 h-12 sm:h-16 text-[#00B4FF]/15 select-none pointer-events-none" />
+            <Quote className="absolute -right-1 sm:right-2 -bottom-6 sm:-bottom-8 w-10 sm:w-14 h-10 sm:h-14 text-[#00B4FF]/18 select-none pointer-events-none" />
           </div>
 
           {/* Role, Company & Verified Metric Pill */}
-          <div className="flex flex-col items-center gap-3 mt-6 sm:mt-8">
+          <div className="flex flex-col items-center gap-2.5 mt-5 sm:mt-7">
             <div
               className={cn(
-                "inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A1530] border border-[#00B4FF]/40 text-[#00B4FF] text-xs sm:text-sm font-bold shadow-[0_0_20px_rgba(0,180,255,0.3)] transition-all duration-400 ease-out",
+                "inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#040814]/80 border border-[#00B4FF]/40 text-[#00B4FF] text-xs sm:text-sm font-bold shadow-[0_0_20px_rgba(0,180,255,0.3)] transition-all duration-400 ease-out backdrop-blur-md",
                 isAnimating ? "opacity-0 translate-y-1" : "opacity-100 translate-y-0"
               )}
             >
@@ -270,7 +288,7 @@ export default function TestimonialsSection() {
 
             <p
               className={cn(
-                "text-xs sm:text-sm text-[#CBD5E1] tracking-[0.25em] uppercase font-bold text-center transition-all duration-400 ease-out",
+                "text-xs sm:text-sm text-[#CBD5E1] tracking-[0.22em] uppercase font-bold text-center transition-all duration-400 ease-out",
                 isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
               )}
             >
@@ -279,9 +297,13 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Wide Avatar Pill Row (18 DM Clients) */}
-          <div className="w-full mt-10 sm:mt-12 flex flex-col items-center gap-6">
-            {/* Avatars flex-wrap container - Wide, centered, completely visible and responsive */}
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-w-5xl mx-auto px-2">
+          <div className="w-full mt-8 sm:mt-10 flex flex-col items-center gap-5">
+            {/* Scrollable / Centered Avatars Track */}
+            <div
+              ref={scrollTrackRef}
+              className="flex items-center gap-1.5 sm:gap-2.5 overflow-x-auto py-2 px-2 max-w-full scrollbar-none scroll-smooth justify-start md:justify-center w-full"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
               {testimonials.map((t, index) => {
                 const isActive = activeIndex === index;
                 const isHovered = hoveredIndex === index && !isActive;
@@ -290,15 +312,16 @@ export default function TestimonialsSection() {
                 return (
                   <button
                     key={t.id}
+                    data-index={index}
                     type="button"
                     onClick={() => handleSelect(index)}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                     className={cn(
-                      "relative flex items-center gap-0 rounded-full cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+                      "relative flex items-center gap-0 rounded-full cursor-pointer shrink-0 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
                       isActive
                         ? "bg-gradient-to-r from-[#00B4FF] to-[#38bdf8] text-[#040814] shadow-[0_0_25px_rgba(0,180,255,0.55)] scale-105"
-                        : "bg-[#0A1530]/80 hover:bg-[#0A1530] text-white border border-white/10 hover:border-[#00B4FF]/40",
+                        : "bg-[#040814]/80 hover:bg-[#0A1530] text-white border border-white/10 hover:border-[#00B4FF]/40",
                       showName ? "pr-3.5 pl-1.5 py-1.5" : "p-1"
                     )}
                     aria-label={`Select ${t.author}`}
@@ -340,18 +363,18 @@ export default function TestimonialsSection() {
             </div>
 
             {/* Bottom Controls Row: Prev Button, Counter, Next Button */}
-            <div className="flex items-center justify-center gap-4 mt-2">
+            <div className="flex items-center justify-center gap-4 mt-1">
               <button
                 type="button"
                 onClick={() => handleStep(-1)}
-                className="w-10 h-10 rounded-full bg-[#0A1530] border border-white/15 hover:border-[#00B4FF] text-[#CBD5E1] hover:text-[#00B4FF] flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#040814] border border-white/15 hover:border-[#00B4FF] text-[#CBD5E1] hover:text-[#00B4FF] flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
                 aria-label="Previous Testimonial"
                 title="Previous Client"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
 
-              <div className="flex items-center gap-2 font-mono text-xs text-[#CBD5E1] px-4 py-1.5 rounded-full bg-[#0A1530]/80 border border-white/10 shadow-sm">
+              <div className="flex items-center gap-2 font-mono text-xs text-[#CBD5E1] px-4 py-1.5 rounded-full bg-[#040814]/80 border border-white/10 shadow-sm">
                 <span className="text-[#00B4FF] font-bold">{padNum(activeIndex + 1)}</span>
                 <span className="text-white/30">/</span>
                 <span>{padNum(testimonials.length)} Clients</span>
@@ -360,7 +383,7 @@ export default function TestimonialsSection() {
               <button
                 type="button"
                 onClick={() => handleStep(1)}
-                className="w-10 h-10 rounded-full bg-[#0A1530] border border-white/15 hover:border-[#00B4FF] text-[#CBD5E1] hover:text-[#00B4FF] flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#040814] border border-white/15 hover:border-[#00B4FF] text-[#CBD5E1] hover:text-[#00B4FF] flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
                 aria-label="Next Testimonial"
                 title="Next Client"
               >
