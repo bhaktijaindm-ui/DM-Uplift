@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>UPLIFT — Performance Digital Marketing & 3D Web</title>
+    <script>
+      // Single Page Application redirect script for GitHub Pages
+      (function() {
+        var path = window.location.pathname;
+        var search = window.location.search || '';
+        var hash = window.location.hash || '';
+        
+        // Remove repo base prefix if present
+        var repo = '/DM-Uplift';
+        if (path.indexOf(repo) === 0) {
+          path = path.slice(repo.length);
+        }
+        
+        // If the path was a project path, e.g. /project/proj-10, redirect to #/project/proj-10
+        if (!path || path === '/') {
+          path = '';
+        }
+        
+        var target = repo + '/#' + path + search + hash;
+        window.location.replace(target);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to UPLIFT...</p>
+  </body>
+</html>

@@ -1,13 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Sparkles } from "lucide-react";
 import { content } from "../../data/content";
 import PolaroidLineCarousel from "./PolaroidLineCarousel";
-import ProjectDetailModal from "./ProjectDetailModal";
 
 export default function ProjectsSection() {
   const { projects } = content;
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState("All");
-  const [selectedProject, setSelectedProject] = useState(null);
 
   const filterCategories = [
     "All",
@@ -20,6 +20,12 @@ export default function ProjectsSection() {
     activeFilter === "All"
       ? projects
       : projects.filter((p) => p.category.includes(activeFilter.split(" ")[0]));
+
+  const handleSelectProject = (project) => {
+    if (project?.id) {
+      navigate(`/project/${project.id}`);
+    }
+  };
 
   return (
     <section
@@ -61,20 +67,13 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Polaroid Line Physics Carousel with Infinite Loop */}
+        {/* Polaroid Line Physics Carousel with Infinite Loop & Dedicated URLs */}
         <PolaroidLineCarousel
           key={activeFilter}
           slides={filteredProjects}
-          onSelectProject={setSelectedProject}
+          onSelectProject={handleSelectProject}
         />
       </div>
-
-      {/* Dedicated Personal Sub-Page / Modal for the 20 Projects */}
-      <ProjectDetailModal
-        project={selectedProject}
-        isOpen={Boolean(selectedProject)}
-        onClose={() => setSelectedProject(null)}
-      />
     </section>
   );
 }

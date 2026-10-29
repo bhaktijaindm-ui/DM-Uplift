@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Play, Sparkles } from "lucide-react";
 
 // #region Helper Logic
@@ -588,18 +589,18 @@ export default function PolaroidLineCarousel({
                     </h3>
                   </div>
 
-                  <button
-                    type="button"
+                  <Link
+                    to={`/project/${proj.id}`}
                     onClick={(e) => {
                       e.stopPropagation();
                       if (onSelectProject) onSelectProject(proj);
                     }}
-                    className="w-7 h-7 rounded-full bg-[#040814] border border-[#2E7BFF]/40 hover:border-[#00B4FF] hover:bg-[#00B4FF] hover:text-[#040814] text-[#00B4FF] flex items-center justify-center transition-all duration-300 shrink-0 cursor-pointer shadow-[0_0_10px_rgba(0,180,255,0.2)]"
-                    title="Open Case Study Subpage"
+                    className="w-7 h-7 rounded-full bg-[#040814] border border-[#2E7BFF]/40 hover:border-[#00B4FF] hover:bg-[#00B4FF] hover:text-[#040814] text-[#00B4FF] flex items-center justify-center transition-all duration-300 shrink-0 cursor-pointer shadow-[0_0_10px_rgba(0,180,255,0.2)] text-decoration-none"
+                    title={`Open ${proj.name || proj.title} Case Study`}
                     aria-label={`Open ${proj.name || proj.title} Case Study`}
                   >
                     <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -644,14 +645,13 @@ export default function PolaroidLineCarousel({
 
         {/* Right Side: Navigation & Sub-Page Trigger */}
         <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 border-white/10 pt-4 md:pt-0">
-          <button
-            type="button"
-            onClick={() => onSelectProject && onSelectProject(currentProject)}
-            className="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#040814] bg-gradient-to-r from-[#00B4FF] to-[#38bdf8] hover:from-white hover:to-white transition-all duration-300 shadow-[0_0_20px_rgba(0,180,255,0.5)] flex items-center gap-1.5 cursor-pointer font-sans"
+          <Link
+            to={`/project/${currentProject.id || "proj-1"}`}
+            className="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#040814] bg-gradient-to-r from-[#00B4FF] to-[#38bdf8] hover:from-white hover:to-white transition-all duration-300 shadow-[0_0_20px_rgba(0,180,255,0.5)] flex items-center gap-1.5 cursor-pointer font-sans text-decoration-none"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#040814]" />
             <span>Explore Case Study</span>
-          </button>
+          </Link>
 
           <a
             href="#contact-section"
