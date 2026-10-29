@@ -21,9 +21,7 @@
   --color-border: var(--border);
 }
 
-* {
-  margin: 0;
-  padding: 0;
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -43,7 +41,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   width: 100%;
+  min-height: 100%;
   position: relative;
+}
+
+/* Accessible interactive focus rings */
+:focus-visible {
+  outline: 2px solid #00B4FF;
+  outline-offset: 3px;
+}
+
+/* Custom high-contrast brand selection */
+::selection {
+  background-color: #00B4FF;
+  color: #040814;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #040814;
+}
+::-webkit-scrollbar-thumb {
+  background: #0A1530;
+  border-radius: 4px;
+  border: 1px solid rgba(46, 123, 255, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2E7BFF;
 }
 
 h1, h2, h3, .font-heading {
@@ -87,5 +114,17 @@ h1, h2, h3, .font-heading {
 .neon-text {
   color: #00B4FF;
   text-shadow: 0 0 20px rgba(0, 180, 255, 0.6);
+}
+
+/* Global reduced-motion support */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 

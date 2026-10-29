@@ -375,7 +375,7 @@ export function HalftoneWordmarkFooter({
 
   return (
     <footer
-      className={`relative w-full bg-[#040814] text-white pt-16 pb-12 overflow-hidden border-t border-[#2E7BFF]/20 ${className}`}
+      className={`relative w-full bg-[#040814] text-white mt-12 pt-8 pb-12 overflow-hidden border-t border-[#2E7BFF]/20 ${className}`}
     >
       <div className="site-container relative z-10">
         {/* Top Header Row with Studio Brand and Back To Top link (ABOVE big text, right-aligned, white 80%) */}

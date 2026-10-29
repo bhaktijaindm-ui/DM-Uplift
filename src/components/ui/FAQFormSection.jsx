@@ -63,8 +63,8 @@ export default function FAQFormSection() {
 
       <div className="site-container relative z-10">
         {/* Two Columns with 64px gap (gap-16), stacks on mobile */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          {/* LEFT COLUMN: Accordion FAQ (Item padding 20px 24px, 12px gap) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* LEFT COLUMN: Accordion FAQ */}
           <div className="lg:col-span-6 flex flex-col justify-start">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A1530] border border-[#2E7BFF]/30 text-[#00B4FF] text-xs font-bold tracking-widest uppercase mb-4 w-fit shadow-[0_0_15px_rgba(0,180,255,0.2)]">
               <Sparkles className="w-3.5 h-3.5" />
@@ -83,18 +83,25 @@ export default function FAQFormSection() {
             <div className="flex flex-col gap-3">
               {faq.items.map((item, index) => {
                 const isOpen = activeFaq === index;
+                const questionId = `faq-q-${index}`;
+                const answerId = `faq-a-${index}`;
                 return (
                   <div
                     key={index}
-                    onClick={() => setActiveFaq(isOpen ? null : index)}
-                    className={`rounded-2xl transition-all duration-300 border cursor-pointer overflow-hidden ${
+                    className={`rounded-2xl transition-all duration-300 border overflow-hidden ${
                       isOpen
                         ? "bg-[#0A1530]/85 border-[#00B4FF] shadow-[0_0_20px_rgba(0,180,255,0.2)]"
                         : "bg-[#0A1530]/35 border-white/10 hover:border-[#2E7BFF]/40"
                     }`}
                   >
-                    {/* Padding 20px 24px (py-5 px-6) */}
-                    <div className="py-5 px-6 flex items-center justify-between gap-4">
+                    <button
+                      type="button"
+                      id={questionId}
+                      aria-expanded={isOpen}
+                      aria-controls={answerId}
+                      onClick={() => setActiveFaq(isOpen ? null : index)}
+                      className="w-full text-left py-5 px-6 flex items-center justify-between gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
+                    >
                       <span className="font-['Cinzel'] text-base md:text-lg font-bold text-white">
                         {item.q}
                       </span>
@@ -102,10 +109,16 @@ export default function FAQFormSection() {
                         className={`w-5 h-5 text-[#00B4FF] shrink-0 transition-transform duration-300 ${
                           isOpen ? "rotate-180" : ""
                         }`}
+                        aria-hidden="true"
                       />
-                    </div>
+                    </button>
                     {isOpen && (
-                      <div className="px-6 pb-5 text-sm md:text-base text-[#CBD5E1] font-normal leading-relaxed border-t border-white/10 pt-3">
+                      <div
+                        id={answerId}
+                        role="region"
+                        aria-labelledby={questionId}
+                        className="p-5 text-sm md:text-base text-[#CBD5E1] font-normal leading-relaxed border-t border-white/10"
+                      >
                         {item.a}
                       </div>
                     )}
@@ -115,7 +128,7 @@ export default function FAQFormSection() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Inquiry Form (20px field gap, 48px input height, 0 16px padding, neon ring, min-h 120px textarea) */}
+          {/* RIGHT COLUMN: Inquiry Form */}
           <div className="lg:col-span-6 flex flex-col justify-start">
             <div className="p-6 sm:p-8 rounded-3xl bg-[#0A1530]/75 border border-[#2E7BFF]/40 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(0,180,255,0.15)]">
               {submitted ? (
@@ -157,22 +170,30 @@ export default function FAQFormSection() {
                     </h3>
                   </div>
 
-                  {/* Name Input: 48px height (h-12), 0 16px padding (px-4), neon ring */}
+                  {/* Name Input with px-4 py-3 */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1] mb-2">
+                    <label
+                      htmlFor="inquiry-name"
+                      className="block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1] mb-2"
+                    >
                       Full Name *
                     </label>
                     <input
+                      id="inquiry-name"
+                      name="name"
                       type="text"
                       placeholder="e.g. Alexander Vance"
                       value={formData.name}
                       onChange={(e) => handleInputChange("name", e.target.value)}
-                      className={`w-full h-12 px-4 rounded-xl bg-[#040814]/90 border text-white placeholder-white/30 text-sm outline-none transition-all duration-300 focus:ring-2 focus:ring-[#00B4FF] focus:border-[#00B4FF] ${
+                      aria-required="true"
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? "inquiry-name-error" : undefined}
+                      className={`w-full px-4 py-3 rounded-xl bg-[#040814]/90 border text-white placeholder-white/30 text-sm outline-none transition-all duration-300 focus:ring-2 focus:ring-[#00B4FF] focus:border-[#00B4FF] ${
                         errors.name ? "border-red-500" : "border-white/15"
                       }`}
                     />
                     {errors.name && (
-                      <span className="text-xs text-red-400 mt-1 flex items-center gap-1">
+                      <span id="inquiry-name-error" className="text-xs text-red-400 mt-1 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         {errors.name}
                       </span>
@@ -182,20 +203,28 @@ export default function FAQFormSection() {
                   {/* Email & Phone Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1] mb-2">
+                      <label
+                        htmlFor="inquiry-email"
+                        className="block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1] mb-2"
+                      >
                         Work Email *
                       </label>
                       <input
+                        id="inquiry-email"
+                        name="email"
                         type="email"
                         placeholder="alex@company.com"
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
-                        className={`w-full h-12 px-4 rounded-xl bg-[#040814]/90 border text-white placeholder-white/30 text-sm outline-none transition-all duration-300 focus:ring-2 focus:ring-[#00B4FF] focus:border-[#00B4FF] ${
+                        aria-required="true"
+                        aria-invalid={!!errors.email}
+                        aria-describedby={errors.email ? "inquiry-email-error" : undefined}
+                        className={`w-full px-4 py-3 rounded-xl bg-[#040814]/90 border text-white placeholder-white/30 text-sm outline-none transition-all duration-300 focus:ring-2 focus:ring-[#00B4FF] focus:border-[#00B4FF] ${
                           errors.email ? "border-red-500" : "border-white/15"
                         }`}
                       />
                       {errors.email && (
-                        <span className="text-xs text-red-400 mt-1 flex items-center gap-1">
+                        <span id="inquiry-email-error" className="text-xs text-red-400 mt-1 flex items-center gap-1">
                           <AlertCircle className="w-3 h-3" />
                           {errors.email}
                         </span>
@@ -203,20 +232,28 @@ export default function FAQFormSection() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1] mb-2">
+                      <label
+                        htmlFor="inquiry-phone"
+                        className="block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1] mb-2"
+                      >
                         Phone Number *
                       </label>
                       <input
+                        id="inquiry-phone"
+                        name="phone"
                         type="tel"
                         placeholder="+1 (555) 000-0000"
                         value={formData.phone}
                         onChange={(e) => handleInputChange("phone", e.target.value)}
-                        className={`w-full h-12 px-4 rounded-xl bg-[#040814]/90 border text-white placeholder-white/30 text-sm outline-none transition-all duration-300 focus:ring-2 focus:ring-[#00B4FF] focus:border-[#00B4FF] ${
+                        aria-required="true"
+                        aria-invalid={!!errors.phone}
+                        aria-describedby={errors.phone ? "inquiry-phone-error" : undefined}
+                        className={`w-full px-4 py-3 rounded-xl bg-[#040814]/90 border text-white placeholder-white/30 text-sm outline-none transition-all duration-300 focus:ring-2 focus:ring-[#00B4FF] focus:border-[#00B4FF] ${
                           errors.phone ? "border-red-500" : "border-white/15"
                         }`}
                       />
                       {errors.phone && (
-                        <span className="text-xs text-red-400 mt-1 flex items-center gap-1">
+                        <span id="inquiry-phone-error" className="text-xs text-red-400 mt-1 flex items-center gap-1">
                           <AlertCircle className="w-3 h-3" />
                           {errors.phone}
                         </span>
@@ -224,15 +261,20 @@ export default function FAQFormSection() {
                     </div>
                   </div>
 
-                  {/* Service Dropdown: 48px height, 0 16px padding */}
+                  {/* Service Dropdown */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1] mb-2">
+                    <label
+                      htmlFor="inquiry-service"
+                      className="block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1] mb-2"
+                    >
                       Primary Service of Interest
                     </label>
                     <select
+                      id="inquiry-service"
+                      name="service"
                       value={formData.service}
                       onChange={(e) => handleInputChange("service", e.target.value)}
-                      className="w-full h-12 px-4 rounded-xl bg-[#040814]/90 border border-white/15 text-white text-sm outline-none transition-all duration-300 focus:ring-2 focus:ring-[#00B4FF] focus:border-[#00B4FF] cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-[#040814]/90 border border-white/15 text-white text-sm outline-none transition-all duration-300 focus:ring-2 focus:ring-[#00B4FF] focus:border-[#00B4FF] cursor-pointer"
                     >
                       <option value="Website Development">Website Development</option>
                       <option value="SEO / Local SEO">SEO / Local SEO</option>
@@ -245,33 +287,41 @@ export default function FAQFormSection() {
                     </select>
                   </div>
 
-                  {/* Message Input: min-height 120px, padding 16px, neon focus ring */}
+                  {/* Message Input: min-height 128px, px-4 py-3 padding, resizable vertically */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1] mb-2">
+                    <label
+                      htmlFor="inquiry-message"
+                      className="block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1] mb-2"
+                    >
                       Project Details / Goals *
                     </label>
                     <textarea
+                      id="inquiry-message"
+                      name="message"
                       rows={4}
                       placeholder="Tell us about your brand, current monthly ad spend or traffic, and target metrics..."
                       value={formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
-                      className={`w-full min-h-[120px] p-4 rounded-xl bg-[#040814]/90 border text-white placeholder-white/30 text-sm outline-none transition-all duration-300 resize-none focus:ring-2 focus:ring-[#00B4FF] focus:border-[#00B4FF] ${
+                      aria-required="true"
+                      aria-invalid={!!errors.message}
+                      aria-describedby={errors.message ? "inquiry-message-error" : undefined}
+                      className={`w-full min-h-[128px] px-4 py-3 rounded-xl bg-[#040814]/90 border text-white placeholder-white/30 text-sm outline-none transition-all duration-300 resize-y focus:ring-2 focus:ring-[#00B4FF] focus:border-[#00B4FF] ${
                         errors.message ? "border-red-500" : "border-white/15"
                       }`}
                     />
                     {errors.message && (
-                      <span className="text-xs text-red-400 mt-1 flex items-center gap-1">
+                      <span id="inquiry-message-error" className="text-xs text-red-400 mt-1 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         {errors.message}
                       </span>
                     )}
                   </div>
 
-                  {/* Full-Width Submit Button with Neon Blue Glow */}
+                  {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full h-12 rounded-full text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#2E7BFF] to-[#00B4FF] hover:from-[#00B4FF] hover:to-[#2E7BFF] transition-all duration-300 shadow-[0_0_25px_rgba(0,180,255,0.5)] hover:shadow-[0_0_40px_rgba(0,180,255,0.8)] hover:scale-[1.01] flex items-center justify-center gap-2 mt-2 disabled:opacity-60 cursor-pointer"
+                    className="w-full h-12 rounded-full text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#2E7BFF] to-[#00B4FF] hover:from-[#00B4FF] hover:to-[#2E7BFF] transition-all duration-300 shadow-[0_0_25px_rgba(0,180,255,0.5)] hover:shadow-[0_0_40px_rgba(0,180,255,0.8)] hover:scale-[1.01] flex items-center justify-center gap-2 mt-2 disabled:opacity-60 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
                   >
                     <span>{isSubmitting ? "Transmitting..." : "Submit Proposal Request"}</span>
                     <Send className="w-4 h-4" />

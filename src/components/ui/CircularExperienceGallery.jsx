@@ -1,244 +1,244 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ExternalLink, ArrowRight, Pause, Play, ChevronLeft, ChevronRight, Globe } from "lucide-react";
-
-function getResponsiveDimensions() {
-  if (typeof window === "undefined") {
-    return {
-      radius: 600,
-      cardWidth: 270,
-      cardHeight: 370,
-      containerHeight: 520,
-      perspective: 2000,
-    };
-  }
-  const w = window.innerWidth;
-  if (w < 640) {
-    // Mobile
-    return {
-      radius: 320,
-      cardWidth: 200,
-      cardHeight: 290,
-      containerHeight: 420,
-      perspective: 1000,
-    };
-  } else if (w < 1024) {
-    // Tablet
-    return {
-      radius: 460,
-      cardWidth: 240,
-      cardHeight: 330,
-      containerHeight: 460,
-      perspective: 1500,
-    };
-  }
-  // Laptop & Desktop (standard nominal sizing)
-  return {
-    radius: 600,
-    cardWidth: 270,
-    cardHeight: 370,
-    containerHeight: 520,
-    perspective: 2000,
-  };
-}
 
 /**
  * CircularExperienceGallery
- * 3D circular cylinder carousel displaying 18 client experiences.
- * - Auto-rotation when idle
- * - Scroll-driven rotation synchronized with window scroll
- * - Touch & pointer drag with momentum
- * - Responsive radius, perspective, and dimensions across laptop, tablet, and mobile
- * - High-contrast glassmorphism cards with reliable image fallbacks
+ * 3D Stage Carousel with Controlled Depth and Zero Text Collisions.
+ * - Active card is prominently centered, fully opaque, and 100% legible
+ * - Side cards have controlled angle, scale, and depth without text overlap
+ * - Touch handling preserves natural vertical page scrolling
+ * - Pauses on hover, focus, drag, or prefers-reduced-motion
+ * - Full keyboard navigation (Arrow keys) and accessible controls
  */
 export default function CircularExperienceGallery({
   items = [],
-  autoRotateSpeed = 0.04,
+  autoRotateInterval = 4000,
   onSelectClient,
 }) {
-  const [rotation, setRotation] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dimensions, setDimensions] = useState(getResponsiveDimensions);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
 
-  const isDraggingRef = useRef(false);
-  const dragStartRef = useRef({ x: 0, rotation: 0 });
-  const scrollTimeoutRef = useRef(null);
-  const animationFrameRef = useRef(null);
-  const containerRef = useRef(null);
+  const total = items.length;
+  const touchStartRef = useRef({ x: 0, y: 0, time: 0 });
+  const isHorizontalSwipeRef = useRef(false);
+  const carouselRegionRef = useRef(null);
 
-  // Responsive dimensions listener
+  // Resize listener for responsive layout adjustments
   useEffect(() => {
-    const handleResize = () => {
-      setDimensions(getResponsiveDimensions());
-    };
+    const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Effect to handle scroll-based rotation
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolling(true);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
+  // Responsive spacing and visible card count
+  const isMobile = windowWidth < 640;
+  const isTablet = windowWidth >= 640 && windowWidth < 1024;
 
-      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollProgress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
-      const scrollRotation = scrollProgress * 360 * 1.5;
-      setRotation(scrollRotation);
+  const cardWidth = isMobile ? 260 : isTablet ? 300 : 340;
+  const cardHeight = isMobile ? 380 : isTablet ? 410 : 430;
+  const cardSpacing = isMobile ? 210 : isTablet ? 260 : 310;
+  const maxDistance = isMobile ? 1 : isTablet ? 2 : 3;
 
-      scrollTimeoutRef.current = setTimeout(() => {
-        setIsScrolling(false);
-      }, 150);
-    };
+  // Next / Previous helpers with modulo wrap-around
+  const goToNext = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % total);
+  }, [total]);
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-    };
+  const goToPrev = useCallback(() => {
+    setActiveIndex((prev) => (prev - 1 + total) % total);
+  }, [total]);
+
+  const goToIndex = useCallback((index) => {
+    setActiveIndex(index);
   }, []);
 
-  // Effect for auto-rotation when not scrolling or dragging
+  // Autoplay loop with pause triggers
   useEffect(() => {
-    const autoRotate = () => {
-      if (!isScrolling && !isDraggingRef.current && !isPaused) {
-        setRotation((prev) => prev + autoRotateSpeed);
-      }
-      animationFrameRef.current = requestAnimationFrame(autoRotate);
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (isPaused || isHovered || isFocused || prefersReducedMotion || total <= 1) {
+      return;
+    }
+
+    const timer = setInterval(() => {
+      goToNext();
+    }, autoRotateInterval);
+
+    return () => clearInterval(timer);
+  }, [isPaused, isHovered, isFocused, autoRotateInterval, goToNext, total]);
+
+  // Keyboard navigation
+  const handleKeyDown = (e) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      goToPrev();
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      goToNext();
+    }
+  };
+
+  // Touch and pointer events: safe vertical scrolling
+  const handleTouchStart = (e) => {
+    const touch = e.touches ? e.touches[0] : e;
+    touchStartRef.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+      time: Date.now(),
     };
-
-    animationFrameRef.current = requestAnimationFrame(autoRotate);
-
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, [isScrolling, isPaused, autoRotateSpeed]);
-
-  // Drag and touch interaction handlers
-  const handlePointerDown = (e) => {
-    isDraggingRef.current = true;
-    setIsDragging(true);
-    dragStartRef.current = {
-      x: e.clientX || (e.touches && e.touches[0].clientX) || 0,
-      rotation: rotation,
-    };
+    isHorizontalSwipeRef.current = false;
   };
 
-  const handlePointerMove = (e) => {
-    if (!isDraggingRef.current) return;
-    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
-    const deltaX = clientX - dragStartRef.current.x;
-    const sensitivity = 0.35;
-    setRotation(dragStartRef.current.rotation - deltaX * sensitivity);
+  const handleTouchMove = (e) => {
+    if (!touchStartRef.current.time) return;
+    const touch = e.touches ? e.touches[0] : e;
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const deltaY = touch.clientY - touchStartRef.current.y;
+
+    // Determine swipe direction: don't block vertical scrolling
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+      isHorizontalSwipeRef.current = true;
+    }
   };
 
-  const handlePointerUp = () => {
-    isDraggingRef.current = false;
-    setIsDragging(false);
+  const handleTouchEnd = (e) => {
+    if (!touchStartRef.current.time || !isHorizontalSwipeRef.current) {
+      touchStartRef.current = { x: 0, y: 0, time: 0 };
+      return;
+    }
+
+    const touch = e.changedTouches ? e.changedTouches[0] : e;
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const threshold = 35;
+
+    if (deltaX < -threshold) {
+      goToNext();
+    } else if (deltaX > threshold) {
+      goToPrev();
+    }
+
+    touchStartRef.current = { x: 0, y: 0, time: 0 };
+    isHorizontalSwipeRef.current = false;
   };
 
-  const handleRotateBy = (deg) => {
-    setRotation((prev) => prev + deg);
-  };
-
-  // Image fallback handler so images never break
   const handleImgFallback = (e) => {
     e.currentTarget.src =
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800";
   };
 
-  const totalItems = items.length || 1;
-  const anglePerItem = 360 / totalItems;
+  if (!items || items.length === 0) return null;
 
   return (
-    <div className="relative w-full flex flex-col items-center select-none">
-      {/* 3D Circular Carousel Stage */}
+    <div
+      ref={carouselRegionRef}
+      role="region"
+      aria-label="Client Transformations Carousel"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={(e) => {
+        if (!carouselRegionRef.current?.contains(e.relatedTarget)) {
+          setIsFocused(false);
+        }
+      }}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      className="relative w-full flex flex-col items-center select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF] rounded-3xl"
+    >
+      {/* 3D Depth Stage Container */}
       <div
-        ref={containerRef}
-        role="region"
-        aria-label="3D Circular Experience Gallery"
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerUp}
-        className="relative w-full overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onMouseDown={handleTouchStart}
+        onMouseMove={handleTouchMove}
+        onMouseUp={handleTouchEnd}
+        className="relative w-full overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing"
         style={{
-          height: `${dimensions.containerHeight}px`,
-          perspective: `${dimensions.perspective}px`,
+          height: `${cardHeight + 40}px`,
+          perspective: "1200px",
         }}
       >
-        {/* Radial ambient cylinder lighting */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,180,255,0.08)_0%,transparent_70%)] pointer-events-none" />
+        {/* Subtle radial depth highlight */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,180,255,0.06)_0%,transparent_70%)] pointer-events-none" />
 
-        {/* Rotated 3D Cylinder Container */}
+        {/* Card Track Stage */}
         <div
-          className="relative w-full h-full"
-          style={{
-            transform: `rotateY(${rotation}deg)`,
-            transformStyle: "preserve-3d",
-            willChange: "transform",
-          }}
+          className="relative w-full h-full flex items-center justify-center"
+          style={{ transformStyle: "preserve-3d" }}
         >
           {items.map((item, i) => {
-            const itemAngle = i * anglePerItem;
-            const totalRotation = rotation % 360;
-            const relativeAngle = (itemAngle + totalRotation + 360) % 360;
-            const normalizedAngle = Math.abs(
-              relativeAngle > 180 ? 360 - relativeAngle : relativeAngle
-            );
-            // Front cards are vibrant (opacity 1); back cards soften smoothly (minimum 0.28)
-            const opacity = Math.max(0.28, 1 - normalizedAngle / 190);
-            const isNearFront = normalizedAngle < 45;
+            // Calculate shortest signed distance with wrap-around
+            let dist = i - activeIndex;
+            if (dist > total / 2) dist -= total;
+            if (dist < -total / 2) dist += total;
+
+            // Only display cards within the visible arc
+            const isVisible = Math.abs(dist) <= maxDistance;
+            if (!isVisible) return null;
+
+            const isCenter = dist === 0;
+            const isLeft = dist < 0;
+
+            // Transform calculations
+            const translateX = dist * cardSpacing;
+            const translateZ = isCenter ? 40 : -Math.abs(dist) * 80;
+            const rotateY = isCenter ? 0 : isLeft ? 15 : -15;
+            const scale = isCenter ? 1.02 : Math.max(0.78, 1 - Math.abs(dist) * 0.12);
+            const opacity = isCenter ? 1 : Math.max(0.3, 0.8 - Math.abs(dist) * 0.28);
+            const zIndex = 30 - Math.abs(dist) * 5;
 
             return (
               <div
-                key={item.id || item.photo?.url || i}
+                key={item.id || i}
                 role="group"
-                aria-label={item.client}
-                className="absolute"
+                aria-label={`${item.client} — ${item.category}`}
+                aria-hidden={!isCenter}
+                onClick={() => {
+                  if (!isCenter) goToIndex(i);
+                }}
+                className={`absolute transition-all duration-500 ease-out ${
+                  !isCenter ? "cursor-pointer" : ""
+                }`}
                 style={{
-                  width: `${dimensions.cardWidth}px`,
-                  height: `${dimensions.cardHeight}px`,
-                  transform: `rotateY(${itemAngle}deg) translateZ(${dimensions.radius}px)`,
-                  left: "50%",
-                  top: "50%",
-                  marginLeft: `-${dimensions.cardWidth / 2}px`,
-                  marginTop: `-${dimensions.cardHeight / 2}px`,
+                  width: `${cardWidth}px`,
+                  height: `${cardHeight}px`,
+                  transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
                   opacity: opacity,
-                  transition: isDragging ? "none" : "opacity 0.2s linear",
-                  backfaceVisibility: "visible",
-                  zIndex: isNearFront ? 20 : 1,
+                  zIndex: zIndex,
+                  transformOrigin: "center center",
+                  backfaceVisibility: "hidden",
                 }}
               >
-                {/* Individual Experience Card (Equal padding around all corners) */}
+                {/* Opaque Solid Card Shell — Guarantees ZERO background text overlap */}
                 <div
-                  className={`relative w-full h-full rounded-2xl overflow-hidden flex flex-col justify-between border backdrop-blur-xl transition-all duration-300 shadow-[0_20px_45px_rgba(0,0,0,0.8)] ${
-                    isNearFront
-                      ? "border-[#00B4FF]/60 shadow-[0_0_35px_rgba(0,180,255,0.25)] bg-[#0A1530]/90"
-                      : "border-white/10 hover:border-[#2E7BFF]/50 bg-[#0A1530]/65"
+                  className={`relative w-full h-full rounded-2xl overflow-hidden flex flex-col justify-between border bg-[#0A1530] transition-all duration-300 shadow-[0_20px_45px_rgba(0,0,0,0.85)] ${
+                    isCenter
+                      ? "border-[#00B4FF] shadow-[0_0_35px_rgba(0,180,255,0.25)] ring-1 ring-[#00B4FF]/40"
+                      : "border-white/10 hover:border-[#2E7BFF]/50"
                   }`}
                 >
-                  {/* Top Image Banner with High-Contrast Gradient */}
+                  {/* Top Image Banner */}
                   <div className="relative w-full h-[40%] overflow-hidden bg-[#040814] shrink-0">
                     <img
                       src={item.photo?.url}
                       alt={item.photo?.text || item.client}
                       onError={handleImgFallback}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1530] via-[#0A1530]/40 to-transparent" />
 
                     {/* SEO Metric Pill Overlay */}
                     <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between gap-1.5">
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#040814]/85 border border-[#00B4FF]/50 text-[10px] font-mono font-bold text-[#00B4FF] backdrop-blur-md truncate shadow-sm">
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#040814]/90 border border-[#00B4FF]/50 text-[10px] font-mono font-bold text-[#00B4FF] backdrop-blur-md truncate shadow-sm">
                         {item.seoBadge || "SEO Optimized"}
                       </span>
                       {item.id === "dash-company" && (
@@ -249,8 +249,8 @@ export default function CircularExperienceGallery({
                     </div>
                   </div>
 
-                  {/* Card Content & Text (Equal corner padding p-3.5 sm:p-4, centered, highly readable) */}
-                  <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-1">
+                  {/* Card Content & Text with comfortable breathing room (p-5 sm:p-6) */}
+                  <div className="p-5 sm:p-6 flex flex-col justify-between flex-1 min-w-0">
                     <div>
                       <div className="flex items-center justify-between gap-1 mb-1">
                         <span className="text-[10px] font-bold uppercase tracking-widest text-[#00B4FF] truncate">
@@ -258,25 +258,25 @@ export default function CircularExperienceGallery({
                         </span>
                       </div>
 
-                      <h3 className="font-['Cinzel'] text-sm sm:text-base font-black text-white leading-snug line-clamp-1 mb-1.5">
+                      <h3 className="font-['Cinzel'] text-sm sm:text-base font-black text-white leading-snug line-clamp-1 mb-1.5 [overflow-wrap:anywhere]">
                         {item.client}
                       </h3>
 
-                      <p className="text-[11px] sm:text-xs text-[#CBD5E1] line-clamp-3 leading-relaxed font-normal mb-2">
+                      <p className="text-[11px] sm:text-xs text-[#CBD5E1] line-clamp-3 leading-relaxed font-normal mb-2 [overflow-wrap:anywhere]">
                         {item.role || item.summary}
                       </p>
                     </div>
 
-                    {/* Action Links & Button (Corner spacing ensured) */}
+                    {/* Action Links & Button */}
                     <div className="pt-2 border-t border-white/10 flex flex-col gap-2">
-                      {/* Live Website Link */}
                       {item.website && (
                         <a
                           href={item.website}
                           target="_blank"
                           rel="noopener noreferrer"
+                          tabIndex={isCenter ? 0 : -1}
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#00B4FF] hover:text-white transition-colors cursor-pointer truncate"
+                          className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#00B4FF] hover:text-white transition-colors cursor-pointer truncate focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#00B4FF] rounded"
                         >
                           <Globe className="w-3 h-3 shrink-0" />
                           <span className="truncate">
@@ -286,14 +286,14 @@ export default function CircularExperienceGallery({
                         </a>
                       )}
 
-                      {/* View Client Details Button */}
                       <button
                         type="button"
+                        tabIndex={isCenter ? 0 : -1}
                         onClick={(e) => {
                           e.stopPropagation();
                           if (onSelectClient) onSelectClient(item);
                         }}
-                        className="w-full py-1.5 sm:py-2 px-3 rounded-xl bg-[#040814] hover:bg-[#00B4FF] border border-[#2E7BFF]/40 hover:border-[#00B4FF] text-white hover:text-[#040814] text-[11px] font-bold uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm group"
+                        className="w-full py-1.5 sm:py-2 px-3 rounded-xl bg-[#040814] hover:bg-[#00B4FF] border border-[#2E7BFF]/40 hover:border-[#00B4FF] text-white hover:text-[#040814] text-[11px] font-bold uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
                       >
                         <span>View Client Details</span>
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -307,50 +307,69 @@ export default function CircularExperienceGallery({
         </div>
       </div>
 
-      {/* Interactive Controls Bar: Play/Pause, Prev/Next, and Card Counter */}
-      <div className="mt-6 flex items-center justify-center gap-4 z-20">
-        <button
-          type="button"
-          onClick={() => handleRotateBy(anglePerItem * 2)}
-          aria-label="Previous client card"
-          className="w-9 h-9 rounded-full bg-[#0A1530] border border-white/15 hover:border-[#00B4FF] text-white flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer shadow-md"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
+      {/* Controls Bar: Prev, Play/Pause, Next, and Pagination Dots */}
+      <div className="mt-4 flex flex-col items-center gap-3 z-20">
+        <div className="flex items-center justify-center gap-4">
+          <button
+            type="button"
+            onClick={goToPrev}
+            aria-label="Previous client transformation"
+            className="w-9 h-9 rounded-full bg-[#0A1530] border border-white/15 hover:border-[#00B4FF] text-white flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
 
-        <button
-          type="button"
-          onClick={() => setIsPaused(!isPaused)}
-          aria-label={isPaused ? "Play rotation" : "Pause rotation"}
-          className="px-3.5 py-1.5 rounded-full bg-[#0A1530] border border-[#2E7BFF]/40 hover:border-[#00B4FF] text-[#CBD5E1] hover:text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-md"
-        >
-          {isPaused ? (
-            <>
-              <Play className="w-3.5 h-3.5 text-[#00B4FF] fill-[#00B4FF]" />
-              <span>Resume 3D Rotation</span>
-            </>
-          ) : (
-            <>
-              <Pause className="w-3.5 h-3.5 text-[#00B4FF]" />
-              <span>Pause Rotation</span>
-            </>
-          )}
-        </button>
+          <button
+            type="button"
+            onClick={() => setIsPaused(!isPaused)}
+            aria-label={isPaused ? "Resume rotation" : "Pause rotation"}
+            className="px-3.5 py-1.5 rounded-full bg-[#0A1530] border border-[#2E7BFF]/40 hover:border-[#00B4FF] text-[#CBD5E1] hover:text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
+          >
+            {isPaused ? (
+              <>
+                <Play className="w-3.5 h-3.5 text-[#00B4FF] fill-[#00B4FF]" />
+                <span>Resume</span>
+              </>
+            ) : (
+              <>
+                <Pause className="w-3.5 h-3.5 text-[#00B4FF]" />
+                <span>Pause</span>
+              </>
+            )}
+          </button>
 
-        <button
-          type="button"
-          onClick={() => handleRotateBy(-anglePerItem * 2)}
-          aria-label="Next client card"
-          className="w-9 h-9 rounded-full bg-[#0A1530] border border-white/15 hover:border-[#00B4FF] text-white flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer shadow-md"
-        >
-          <ChevronRight className="w-4 h-4" />
-        </button>
-      </div>
+          <button
+            type="button"
+            onClick={goToNext}
+            aria-label="Next client transformation"
+            className="w-9 h-9 rounded-full bg-[#0A1530] border border-white/15 hover:border-[#00B4FF] text-white flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF]"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
 
-      <div className="mt-2 text-center">
-        <span className="text-[11px] text-[#CBD5E1]/70 tracking-widest uppercase">
-          Drag horizontally to spin or scroll down · 18 Active Client Transformations
-        </span>
+        {/* Pagination Indicator Dots */}
+        <div className="flex items-center gap-1.5 max-w-full overflow-x-auto py-1 px-2">
+          {items.map((item, idx) => (
+            <button
+              key={item.id || idx}
+              type="button"
+              onClick={() => goToIndex(idx)}
+              aria-label={`Go to slide ${idx + 1}: ${item.client}`}
+              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer focus-visible:outline-none ${
+                idx === activeIndex
+                  ? "w-6 bg-[#00B4FF] shadow-[0_0_8px_#00B4FF]"
+                  : "w-1.5 bg-white/20 hover:bg-white/40"
+              }`}
+            />
+          ))}
+        </div>
+
+        <div className="text-center">
+          <span className="text-[11px] text-[#CBD5E1]/70 tracking-widest uppercase">
+            Card {activeIndex + 1} of {total} · Use arrow keys or swipe horizontally
+          </span>
+        </div>
       </div>
     </div>
   );

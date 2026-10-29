@@ -16,8 +16,8 @@ function ProjectCard3D({ project }) {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
     setTilt({ x: rotateX, y: rotateY });
   };
 
@@ -37,7 +37,6 @@ function ProjectCard3D({ project }) {
     }
   };
 
-  // Modern digital marketing gradient placeholder if offline or network failure
   const handleImgFallback = (e) => {
     e.currentTarget.src =
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000";
@@ -51,14 +50,14 @@ function ProjectCard3D({ project }) {
       onMouseLeave={handleMouseLeave}
       style={{
         transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateZ(${
-          isHovered ? 20 : 0
+          isHovered ? 15 : 0
         }px)`,
         transition: "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
       }}
-      className="group relative rounded-[20px] overflow-hidden bg-[#0A1530]/70 border border-[#2E7BFF]/30 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:border-[#00B4FF] hover:shadow-[0_0_40px_rgba(0,180,255,0.3)] flex flex-col justify-between h-full"
+      className="group relative rounded-2xl overflow-hidden bg-[#0A1530]/75 border border-[#2E7BFF]/30 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:border-[#00B4FF] hover:shadow-[0_0_35px_rgba(0,180,255,0.25)] flex flex-col justify-between h-full min-w-0"
     >
-      {/* Media Wrapper */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#040814]">
+      {/* Standardized Aspect Ratio Media (16/10) */}
+      <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#040814] shrink-0">
         {project.videoUrl ? (
           <video
             ref={videoRef}
@@ -82,58 +81,57 @@ function ProjectCard3D({ project }) {
           />
         )}
 
-        {/* Video Indicator Badge: 16px padding inside (px-4 py-2), top-4 right-4 */}
+        {/* Video Reel Badge */}
         {project.videoUrl && (
-          <div className="absolute top-4 right-4 px-4 py-2 rounded-full bg-[#040814]/85 border border-[#00B4FF]/40 text-xs font-bold text-[#00B4FF] flex items-center gap-1.5 backdrop-blur-md shadow-md">
-            <Play className="w-3 h-3 fill-[#00B4FF]" />
+          <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-[#040814]/85 border border-[#00B4FF]/40 text-[10px] font-bold text-[#00B4FF] flex items-center gap-1.5 backdrop-blur-md shadow-md">
+            <Play className="w-2.5 h-2.5 fill-[#00B4FF]" />
             <span>Interactive Reel</span>
           </div>
         )}
 
-        {/* Result Metric Banner Overlay: 16px offset */}
-        <div className="absolute bottom-4 left-4 px-4 py-2 rounded-full bg-[#040814]/85 border border-[#00B4FF]/50 text-xs sm:text-sm font-bold text-white shadow-[0_0_20px_rgba(0,180,255,0.4)] backdrop-blur-md">
+        {/* Result Metric Banner Overlay */}
+        <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-[#040814]/85 border border-[#00B4FF]/50 text-xs font-bold text-white shadow-[0_0_15px_rgba(0,180,255,0.35)] backdrop-blur-md">
           <span className="text-[#00B4FF] mr-1.5">✦</span>
           <span>{project.metric}</span>
         </div>
 
-        {/* Dark bottom shadow for high contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1530] via-transparent to-transparent opacity-80 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1530] via-transparent to-transparent opacity-75 pointer-events-none" />
       </div>
 
-      {/* Card Content & Metadata with 24px padding (p-6) */}
-      <div className="p-6 flex flex-col justify-between flex-1">
+      {/* Card Content & Metadata with Equal Corner Spacing (p-5 sm:p-6) */}
+      <div className="p-5 sm:p-6 flex flex-col justify-between flex-1 min-w-0">
         <div>
-          <span className="text-xs font-bold tracking-widest uppercase text-[#00B4FF] mb-2 block">
+          <span className="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-[#00B4FF] mb-1.5 block">
             {project.category}
           </span>
-          <h3 className="font-['Cinzel'] text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-[#00B4FF] transition-colors">
+          <h3 className="font-['Cinzel'] text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-[#00B4FF] transition-colors leading-snug [overflow-wrap:anywhere]">
             {project.name}
           </h3>
-          <p className="text-sm text-[#CBD5E1] line-clamp-2 leading-relaxed mb-6 font-normal">
+          <p className="text-xs sm:text-sm text-[#CBD5E1] line-clamp-2 leading-relaxed mb-5 font-normal [overflow-wrap:anywhere]">
             {project.desc}
           </p>
         </div>
 
         <div>
-          {/* Tag Pills */}
-          <div className="flex flex-wrap gap-1.5 mb-6">
+          {/* Tag Pills (Protected from overflow) with px-3 py-1 */}
+          <div className="flex flex-wrap gap-1.5 mb-5">
             {project.tags.map((t) => (
               <span
                 key={t}
-                className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-[#040814]/80 text-[#CBD5E1] border border-white/10"
+                className="px-3 py-1 rounded-md text-[10px] font-medium bg-[#040814]/80 text-[#CBD5E1] border border-white/10"
               >
                 {t}
               </span>
             ))}
           </div>
 
-          {/* Action Link */}
+          {/* Action Link with Visible Focus */}
           <a
             href="#contact-section"
-            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:text-[#00B4FF] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-white group-hover:text-[#00B4FF] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF] rounded"
           >
             <span>View Case Study</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
       </div>
@@ -160,16 +158,16 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects-section"
-      className="site-section bg-gradient-to-b from-[#040814] via-[#060D24] to-[#040814] text-white"
+      className="site-section bg-gradient-to-b from-[#040814] via-[#060D24] to-[#040814] text-white relative overflow-hidden"
     >
       {/* Background radial glow */}
       <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(0,180,255,0.1)_0%,transparent_70%)] blur-[100px] pointer-events-none z-0" />
 
       <div className="site-container relative z-10">
-        {/* Section Header: Left Title, Right Filter Tabs with 12px gap (gap-3), 48px gap to cards (mb-12) */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        {/* Section Header: Left Title, Right Filter Tabs with 12px gap */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A1530] border border-[#2E7BFF]/30 text-[#00B4FF] text-xs font-bold tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(0,180,255,0.2)]">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0A1530] border border-[#2E7BFF]/30 text-[#00B4FF] text-[11px] font-bold tracking-widest uppercase mb-3.5 shadow-[0_0_15px_rgba(0,180,255,0.2)]">
               <Sparkles className="w-3.5 h-3.5" />
               <span>3D PORTFOLIO SHOWCASE</span>
             </div>
@@ -178,14 +176,14 @@ export default function ProjectsSection() {
             </h2>
           </div>
 
-          {/* Filter Pills with 12px gap (gap-3), flex-wrap */}
-          <div className="flex flex-wrap gap-3">
+          {/* Filter Pills with flex-wrap and focus ring */}
+          <div className="flex flex-wrap gap-2.5">
             {filterCategories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setActiveFilter(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all duration-300 border cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FF] ${
                   activeFilter === cat
                     ? "bg-[#00B4FF] text-[#040814] border-[#00B4FF] shadow-[0_0_15px_rgba(0,180,255,0.4)]"
                     : "bg-[#0A1530]/60 text-[#CBD5E1] border-white/10 hover:border-[#2E7BFF]"
@@ -197,8 +195,8 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* 3 Cards Grid inside container (not full-bleed), equal height, 24px gap (gap-6) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 3-Column Responsive Case-Study Grid (minmax(0, 1fr)) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {filteredProjects.map((project) => (
             <ProjectCard3D key={project.id} project={project} />
           ))}

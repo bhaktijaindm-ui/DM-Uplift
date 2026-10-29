@@ -180,19 +180,16 @@ MagneticButton.displayName = "MagneticButton";
 // 3. MAIN COMPONENT
 // -------------------------------------------------------------------------
 const StarField = () => {
-  const [stars, setStars] = React.useState([]);
-  
-  React.useEffect(() => {
-    const newStars = Array.from({ length: 50 }).map((_, i) => ({
+  const [stars] = React.useState(() =>
+    Array.from({ length: 50 }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
       size: `${Math.random() * 2 + 1}px`,
       delay: `${Math.random() * 5}s`,
       duration: `${Math.random() * 3 + 2}s`,
-    }));
-    setStars(newStars);
-  }, []);
+    }))
+  );
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">

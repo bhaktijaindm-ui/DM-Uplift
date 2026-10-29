@@ -128,7 +128,7 @@ export default function ContactSection() {
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             {contact.socials.map((soc) => {
               const Icon = iconMap[soc.icon] || Globe;
               return (

@@ -193,12 +193,12 @@ export default function Hero3DScene({ className = "" }) {
     // 8. Animation Loop with Visibility Check
     let animationFrameId = null;
     let isVisible = true;
-    const clock = new THREE.Clock();
+    let startTime = performance.now();
 
     const animate = () => {
       if (!isVisible) return;
       animationFrameId = requestAnimationFrame(animate);
-      const elapsed = clock.getElapsedTime();
+      const elapsed = (performance.now() - startTime) * 0.001;
 
       // Smooth mouse lerp
       currentX += (targetX - currentX) * 0.05;
@@ -237,7 +237,7 @@ export default function Hero3DScene({ className = "" }) {
         isVisible = entry.isIntersecting;
         if (isVisible) {
           if (!animationFrameId) {
-            clock.start();
+            startTime = performance.now();
             animate();
           }
         } else {
