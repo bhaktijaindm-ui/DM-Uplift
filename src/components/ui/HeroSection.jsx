@@ -15,7 +15,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero-section"
-      className="site-section min-h-[100svh] bg-gradient-to-b from-[#040814] via-[#071129] to-[#040814] flex items-center justify-center relative overflow-hidden"
+      className="relative w-full py-10 sm:py-14 lg:py-16 bg-gradient-to-b from-[#040814] via-[#071129] to-[#040814] flex items-center justify-center overflow-hidden"
     >
       {/* Ambient background glows */}
       <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(46,123,255,0.14)_0%,transparent_70%)] blur-[90px] pointer-events-none z-0" />
@@ -76,11 +76,9 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: 3D Wireframe Scene with Reserved Aspect Ratio */}
-          <div className="lg:col-span-5 relative w-full aspect-square max-w-[420px] mx-auto flex items-center justify-center isolate">
-            <div className="relative w-full h-full rounded-3xl overflow-hidden border border-[#2E7BFF]/20 bg-[#0A1530]/20 backdrop-blur-sm">
-              <Hero3DScene />
-            </div>
+          {/* Right Column: 3D Wireframe Scene - Borderless, unconstrained, free floating */}
+          <div className="lg:col-span-5 relative w-full h-[400px] sm:h-[480px] lg:h-[540px] max-w-[560px] mx-auto flex items-center justify-center isolate overflow-visible">
+            <Hero3DScene />
           </div>
         </div>
       </div>
