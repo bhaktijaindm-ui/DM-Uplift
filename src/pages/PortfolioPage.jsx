@@ -9,6 +9,7 @@ import ServicesSection from "../components/ui/ServicesSection";
 import AboutSection from "../components/ui/AboutSection";
 import ProjectsSection from "../components/ui/ProjectsSection";
 import CTASection from "../components/ui/CTASection";
+import TestimonialsSection from "../components/ui/TestimonialsSection";
 import FAQFormSection from "../components/ui/FAQFormSection";
 import ContactSection from "../components/ui/ContactSection";
 import HalftoneWordmarkFooter from "../components/ui/HalftoneWordmarkFooter";
@@ -102,7 +103,13 @@ export default function PortfolioPage() {
       <CTASection />
 
       {/* 
-        8. ANY QUESTIONS? (FAQ + FORM)
+        8. EXECUTIVE CLIENT TESTIMONIALS (18 Verified DM Clients)
+        Animated floating quotes, role indicators, and interactive expandable avatar pills
+      */}
+      <TestimonialsSection />
+
+      {/* 
+        9. ANY QUESTIONS? (FAQ + FORM)
         Left: Accordion FAQ (6 real digital marketing questions)
         Right: Inquiry form with neon-blue glow, validation, and success message
       */}
