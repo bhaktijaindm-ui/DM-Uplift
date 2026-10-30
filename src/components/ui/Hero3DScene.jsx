@@ -22,12 +22,12 @@ export default function Hero3DScene({ className = "" }) {
     // 1. Scene & Camera setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      45,
+      42,
       container.clientWidth / (container.clientHeight || 1),
       0.1,
       1000
     );
-    camera.position.z = 9.2;
+    camera.position.z = 10.0;
 
     // 2. WebGL Renderer
     const renderer = new THREE.WebGLRenderer({
@@ -35,10 +35,21 @@ export default function Hero3DScene({ className = "" }) {
       antialias: true,
       powerPreference: "high-performance",
     });
+    renderer.setClearColor(0x000000, 0);
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.25;
+
+    // Explicit style reset to guarantee zero borders, backgrounds, or clipping
+    renderer.domElement.style.outline = "none";
+    renderer.domElement.style.border = "none";
+    renderer.domElement.style.background = "transparent";
+    renderer.domElement.style.display = "block";
+    renderer.domElement.style.width = "100%";
+    renderer.domElement.style.height = "100%";
+    renderer.domElement.style.overflow = "visible";
+
     container.appendChild(renderer.domElement);
 
     // 3. Lighting
@@ -416,7 +427,7 @@ export default function Hero3DScene({ className = "" }) {
   return (
     <div
       ref={mountRef}
-      className={`hero-3d-canvas-container relative w-full h-full cursor-grab active:cursor-grabbing select-none pointer-events-auto ${className}`}
+      className={`hero-3d-canvas-container relative w-full h-full cursor-grab active:cursor-grabbing select-none pointer-events-auto overflow-visible ${className}`}
       aria-label="Interactive 3D rotating polyhedron with orbiting glowing spheres"
     />
   );

@@ -129,3 +129,19 @@ h1, h2, h3, .font-heading {
   }
 }
 
+/* Subtle continuous floating motion for Hero 3D scene (translateY ±12px, 7s ease-in-out) */
+@keyframes hero-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.8deg);
+  }
+}
+
+.animate-hero-float {
+  animation: hero-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+

@@ -86,7 +86,7 @@ export const DotField = forwardRef(function DotField(
   useImperativeHandle(
     ref,
     () => ({
-      replay: () => S.current.restart(),
+      replay: () => S.current.restart(true),
       setScattered: (v) => {
         S.current.btnT = v ? 1 : 0;
       },
@@ -260,8 +260,8 @@ export const DotField = forwardRef(function DotField(
       }
     };
 
-    const restart = () => {
-      if (scrollScatter && s.scrollP > 0) {
+    const restart = (isUserAction = false) => {
+      if (isUserAction && scrollScatter && s.scrollP > 0) {
         outerRef.current?.scrollIntoView({ block: "start" });
       }
       s.btnP = s.btnT = 0;

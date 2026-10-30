@@ -42,26 +42,37 @@ export default function PortfolioPage() {
     gsap.ticker.add(updateTicker);
     gsap.ticker.lagSmoothing(500, 33);
 
-    // Initial scroll position: ensure top of page if no anchor hash
-    if (!window.location.hash) {
-      window.scrollTo(0, 0);
-      lenis.scrollTo(0, { immediate: true });
-    }
+    // Unconditionally ensure initial scroll position at the very top of Hero
+    window.scrollTo(0, 0);
+    lenis.scrollTo(0, { immediate: true });
 
-    // Call ScrollTrigger.refresh after fonts/images load
-    if (typeof document !== "undefined" && document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => {
-        ScrollTrigger.refresh();
-      });
-    }
-
-    const handleLoad = () => {
-      ScrollTrigger.refresh();
+    let userHasScrolled = false;
+    const onUserScroll = () => {
+      userHasScrolled = true;
     };
-    window.addEventListener("load", handleLoad);
+    window.addEventListener("wheel", onUserScroll, { passive: true });
+    window.addEventListener("touchmove", onUserScroll, { passive: true });
+    window.addEventListener("keydown", onUserScroll, { passive: true });
+
+    const refreshSafely = () => {
+      ScrollTrigger.refresh();
+      if (!userHasScrolled) {
+        window.scrollTo(0, 0);
+        lenis.scrollTo(0, { immediate: true });
+      }
+    };
+
+    // Safely refresh ScrollTrigger after fonts/images load without causing viewport jumping
+    if (typeof document !== "undefined" && document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(refreshSafely);
+    }
+    window.addEventListener("load", refreshSafely);
 
     return () => {
-      window.removeEventListener("load", handleLoad);
+      window.removeEventListener("load", refreshSafely);
+      window.removeEventListener("wheel", onUserScroll);
+      window.removeEventListener("touchmove", onUserScroll);
+      window.removeEventListener("keydown", onUserScroll);
       ScrollTrigger.getAll().forEach((t) => t.kill());
       gsap.ticker.remove(updateTicker);
       lenis.destroy();

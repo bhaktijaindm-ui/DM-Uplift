@@ -15,17 +15,17 @@ export default function HeroSection() {
   return (
     <section
       id="hero-section"
-      className="relative w-full py-10 sm:py-14 lg:py-16 bg-gradient-to-b from-[#040814] via-[#071129] to-[#040814] flex items-center justify-center overflow-hidden"
+      className="relative w-full py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-[#040814] via-[#071129] to-[#040814] flex items-center justify-center overflow-visible"
     >
       {/* Ambient background glows */}
       <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(46,123,255,0.14)_0%,transparent_70%)] blur-[90px] pointer-events-none z-0" />
       <div className="absolute bottom-10 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(0,180,255,0.1)_0%,transparent_70%)] blur-[80px] pointer-events-none z-0" />
 
       {/* Standard Spacing Container */}
-      <div className="site-container relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="site-container relative z-10 w-full overflow-visible">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center overflow-visible">
           {/* Left Column: Text Content */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left min-w-0">
+          <div className="lg:col-span-7 flex flex-col items-start text-left min-w-0 z-10">
             {/* Category Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a1530]/85 border border-[#2E7BFF]/40 text-[#00B4FF] text-[11px] font-bold tracking-widest uppercase mb-4 backdrop-blur-md shadow-[0_0_15px_rgba(0,180,255,0.2)]">
               <Zap className="w-3.5 h-3.5 text-[#00B4FF]" />
@@ -76,9 +76,21 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: 3D Wireframe Scene - Borderless, unconstrained, free floating */}
-          <div className="lg:col-span-5 relative w-full h-[400px] sm:h-[480px] lg:h-[540px] max-w-[560px] mx-auto flex items-center justify-center isolate overflow-visible">
-            <Hero3DScene />
+          {/* Right Column: 3D Scene - Break out of grid, free-floating, bleeding naturally */}
+          <div className="lg:col-span-5 relative w-full flex items-center justify-center overflow-visible z-20">
+            {/* Free-floating wrapper breaking out of standard grid constraints */}
+            <div className="relative w-full max-w-[560px] lg:max-w-none lg:w-[136%] lg:-ml-[16%] lg:-mr-[20%] xl:w-[145%] xl:-ml-[20%] xl:-mr-[25%] -my-6 sm:-my-10 lg:-my-14 flex items-center justify-center overflow-visible pointer-events-none">
+              {/* Soft atmospheric blurred glow puddle beneath (not a box shadow) */}
+              <div
+                aria-hidden="true"
+                className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 w-[72%] h-24 sm:h-32 bg-[radial-gradient(ellipse_at_center,rgba(0,180,255,0.22)_0%,rgba(46,123,255,0.12)_45%,transparent_75%)] blur-[40px] sm:blur-[60px] pointer-events-none z-0"
+              />
+
+              {/* Gentle floating motion container: translateY ±12px, 7s ease-in-out */}
+              <div className="relative w-full h-[420px] sm:h-[480px] md:h-[540px] lg:h-[620px] overflow-visible pointer-events-auto animate-hero-float">
+                <Hero3DScene />
+              </div>
+            </div>
           </div>
         </div>
       </div>

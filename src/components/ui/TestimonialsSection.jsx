@@ -177,17 +177,23 @@ export default function TestimonialsSection() {
   const [isPaused, setIsPaused] = useState(false);
   const scrollTrackRef = useRef(null);
 
-  // Auto-scroll the active avatar button into center view
+  const isInitialMount = useRef(true);
+
+  // Auto-scroll ONLY the horizontal avatar track into center view without scrolling the window
   useEffect(() => {
+    // Guard against running on initial mount to keep page firmly at top
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     const track = scrollTrackRef.current;
     if (!track) return;
     const activeBtn = track.querySelector(`[data-index="${activeIndex}"]`);
     if (activeBtn) {
-      activeBtn.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
+      // Calculate horizontal offset strictly inside the track container
+      const scrollLeft =
+        activeBtn.offsetLeft - track.clientWidth / 2 + activeBtn.clientWidth / 2;
+      track.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
     }
   }, [activeIndex]);
 
