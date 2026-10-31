@@ -3,12 +3,12 @@
 
 export const content = {
   brand: {
-    name: "UPLIFT",
-    tagline: "Bhakti Jain — SEO Specialist & Website Developer",
+    name: "BHAKTI JAIN",
+    tagline: "SEO Specialist & Website Developer",
     email: "bhaktijaindm@gmail.com",
     phone: "+91 9111741087",
     address: "SN Enclave, Indore (MP), India",
-    copyright: "© 2026 Bhakti Jain · UPLIFT. All rights reserved.",
+    copyright: "© 2026 Bhakti Jain. All rights reserved.",
   },
 
   // 1. Intro / Welcome Section
@@ -1986,9 +1986,9 @@ export const content = {
 
   // 10. Footer Configuration
   footer: {
-    wordmark: "uplift",
+    wordmark: "BHAKTI JAIN",
     label: "Bhakti Jain — SEO & Website Developer",
-    meta: "© 2026 Bhakti Jain · UPLIFT. All Rights Reserved.",
+    meta: "© 2026 Bhakti Jain. All Rights Reserved.",
     columns: [
       {
         title: "Services",

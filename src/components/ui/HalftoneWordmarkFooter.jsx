@@ -74,9 +74,9 @@ function hwfFitSize(measured, width) {
 }
 
 export function HalftoneWordmarkFooter({
-  wordmark = "uplift",
-  label = "UPLIFT Digital Agency",
-  meta = "© 2026 UPLIFT · All Rights Reserved",
+  wordmark = "BHAKTI JAIN",
+  label = "Bhakti Jain — SEO & Website Developer",
+  meta = "© 2026 Bhakti Jain. All Rights Reserved",
   columns = DEFAULT_COLUMNS,
   backToTop = true,
   dotGap = 6,
