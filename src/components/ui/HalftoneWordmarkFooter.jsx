@@ -29,10 +29,10 @@ const DEFAULT_COLUMNS = [
   {
     title: "Direct Connect",
     links: [
-      { label: "hello@upliftdigital.com", href: "mailto:hello@upliftdigital.com" },
-      { label: "+1 (800) 980-3450", href: "tel:+18009803450" },
-      { label: "740 Broadway, New York, NY", href: "#contact-section" },
-      { label: "Executive Client Portal", href: "#contact-section" },
+      { label: "bhaktijaindm@gmail.com", href: "mailto:bhaktijaindm@gmail.com" },
+      { label: "+91 9111741087", href: "tel:+919111741087" },
+      { label: "SN Enclave, Indore (MP), India", href: "#contact-section" },
+      { label: "Career & Experience", href: "#experience-section" },
     ],
   },
 ];

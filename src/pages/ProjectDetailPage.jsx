@@ -225,7 +225,7 @@ export default function ProjectDetailPage() {
           <div className="flex flex-wrap items-center gap-3 mt-6">
             {project.website && (
               <a
-                href={project.website}
+                href={project.website.startsWith("http") ? project.website : `https://${project.website}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#00B4FF] hover:bg-white text-[#040814] font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_25px_rgba(0,180,255,0.5)] cursor-pointer text-decoration-none"

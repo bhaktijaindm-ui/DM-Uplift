@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Play, Sparkles } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, ExternalLink, Play, Sparkles } from "lucide-react";
 
 // #region Helper Logic
 function clamp(v, a, b) {
@@ -648,6 +648,19 @@ export default function PolaroidLineCarousel({
 
         {/* Right Side: Navigation & Sub-Page Trigger */}
         <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 border-white/10 pt-4 md:pt-0">
+          {currentProject.website && (
+            <a
+              href={currentProject.website.startsWith("http") ? currentProject.website : `https://${currentProject.website}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#00B4FF] border border-[#00B4FF]/50 bg-[#040814] hover:bg-[#00B4FF] hover:text-[#040814] transition-all duration-300 shadow-[0_0_15px_rgba(0,180,255,0.25)] flex items-center gap-1.5 cursor-pointer text-decoration-none"
+              title={`Visit live website for ${currentProject.name || currentProject.title}`}
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Visit Website</span>
+            </a>
+          )}
+
           <Link
             to={`/project/${currentProject.id || "proj-1"}`}
             className="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#040814] bg-gradient-to-r from-[#00B4FF] to-[#38bdf8] hover:from-white hover:to-white transition-all duration-300 shadow-[0_0_20px_rgba(0,180,255,0.5)] flex items-center gap-1.5 cursor-pointer font-sans text-decoration-none"

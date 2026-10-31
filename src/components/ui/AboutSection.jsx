@@ -83,7 +83,7 @@ export default function AboutSection() {
           </div>
 
           <h2 className="font-['Cinzel'] text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase leading-tight mb-3">
-            WE ARCHITECT <span className="bg-gradient-to-r from-white via-[#00B4FF] to-[#2E7BFF] bg-clip-text text-transparent">DIGITAL SUPREMACY</span>
+            ARCHITECTING <span className="bg-gradient-to-r from-white via-[#00B4FF] to-[#2E7BFF] bg-clip-text text-transparent">ORGANIC SUPREMACY</span>
           </h2>
 
           <p className="text-xs sm:text-sm md:text-base text-[#CBD5E1] font-normal leading-relaxed">

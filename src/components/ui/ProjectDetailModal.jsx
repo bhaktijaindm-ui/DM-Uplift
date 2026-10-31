@@ -268,7 +268,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }) {
             <div className="pt-4 border-t border-white/10 flex flex-col gap-2.5">
               {project.website && (
                 <a
-                  href={project.website}
+                  href={project.website.startsWith("http") ? project.website : `https://${project.website}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#2E7BFF] to-[#00B4FF] hover:opacity-95 transition-all text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,180,255,0.4)]"

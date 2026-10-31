@@ -1,1873 +1,1910 @@
-// Centralized configuration and content file for UPLIFT Portfolio
-// All text, media URLs, counters, and links can be easily edited here.
+// Centralized configuration and content file for Bhakti Jain — UPLIFT Portfolio
+// All factual data extracted directly from verified Google Drive files, resume, portfolio PDF, and SEO reports.
 
 export const content = {
   brand: {
     name: "UPLIFT",
-    tagline: "Performance Digital Marketing & 3D Creative Engineering",
-    email: "hello@upliftdigital.com",
-    phone: "+1 (800) 980-3450",
-    address: "740 Broadway, 12th Floor, New York, NY 10003",
-    copyright: "© 2026 UPLIFT Digital Agency. All rights reserved.",
+    tagline: "Bhakti Jain — SEO Specialist & Website Developer",
+    email: "bhaktijaindm@gmail.com",
+    phone: "+91 9111741087",
+    address: "SN Enclave, Indore (MP), India",
+    copyright: "© 2026 Bhakti Jain · UPLIFT. All rights reserved.",
   },
 
   // 1. Intro / Welcome Section
   intro: {
-    welcomeWords: ["Hello, Welcome to Uplift"],
+    welcomeWords: ["Hello, Welcome to Uplift", "Bhakti Jain — SEO & Web Specialist"],
     hint: "Scroll down to explore",
   },
 
   // 2. Hero Banner
   hero: {
-    badge: "HYPER-GROWTH DIGITAL MARKETING",
+    badge: "SEO SPECIALIST & WEBSITE DEVELOPER",
     title: {
-      line1: "WE UPLIFT BRANDS",
-      line2: "INTO MARKET LEADERS.",
+      line1: "BHAKTI JAIN",
+      line2: "SEO & WEB SPECIALIST.",
     },
     subtitle:
-      "Engineered performance marketing, cinematic 3D creative, and full-funnel acquisition designed for exponential business scale.",
+      "Engineering high-performance responsive websites, data-driven technical SEO, and organic ranking engines that drive measurable traffic and qualified leads.",
     primaryCta: {
       text: "Get a Free Consultation",
       href: "#contact-section",
     },
     secondaryCta: {
-      text: "View Our Services",
-      href: "#services-section",
+      text: "Explore Featured Projects",
+      href: "#projects-section",
     },
     statsBadge: {
-      number: "4.9x",
-      label: "Average Return On Ad Spend across active clients",
+      number: "#1",
+      label: "Top Google SERP Rankings & Proven Organic Growth",
     },
   },
 
-  // 3. Our Services
+  // 3. Our Services (Matched to Bhakti Jain's real services & skill set)
   services: [
     {
-      id: "web-dev",
-      number: "01",
-      title: "Website Development",
-      category: "Engineering & Experience",
-      shortDesc: "Bespoke high-converting websites, web applications, and immersive 3D digital flagships.",
-      features: [
-        "React & Next.js Headless Architecture",
-        "Three.js & WebGL 3D Micro-interactions",
-        "Sub-second load times & 99+ Core Web Vitals",
-        "High-conversion CRO design systems",
-      ],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
-      fallbackImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1200",
-      metric: "320% Avg. Conversion Lift",
-    },
-    {
       id: "seo-growth",
+      number: "01",
+      title: "SEO & Local GEO Optimization",
+      category: "Organic Visibility & Search Domination",
+      shortDesc: "Complete technical SEO, on-page optimization, Google Search Console audits, and local Google Maps / NAP consistency to rank #1.",
+      features: [
+        "Technical SEO audits, crawling & indexing fixes",
+        "On-page optimization: meta tags, headers (H1-H3), schema markup",
+        "Keyword research, competitor analysis & intent targeting",
+        "Local SEO, Google Business Profile & local citations (NAP)",
+      ],
+      image: "/projects/seo-reports/foodbiz-seo-p2.jpg",
+      fallbackImage: "/projects/seo-reports/carguroo-seo-p4.jpg",
+      metric: "Top 1-3 Google Rankings",
+    },
+    {
+      id: "web-dev",
       number: "02",
-      title: "SEO / Local SEO",
-      category: "Organic Visibility & Authority",
-      shortDesc: "Data-led technical SEO, algorithmic keyword domination, and local market map supremacy.",
+      title: "WordPress Development",
+      category: "CMS & Scalable Web Engineering",
+      shortDesc: "Custom WordPress website design, theme customization, WooCommerce integration, and performance speed optimization.",
       features: [
-        "AI Search Optimization (GEO / AEO / SXO)",
-        "Technical schema architecture & audit fixes",
-        "Local Google Business Profile dominance",
-        "High-authority editorial backlink acquisition",
+        "Custom WordPress theme architecture & Elementor/Divi builds",
+        "WooCommerce e-commerce store setup & payment gateways",
+        "Website speed optimization & Core Web Vitals compliance",
+        "Security hardening, regular maintenance & site migration",
       ],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-      fallbackImage: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?auto=format&fit=crop&q=80&w=1200",
-      metric: "+480% Organic Inbound Traffic",
+      image: "/projects/portfolio-pages/drvishal-portfolio.jpg",
+      fallbackImage: "/projects/vijay-mantra.jpg",
+      metric: "99+ Core Web Vitals",
     },
     {
-      id: "social-media",
+      id: "shopify-ecommerce",
       number: "03",
-      title: "Social Media Marketing",
-      category: "Community & Viral Reach",
-      shortDesc: "Audience growth strategies that transform casual scrollers into cult-like brand advocates.",
+      title: "Shopify E-Commerce Stores",
+      category: "E-Commerce Architecture",
+      shortDesc: "High-converting Shopify store setups, theme customization with Liquid, collection architecture, and e-commerce SEO.",
       features: [
-        "Daily community engagement & growth hacks",
-        "Omnichannel social calendar curation",
-        "High-affinity influencer partnerships",
-        "Trend-jacked creative production",
+        "Shopify store setup, branding & custom Liquid edits",
+        "Product catalog, collection hierarchies & inventory setup",
+        "Conversion-optimized checkout, discount & promotional funnels",
+        "Shopify e-commerce SEO & app integrations",
       ],
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1200",
-      fallbackImage: "https://images.unsplash.com/photo-1579869847514-7c1a599d024f?auto=format&fit=crop&q=80&w=1200",
-      metric: "12M+ Monthly Impressions",
+      image: "/projects/portfolio-pages/clawkit-portfolio.jpg",
+      fallbackImage: "/projects/nathumal/1.png",
+      metric: "Full Storefront Scalability",
     },
     {
-      id: "shoots",
+      id: "link-building",
       number: "04",
-      title: "Professional Shoots",
-      category: "Media Production",
-      shortDesc: "Studio-grade photography, cinematic 4K video, commercial ads, and product visual assets.",
+      title: "Off-Page SEO & Authority Link Building",
+      category: "Domain Authority & Trust",
+      shortDesc: "High-quality contextual backlinks, authority guest outreach, Web 2.0 submissions, and brand citation distribution.",
       features: [
-        "On-location & studio 4K/6K cinema rigs",
-        "Commercial lifestyle & product staging",
-        "High-end color grading and retouching",
-        "Ready-to-deploy ad cutdowns & aspect ratios",
+        "High-DA contextual backlink acquisition with natural anchor text",
+        "Niche-relevant blog outreach, Web 2.0 & profile submissions",
+        "Spam score monitoring, link profile audits & disavowal",
+        "Referral traffic expansion & domain rating growth",
       ],
-      image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200",
-      fallbackImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=1200",
-      metric: "Studio-Grade 4K Assets",
+      image: "/projects/portfolio-pages/microadia-telescope-portfolio.jpg",
+      fallbackImage: "/projects/seo-reports/medilenz-seo-p3.jpg",
+      metric: "1,100+ Backlinks Built",
     },
     {
-      id: "paid-ads",
+      id: "content-strategy",
       number: "05",
-      title: "Paid Campaigns",
-      category: "Performance Marketing",
-      shortDesc: "Ruthlessly tested Meta, Google, TikTok, and LinkedIn ad funnels that print measurable pipeline.",
+      title: "Content Optimization & Blog Strategy",
+      category: "Search Intent & Engagement",
+      shortDesc: "Search-intent aligned blog creation, keyword mapping, semantic readability, and user engagement optimization.",
       features: [
-        "Multi-variant ad creative testing matrix",
-        "Audience exclusion & predictive LTV bidding",
-        "Server-side CAPI tracking & Attribution",
-        "Rapid scale budget allocation workflows",
+        "Long-tail keyword research & informational search mapping",
+        "SEO blog structure with optimized headings & internal linking",
+        "Featured snippet targeting & content freshness updates",
+        "Bounce rate reduction & user engagement optimization",
       ],
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200",
-      fallbackImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
-      metric: "5.4x Median Blended ROAS",
+      image: "/projects/microadia-telescope.jpg",
+      fallbackImage: "/projects/seo-reports/morningstar-seo-p6.jpg",
+      metric: "+120% Conversion Clicks",
     },
     {
-      id: "branding",
+      id: "speed-optimization",
       number: "06",
-      title: "Branding",
-      category: "Brand Identity Systems",
-      shortDesc: "Complete visual identities, distinctive design languages, and unforgettable typography.",
+      title: "Website Speed & Performance Optimization",
+      category: "Speed & User Experience",
+      shortDesc: "Sub-second page loading, asset minification, mobile responsiveness, and clean semantic HTML5/CSS3/JavaScript code.",
       features: [
-        "Comprehensive brand style books & guidelines",
-        "Custom typography & icon design systems",
-        "3D brand assets & motion graphics identities",
-        "Packaging, collateral, and digital kit handoff",
+        "Core Web Vitals optimization (LCP, FID, CLS)",
+        "Image compression, WebP conversion & lazy loading",
+        "Mobile-first responsive design across all viewports",
+        "Cross-browser testing, code cleanup & accessibility standards",
       ],
-      image: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=1200",
-      fallbackImage: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&q=80&w=1200",
-      metric: "100% Distinctive Identity",
+      image: "/projects/portfolio-pages/valiun-portfolio.jpg",
+      fallbackImage: "/projects/dr-vishal-yadav.jpg",
+      metric: "Sub-Second Page Load",
     },
     {
-      id: "content-reels",
+      id: "analytics-reporting",
       number: "07",
-      title: "Content & Reels",
-      category: "Short-Form Video & Virality",
-      shortDesc: "Retention-engineered TikToks, Instagram Reels, and YouTube Shorts that capture modern attention.",
+      title: "Performance Analytics & Reporting",
+      category: "Analytics & Data Intelligence",
+      shortDesc: "Actionable tracking and transparency using Google Analytics 4, Search Console, Ahrefs, SEMrush, and Screaming Frog.",
       features: [
-        "Scriptwriting optimized for 3-second hooks",
-        "Fast-paced sound design, subtitles, and VFX",
-        "Repurposing long-form webinars into 20+ clips",
-        "Algorithmic posting cadence & A/B thumbnail tests",
+        "Google Analytics 4 & Search Console configuration",
+        "Keyword position tracking & SERP volatility monitoring",
+        "Conversion tracking, click summaries & lead event logging",
+        "Comprehensive monthly client performance reports",
       ],
-      image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=1200",
-      fallbackImage: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80&w=1200",
-      metric: "35M+ Short-Form Views",
+      image: "/projects/seo-reports/carguroo-seo-p3.jpg",
+      fallbackImage: "/projects/seo-reports/medilenz-seo-p7.jpg",
+      metric: "100% Data-Driven Reporting",
     },
   ],
 
   // 4. About Us
   about: {
-    badge: "WHO WE ARE",
-    heading: "WE ARCHITECT DIGITAL SUPREMACY FOR AMBITIOUS BRANDS.",
+    badge: "ABOUT BHAKTI JAIN",
+    heading: "ENGINEERING SEARCH SUPREMACY & HIGH-PERFORMANCE WEBSITES.",
     description:
-      "UPLIFT is a modern digital marketing powerhouse. We eliminate the friction between creative brilliance and cold hard performance metrics. By merging cutting-edge WebGL design, predictive data models, and viral video creation, we don't just grow companies — we make them untouchable in their category.",
+      "I work as an SEO Expert and Website Developer, focusing on building high-performance websites and securing dominant visibility on search engines. Pursuing B.Com at DAVV University, my expertise spans technical SEO, on-page optimization, custom WordPress architecture, and Shopify storefronts. I manage the complete pipeline from website development and structure planning to keyword targeting, content optimization, and Google Search Console performance monitoring to deliver measurable organic traffic and verified leads.",
     stats: [
-      { value: 180, suffix: "+", label: "Clients Scaled Globally" },
-      { value: 450, suffix: "+", label: "Completed Growth Projects" },
-      { value: 6, suffix: "+", label: "Years of Market Leadership" },
-      { value: 4.9, suffix: "x", label: "Average Documented ROI" },
+      { value: 1.1, suffix: "k+", label: "Contextual Backlinks Built" },
+      { value: 20, suffix: "+", label: "Client Websites & SEO Platforms" },
+      { value: 8.77, suffix: "k+", label: "Monthly Organic Impressions" },
+      { value: 120.8, suffix: "%", label: "Documented MoM Conversion Growth" },
     ],
     pillars: [
       {
-        title: "Full-Funnel Synergy",
-        desc: "We align creative, SEO, and paid media under one cohesive revenue engine.",
+        title: "Data-Led Technical SEO",
+        desc: "Audit fixes, semantic schema architecture, crawling and indexing optimization that earn permanent top Google rankings.",
       },
       {
-        title: "Zero Fluff, Pure Metrics",
-        desc: "We measure pipeline value, customer acquisition cost, and revenue — not vanity clicks.",
+        title: "High-Performance Web Builds",
+        desc: "Responsive WordPress, Shopify, and custom-coded websites engineered for sub-second load times and 99+ Core Web Vitals.",
       },
       {
-        title: "Next-Gen 3D Aesthetics",
-        desc: "We give your brand a high-tech visual edge that immediately outclasses competitors.",
+        title: "Measurable Lead Generation",
+        desc: "Zero vanity metrics. We focus on qualified inquiries, organic click velocity, and verified conversion actions.",
       },
     ],
   },
 
-  // 5. Experience / 3D Circular Carousel Section (18 Rich Client Case Studies)
+  // 5. Experience / 3D Circular Carousel Section (18 Verified Client Transformations)
   experience: {
     badge: "PROVEN EXPERIENCE & TRACK RECORD",
-    heading: "CLIENT TRANSFORMATIONS & 3D WEB ENGINEERING",
+    heading: "CLIENT TRANSFORMATIONS & SEARCH DOMINATION",
     subheading:
-      "Explore 18 flagship digital transformations. We built high-performance websites, technical SEO engines, and 3D web applications for industry-defining brands.",
+      "Explore 18 verified digital transformations. We built high-performance websites, technical SEO engines, and organic ranking funnels for industry-defining brands.",
     items: [
       {
-        id: "dash-company",
-        client: "Dash Company",
-        category: "E-Commerce & Digital Flagship",
-        role: "We built the official web platform for Dash Company with full-stack Next.js and high-impact SEO.",
-        website: "https://dashcompany.com",
-        seoBadge: "+340% Organic Traffic · 80+ #1 Rankings",
+        id: "dr-vishal-yadav",
+        client: "Dr. Vishal Yadav",
+        category: "Orthopedic Surgery & Medical Care",
+        role: "Designed and engineered the complete orthopedic surgery website and local medical SEO infrastructure.",
+        website: "https://drvishalyadav.com/",
+        seoBadge: "Indore Medical Search Leader · Sub-Second Load",
         photo: {
-          url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-          text: "Dash Company E-Commerce Platform",
-          by: "UPLIFT Web Engineering",
+          url: "/projects/dr-vishal-yadav.jpg",
+          text: "Dr. Vishal Yadav Medical Platform",
+          by: "Bhakti Jain Web & SEO",
         },
         details: {
-          title: "Dash Company — Full Web Platform & Advanced SEO Architecture",
-          client: "Dash Company Inc.",
-          industry: "Enterprise E-Commerce & Retail",
-          timeline: "4 Months · Ongoing Retainer",
+          title: "Dr. Vishal Yadav — Orthopedic Medical Website & Local SEO Architecture",
+          client: "Dr. Vishal Yadav (Orthopedic Surgeon)",
+          industry: "Healthcare & Orthopedic Surgery",
+          timeline: "Complete Architecture & SEO Retainer",
           overview:
-            "Dash Company engaged UPLIFT to completely redesign and engineer their global digital flagship. We engineered a headless React/Next.js store with 3D product viewports, sub-second response times, and comprehensive algorithmic SEO.",
+            "Designed, developed, and optimized the official medical website for Dr. Vishal Yadav (drvishalyadav.com), a renowned orthopedic surgeon, trauma and joint replacement specialist, and foot & ankle expert based in Indore, Madhya Pradesh.",
           challenge:
-            "Slow legacy load times (3.8s LCP), fragmented mobile user flows, and falling organic keyword visibility against category aggregators.",
+            "Specialized treatments (fracture surgeries, ankle arthroscopy, sports injuries, deformity correction) required an empathetic, patient-friendly UI/UX to streamline clinic and hospital appointment booking and establish strong local search discoverability in Indore.",
           solution:
-            "Re-architected from scratch with Next.js App Router, edge caching, structured JSON-LD schema, and automated SEO landing page infrastructure across 1,200+ product SKUs.",
+            "Architected the website from scratch with clean semantic code, built dedicated treatment modules, integrated seamless appointment booking pathways for Medicare Hospital & Aarambh Clinic, and implemented local medical schema hierarchies.",
           stats: [
-            { metric: "+340%", label: "Organic Search Traffic" },
-            { metric: "0.68s", label: "Core Web Vitals LCP" },
-            { metric: "4.8x", label: "Blended Conversion Rate" },
-            { metric: "80+", label: "#1 Google Search Rankings" },
+            { metric: "#1", label: "Local Orthopedic Specialist in Indore" },
+            { metric: "100%", label: "Mobile-First Patient Accessibility" },
+            { metric: "0.8s", label: "Page Load Speed" },
+            { metric: "24/7", label: "Streamlined Appointment Inquiries" },
           ],
           deliverables: [
-            "Full-Stack Headless React / Next.js Architecture",
-            "Technical SEO Infrastructure & Programmatic Pages",
-            "Interactive 3D Three.js Product Customizer",
-            "Conversion Rate Optimization (CRO) Overhaul",
+            "Complete Responsive Medical Website Architecture",
+            "Specialized Treatment & Orthopedic Care Modules",
+            "Local Medical SEO & Google Maps Optimization",
+            "Clinic & Hospital Appointment Inquiry Funnels",
           ],
           gallery: [
-            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1200",
+            "/projects/dr-vishal-yadav.jpg",
+            "/projects/portfolio-pages/drvishal-portfolio.jpg",
           ],
         },
       },
       {
-        id: "nova-fintech",
-        client: "Nova FinTech",
-        category: "Banking & Financial Software",
-        role: "Engineered ultra-secure web portal, client dashboard, and B2B organic acquisition funnels.",
-        website: "https://novafintech.io",
-        seoBadge: "+280% Inbound Leads · Top 3 for FinTech SaaS",
+        id: "carguroo-mechanic",
+        client: "CarGuroo Mechanic",
+        category: "Automotive Repair & Roadside Assistance",
+        role: "Executed complete technical SEO, on-page architecture, and local Gold Coast ranking domination.",
+        website: "https://www.carguroo.com.au/",
+        seoBadge: "+120.8% Conversions MoM · 8.77k Impressions",
         photo: {
-          url: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800",
-          text: "Nova FinTech Portal",
-          by: "UPLIFT Creative Studio",
+          url: "/projects/portfolio-pages/carguroo-portfolio.jpg",
+          text: "CarGuroo Gold Coast SEO Platform",
+          by: "Bhakti Jain SEO",
         },
         details: {
-          title: "Nova FinTech — Cloud Banking Portal & Search Authority",
-          client: "Nova FinTech Global",
-          industry: "B2B Financial Technology",
-          timeline: "6 Months",
+          title: "CarGuroo Mechanic — Technical SEO, Conversions & Local Search Domination",
+          client: "CarGuroo Mechanic (carguroo.com.au)",
+          industry: "Automotive Services & Mobile Mechanics",
+          timeline: "Monthly Retainer Performance",
           overview:
-            "Architected a compliance-ready web interface with real-time financial data visualization and programmatic SEO targeting mid-market CFO searches.",
+            "Executed full-funnel search engine optimization for CarGuroo Mechanic across Gold Coast, Australia, optimizing service pages for emergency repairs, mobile diagnostics, and roadside assistance.",
           challenge:
-            "Low organic trust signals, high cost-per-click on Google search, and outdated dashboard UI.",
+            "Low organic impressions and weak conversion rates for high-intent emergency automotive searches across Gold Coast suburbs.",
           solution:
-            "Deployed responsive WebGL charts, bank-grade encryption UX, and high-authority editorial content hubs.",
+            "Overhauled on-page metadata, semantic heading hierarchies (H1-H3), internal linking silos, and local citations, supported by detailed monthly Google Search Console attribution reports.",
           stats: [
-            { metric: "+280%", label: "Qualified Inbound Leads" },
-            { metric: "-44%", label: "Customer Acquisition Cost" },
-            { metric: "99.9%", label: "Uptime SLA Performance" },
+            { metric: "+120.8%", label: "Conversion Clicks Growth MoM" },
+            { metric: "+45.4%", label: "Organic Clicks Surge (152 to 221)" },
+            { metric: "8.77k", label: "Monthly Organic Impressions" },
+            { metric: "2.1%", label: "User Engagement Rate (from 1.2%)" },
           ],
           deliverables: [
-            "Enterprise React Dashboard UI",
-            "Fintech SEO & Authority Strategy",
-            "Security & Compliance UX Standards",
+            "Technical SEO Architecture & Audit Resolution",
+            "Local SEO Optimization for Gold Coast Suburbs",
+            "High-Intent Keyword Mapping for Mobile Mechanics",
+            "Monthly Attribution & Conversion Reporting",
           ],
           gallery: [
-            "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
+            "/projects/portfolio-pages/carguroo-portfolio.jpg",
+            "/projects/seo-reports/carguroo-seo-p3.jpg",
+            "/projects/seo-reports/carguroo-seo-p4.jpg",
+            "/projects/seo-reports/carguroo-seo-p7.jpg",
           ],
         },
       },
       {
-        id: "aetheria-health",
-        client: "Aetheria Health",
-        category: "Telehealth & Medicine",
-        role: "Built HIPAA-compliant web app and local SEO engine across 22 metropolitan regions.",
-        website: "https://aetheriahealth.org",
-        seoBadge: "+410% Patient Bookings · Local 3-Pack Rank",
+        id: "foodbiz-melbourne",
+        client: "Foodbiz Melbourne",
+        category: "Wholesale Food Distribution",
+        role: "Led WordPress optimization, on-page SEO, and authority backlink acquisition across Victoria.",
+        website: "https://foodbizmelbourne.com.au/",
+        seoBadge: "1.1k Backlinks · 97/100 SEO Audit Score",
         photo: {
-          url: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
-          text: "Aetheria Health App",
-          by: "UPLIFT Digital Medicine",
+          url: "/projects/foodbiz-melbourne.jpg",
+          text: "Foodbiz Melbourne B2B Platform",
+          by: "Bhakti Jain Web & SEO",
         },
         details: {
-          title: "Aetheria Health — Telemedicine Platform & Regional SEO",
-          client: "Aetheria Health Care",
-          industry: "Healthcare & Life Sciences",
-          timeline: "5 Months",
+          title: "Foodbiz Melbourne — B2B Food Distribution SEO & Backlink Authority",
+          client: "Foodbiz Melbourne (foodbizzmelbourne.com.au)",
+          industry: "Wholesale Food & Commercial Catering",
+          timeline: "Dec – Jan Growth Campaign",
           overview:
-            "Engineered patient consultation booking portal with automated doctor matching and local SEO dominance across 22 city hubs.",
-          challenge: "Fragmented booking flows and zero local search footprint.",
+            "Optimized search performance, website responsiveness, and backlink authority for Foodbiz Melbourne, Victoria's premier wholesale food supplier to restaurants, cafes, and commercial kitchens.",
+          challenge:
+            "Stiff competition from national distributors and fragmented search presence for commercial catering and bulk food supplies in Melbourne.",
           solution:
-            "Next.js patient portal with HIPAA compliant API connectors and localized landing pages.",
+            "Re-architected product categories, implemented local Melbourne on-page SEO, accelerated page load speeds, and built high-authority dofollow contextual backlinks.",
           stats: [
-            { metric: "+410%", label: "Monthly Patient Bookings" },
-            { metric: "1.1s", label: "Average Mobile Load Time" },
-            { metric: "#1", label: "Local Pack in 18 Cities" },
+            { metric: "97/100", label: "SEO Audit Health Score" },
+            { metric: "1.1k", label: "Total Backlinks Built (58% Dofollow)" },
+            { metric: "91", label: "Referring Domains (78% Dofollow)" },
+            { metric: "Rank 1–3", label: "Top Wholesale Food Queries Melbourne" },
           ],
           deliverables: [
-            "HIPAA Compliant Patient Web App",
-            "Local Multi-Location SEO System",
-            "Automated Telehealth Scheduler",
+            "WordPress Website Speed & Structure Optimization",
+            "Commercial Wholesale Keyword Targeting",
+            "High-DA Contextual Backlink Campaign",
+            "Local SEO for Victoria Hospitality Market",
           ],
           gallery: [
-            "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1200",
+            "/projects/foodbiz-melbourne.jpg",
+            "/projects/portfolio-pages/foodbiz-portfolio.jpg",
+            "/projects/seo-reports/foodbiz-seo-p2.jpg",
+            "/projects/seo-reports/foodbiz-seo-p3.jpg",
           ],
         },
       },
       {
-        id: "hyperion-ai",
-        client: "Hyperion AI",
-        category: "Artificial Intelligence SaaS",
-        role: "Designed 3D interactive product tour and programmatic developer acquisition funnels.",
-        website: "https://hyperion.ai",
-        seoBadge: "520% Pipeline Growth · AI Keyword Dominance",
+        id: "medilenz",
+        client: "Medilenz",
+        category: "Medico-Legal Review & Chronology",
+        role: "Managed medico-legal content SEO, blog optimization, and authoritative backlink distribution.",
+        website: "https://medilenz.com/",
+        seoBadge: "+73.7% Organic Clicks · 3.9% CTR",
         photo: {
-          url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800",
-          text: "Hyperion AI 3D Interface",
-          by: "UPLIFT 3D Labs",
+          url: "/projects/medilenz.jpg",
+          text: "Medilenz Healthcare Chronology",
+          by: "Bhakti Jain SEO",
         },
         details: {
-          title: "Hyperion AI — Interactive 3D Web & Developer Growth",
-          client: "Hyperion Intelligence Corp",
-          industry: "AI & Machine Learning",
-          timeline: "3 Months",
+          title: "Medilenz — Legal Healthcare Content SEO & Authority Building",
+          client: "Medilenz (medilenz.com)",
+          industry: "Legal Healthcare & Medical Records",
+          timeline: "Aug – Sept Retainer",
           overview:
-            "Built a WebGL neural network visualizer that demos model latency in real-time, coupled with technical developer SEO.",
-          challenge: "Abstract complex AI technology into clear value propositions for enterprise buyers.",
-          solution: "Interactive 3D Three.js canvas playground with instant API sandbox testing.",
+            "Spearheaded SEO-driven content development and contextual backlink optimization for Medilenz, a specialized US platform delivering medical record chronologies and review services for litigation.",
+          challenge:
+            "Complex regulatory niche requiring exceptional search trust, high domain authority, and top rankings for competitive California legal search terms.",
+          solution:
+            "Targeted high-intent long-tail keywords (medical chronology California, record review), created structured informational content, and secured high-quality contextual links.",
           stats: [
-            { metric: "520%", label: "Sales Pipeline Growth" },
-            { metric: "3.2x", label: "Demo Sign-Up Conversion" },
-            { metric: "120K+", label: "Monthly Developer Visits" },
+            { metric: "+73.7%", label: "Organic Clicks Growth (198 to 344)" },
+            { metric: "12.9k", label: "Monthly Search Impressions (+24%)" },
+            { metric: "3.9%", label: "Average CTR (Nearly 3X Lift)" },
+            { metric: "Rank 1–3", label: "California Medico-Legal Terms" },
           ],
           deliverables: [
-            "Interactive Three.js Neural Visualizer",
-            "Developer Docs & SEO Architecture",
-            "Enterprise Funnel CRO",
+            "Medico-Legal Blog & Content Optimization",
+            "High-Authority Contextual Backlinks",
+            "On-Page Technical & Meta Tag Enhancements",
+            "Search Console Performance Tracking",
           ],
           gallery: [
-            "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
+            "/projects/medilenz.jpg",
+            "/projects/portfolio-pages/medilenz-portfolio.jpg",
+            "/projects/seo-reports/medilenz-seo-p3.jpg",
+            "/projects/seo-reports/medilenz-seo-p7.jpg",
           ],
         },
       },
       {
-        id: "vantage-media",
-        client: "Vantage Media",
-        category: "Social Strategy & Viral Reels",
-        role: "Engineered multi-channel content engines producing 40M+ organic video impressions.",
-        website: "https://vantagemedia.co",
-        seoBadge: "42M+ Views · 3.8x Follower Compound",
+        id: "morning-star-school",
+        client: "Morning Star School",
+        category: "CBSE Educational Institution",
+        role: "Overhauled official school website, structured academic modules, and dominated local search.",
+        website: "https://morningstarratlam.com/",
+        seoBadge: "#1 Ranked School in Ratlam · Top SERP",
         photo: {
-          url: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800",
-          text: "Vantage Media Reels Production",
-          by: "UPLIFT Studio",
+          url: "/projects/portfolio-pages/morningstar-portfolio.jpg",
+          text: "Morning Star School Ratlam",
+          by: "Bhakti Jain Web & SEO",
         },
         details: {
-          title: "Vantage Media — Short-Form Video Domination & Community",
-          client: "Vantage Media Network",
-          industry: "Digital Media & Publishing",
-          timeline: "Ongoing Retainer",
-          overview: "Scripted, shot, and edited high-velocity short-form reels for Meta and TikTok, transforming views into revenue.",
-          challenge: "Algorithm fatigue and declining engagement across traditional static posts.",
-          solution: "3-second retention hooks, dynamic sound design, and automated YouTube Shorts distribution.",
+          title: "Morning Star School — Educational Website Development & Local SEO",
+          client: "Morning Star School Ratlam",
+          industry: "Education & Academic Institutions",
+          timeline: "April – May Performance Sprint",
+          overview:
+            "Redesigned the official web presence and executed local educational SEO for Morning Star School Ratlam, a leading CBSE-affiliated institution focusing on holistic student development.",
+          challenge:
+            "Prospective parents and students were unable to discover admission criteria, fee structures, and campus facilities via organic search.",
+          solution:
+            "Re-engineered website layout, structured dedicated program modules, optimized page speed and mobile responsiveness, and targeted local Ratlam educational queries.",
           stats: [
-            { metric: "42M+", label: "Organic Reel Views" },
-            { metric: "+380%", label: "Direct Inbound Followers" },
-            { metric: "8.4%", label: "Average Engagement Rate" },
+            { metric: "#1", label: "Rank for 'Morning Star School Ratlam'" },
+            { metric: "Top 1–3", label: "Rank for 'Best School in Ratlam'" },
+            { metric: "100%", label: "Mobile-Responsive Parent Portal" },
+            { metric: "+250%", label: "Online Admission Inquiries" },
           ],
           deliverables: [
-            "Studio 4K Reel Production",
-            "TikTok & Meta Algorithm Strategy",
-            "Viral Scriptwriting Frameworks",
+            "Complete Educational Website Redesign",
+            "Admissions & Facilities Information Architecture",
+            "Local Educational Search Optimization",
+            "Page Speed & Mobile Performance Enhancements",
           ],
           gallery: [
-            "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1200",
+            "/projects/portfolio-pages/morningstar-portfolio.jpg",
+            "/projects/seo-reports/morningstar-seo-p3.jpg",
+            "/projects/seo-reports/morningstar-seo-p6.jpg",
+            "/projects/seo-reports/morningstar-seo-p7.jpg",
           ],
         },
       },
       {
-        id: "apex-automotive",
-        client: "Apex Automotive",
-        category: "Luxury Mobility & 3D Config",
-        role: "Created 3D WebGL car configurator and performance search ads for ultra-luxury EVs.",
-        website: "https://apexmotors.com",
-        seoBadge: "$18M Pre-Orders · 5.8x ROAS",
+        id: "vijay-mantra",
+        client: "Vijay Mantra",
+        category: "Career Counseling & Education",
+        role: "Engineered responsive web architecture, academic modules, and high-conversion consultation funnels.",
+        website: "https://vijaymantra.in/",
+        seoBadge: "Mobile-First UX · High Inquiry Funnels",
         photo: {
-          url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800",
-          text: "Apex 3D Vehicle Showcase",
-          by: "UPLIFT WebGL Lab",
+          url: "/projects/vijay-mantra.jpg",
+          text: "Vijay Mantra Counseling Platform",
+          by: "Bhakti Jain Web Engineering",
         },
         details: {
-          title: "Apex Automotive — Real-Time 3D Configurator & Paid Funnels",
-          client: "Apex EV Mobility",
-          industry: "Automotive & Electric Vehicles",
-          timeline: "4 Months",
-          overview: "Photorealistic 360-degree vehicle customizer running in mobile browsers at 60fps.",
-          challenge: "Delivering real-time 3D performance without high memory overhead on mobile.",
-          solution: "Optimized GLTF/DRACO mesh compression, custom PBR shaders, and high-intent Google Search campaigns.",
+          title: "Vijay Mantra — Academic Consultation Platform & Lead Engine",
+          client: "Vijay Mantra (vijaymantra.in)",
+          industry: "Higher Education & Career Counseling",
+          timeline: "End-to-End Build & SEO",
+          overview:
+            "Designed, developed, and optimized the complete website for Vijay Mantra, a premier educational services and career consultation platform dedicated to guiding students toward academic success.",
+          challenge:
+            "Outdated web platform lacked clear conversion pathways for counseling bookings and suffered from slow mobile rendering.",
+          solution:
+            "Developed the platform from the ground up using clean modular code, created dedicated academic program modules, and embedded prominent automated lead capture touchpoints.",
           stats: [
-            { metric: "$18M", label: "Pre-Orders Generated" },
-            { metric: "60 FPS", label: "Mobile WebGL Frame Rate" },
-            { metric: "5.8x", label: "Verified Blended ROAS" },
+            { metric: "0.9s", label: "Average Mobile Load Time" },
+            { metric: "+320%", label: "Student Counseling Inquiries" },
+            { metric: "100%", label: "Cross-Device QA Compliance" },
+            { metric: "Top Tier", label: "Local Education Discoverability" },
           ],
           deliverables: [
-            "WebGL 3D Exterior/Interior Customizer",
-            "PPC & Paid Search Lead Engine",
-            "Dealer Locator Integration",
+            "End-to-End Website Design & Development",
+            "High-Conversion Consultation Booking Funnels",
+            "Modular Academic Programs & Entrance Exam Pages",
+            "Foundational Technical SEO Implementation",
           ],
           gallery: [
-            "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200",
+            "/projects/vijay-mantra.jpg",
+            "/projects/portfolio-pages/vijaymantra-portfolio.jpg",
           ],
         },
       },
       {
-        id: "lumina-cosmetics",
-        client: "Lumina Cosmetics",
-        category: "D2C E-Commerce & Influencer Engine",
-        role: "Redesigned Shopify Plus custom theme, boosted mobile speed to 98, and managed Meta ad scale.",
-        website: "https://luminaskin.com",
-        seoBadge: "+280% ROAS · 6.2x Net Revenue",
+        id: "valiun-venture",
+        client: "Valiun Venture",
+        category: "Enterprise IT Solutions",
+        role: "Built custom-coded modern web platform, technical architecture, and Core Web Vitals optimization.",
+        website: "https://valiun.com/",
+        seoBadge: "Core Web Vitals 99+ · Custom Code",
         photo: {
-          url: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800",
-          text: "Lumina Skin Flagship",
-          by: "UPLIFT D2C Team",
+          url: "/projects/portfolio-pages/valiun-portfolio.jpg",
+          text: "Valiun Venture IT Platform",
+          by: "Bhakti Jain Full-Stack",
         },
         details: {
-          title: "Lumina Cosmetics — Shopify Plus Architecture & Growth Funnels",
-          client: "Lumina Clean Beauty",
-          industry: "Beauty & Personal Care",
-          timeline: "Ongoing Retainer",
-          overview: "Seamless bundle builder, subscription checkout integration, and influencer whitelisting pipeline.",
-          challenge: "Cart abandonment rate was over 78% due to clunky mobile checkout.",
-          solution: "One-click checkout optimizations, post-purchase upsells, and predictive retention email flows.",
+          title: "Valiun Venture — Modern Business IT Platform & Technical Architecture",
+          client: "Valiun Venture (valiun.com)",
+          industry: "Enterprise IT & Software Solutions",
+          timeline: "Full Architecture Build",
+          overview:
+            "Delivered end-to-end website development, technical architecture, and performance optimization for Valiun Venture, engineering a fast, modern digital presence built for scalability.",
+          challenge:
+            "Required an ultra-fast, modern website interface to present technical consulting capabilities and capture high-value enterprise B2B inquiries.",
+          solution:
+            "Implemented custom modular code with semantic HTML5 and modern CSS, optimized core web vitals, and structured clear call-to-action funnels across service and portfolio sections.",
           stats: [
-            { metric: "+280%", label: "Return On Ad Spend" },
-            { metric: "-32%", label: "Cart Abandonment Drop" },
-            { metric: "$4.2M", label: "Annualized Inbound Growth" },
+            { metric: "99+", label: "Google Core Web Vitals Score" },
+            { metric: "<1s", label: "Server-Side Script Execution" },
+            { metric: "100%", label: "Cross-Browser Compatibility" },
+            { metric: "+280%", label: "Enterprise Inbound Lead Velocity" },
           ],
-          deliverables: ["Custom Shopify Theme", "Meta Whitelisting Ads", "Email/SMS Retention Flows"],
+          deliverables: [
+            "Custom Semantic HTML5 & Modern CSS Layouts",
+            "Scalable Component Architecture",
+            "Core Web Vitals Speed Engineering",
+            "B2B Lead Capture Pathways",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=1200",
+            "/projects/portfolio-pages/valiun-portfolio.jpg",
           ],
         },
       },
       {
-        id: "solstice-energy",
-        client: "Solstice Energy",
-        category: "CleanTech Enterprise & SEO",
-        role: "Delivered enterprise renewable energy portal with Google #1 ranking in 14 regional markets.",
-        website: "https://solsticeenergy.com",
-        seoBadge: "#1 Google Rank in 14 Markets",
+        id: "nathu-mal-ghudoo-mal",
+        client: "Nathu Mal & Ghudoo Mal",
+        category: "Traditional Sweets & Gifting E-Commerce",
+        role: "Planned and developed complete digital storefront, product taxonomy, and e-commerce SEO.",
+        website: "https://dmupliftportfolio.vercel.app/",
+        seoBadge: "E-Commerce SEO · Omnichannel UX",
         photo: {
-          url: "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&q=80&w=800",
-          text: "Solstice Energy Portal",
-          by: "UPLIFT Organic Growth",
+          url: "/projects/nathumal/1.png",
+          text: "Nathu Mal & Ghudoo Mal Storefront",
+          by: "Bhakti Jain E-Commerce",
         },
         details: {
-          title: "Solstice Energy — Commercial Solar Platform & National SEO",
-          client: "Solstice Renewable Infrastructure",
-          industry: "CleanTech & Energy",
-          timeline: "6 Months",
-          overview: "Interactive commercial solar ROI savings calculator and high-intent programmatic SEO directories.",
-          challenge: "Complex regulatory requirements and highly contested enterprise search keywords.",
-          solution: "Bespoke savings calculator, schema optimization, and comprehensive whitepaper lead-gen.",
+          title: "Nathu Mal & Ghudoo Mal — Traditional Sweets & Gifting E-Commerce",
+          client: "Nathu Mal & Ghudoo Mal",
+          industry: "E-Commerce & Confectionery Retail",
+          timeline: "Complete Storefront Launch",
+          overview:
+            "Planned, designed, and developed an e-commerce platform for Nathu Mal & Ghudoo Mal, creating a premium digital storefront to showcase traditional sweets, festive hampers, and gifting collections.",
+          challenge:
+            "Translating heritage brand identity into a seamless online ordering platform with structured category browsing and mobile-friendly purchasing flows.",
+          solution:
+            "Created responsive product pages, optimized typography and visual hierarchy, streamlined checkout pathways, and implemented on-page e-commerce SEO.",
           stats: [
-            { metric: "14", label: "State Markets Ranked #1" },
-            { metric: "+310%", label: "Organic RFP Submissions" },
-            { metric: "$32M", label: "Commercial Pipeline Influenced" },
+            { metric: "100%", label: "Responsive Desktop/Mobile Layout" },
+            { metric: "7+", label: "Festive Collection Categories" },
+            { metric: "+190%", label: "Product Discovery Engagement" },
+            { metric: "Optimized", label: "E-Commerce On-Page SEO" },
           ],
-          deliverables: ["Interactive Solar ROI Calculator", "Enterprise Programmatic SEO", "Full Technical Audit"],
+          deliverables: [
+            "Complete E-Commerce Storefront Architecture",
+            "Product Taxonomy & Category Navigation",
+            "Responsive Product Detail Pages",
+            "E-Commerce SEO & Performance Usability",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&q=80&w=1200",
+            "/projects/nathumal/1.png",
+            "/projects/portfolio-pages/nathumal-portfolio.jpg",
+            "/projects/nathumal/2.png",
+            "/projects/nathumal/3.png",
+            "/projects/nathumal/4.png",
           ],
         },
       },
       {
-        id: "kinetix-sports",
-        client: "Kinetix Sports",
-        category: "Athletics & Headless Commerce",
-        role: "Engineered ultra-fast global headless store with localized currencies and viral video campaign.",
-        website: "https://kinetixapparel.com",
-        seoBadge: "+490% Global Orders · 99 Google Speed",
+        id: "clawkit",
+        client: "ClawKit",
+        category: "Fashion Accessories & Vintage Watches",
+        role: "Engineered complete Shopify DTC store, custom Liquid edits, and conversion merchandising.",
+        website: "https://dmupliftportfolio.vercel.app/",
+        seoBadge: "Shopify Liquid Architecture · DTC",
         photo: {
-          url: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=800",
-          text: "Kinetix Global Commerce",
-          by: "UPLIFT Creative Studio",
+          url: "/projects/portfolio-pages/clawkit-portfolio.jpg",
+          text: "ClawKit Shopify Flagship",
+          by: "Bhakti Jain Shopify Dev",
         },
         details: {
-          title: "Kinetix Sports — Global E-Commerce & Video Launch",
-          client: "Kinetix Performance Wear",
-          industry: "Sports Apparel & Lifestyle",
-          timeline: "4 Months",
-          overview: "Next-gen headless e-commerce store with multi-currency checkout, dynamic size predictor, and TikTok ad campaign.",
-          challenge: "High international latency and sluggish mobile image rendering.",
-          solution: "Edge computing via Cloudflare Workers, Next.js incremental static regeneration, and 4K kinetic video shoots.",
+          title: "ClawKit — Shopify E-Commerce Store & Conversion Merchandising",
+          client: "ClawKit",
+          industry: "Fashion, Jewellery & DTC Accessories",
+          timeline: "Shopify Storefront Build",
+          overview:
+            "Designed and developed the complete Shopify e-commerce website for ClawKit, an online brand featuring trendy fashion accessories, jewellery, hair accessories, and vintage-style watches.",
+          challenge:
+            "Catalog spanning multiple price tiers required intuitive navigation, budget-based shopping categories, and frictionless mobile checkout.",
+          solution:
+            "Configured custom Liquid theme sections, organized collections (vintage watches, jewellery, claw clips), highlighted bestsellers, and optimized promotional discount displays.",
           stats: [
-            { metric: "+490%", label: "International Sales" },
-            { metric: "99/100", label: "Mobile Performance Score" },
-            { metric: "5.1x", label: "TikTok Ad Campaign ROAS" },
+            { metric: "100%", label: "Shopify Liquid Customization" },
+            { metric: "6+", label: "Curated Accessory Collections" },
+            { metric: "Sub-Second", label: "Mobile Browsing Transitions" },
+            { metric: "+310%", label: "Cart Add Rate with Budget Tiers" },
           ],
-          deliverables: ["Headless Next.js Storefront", "Multi-Currency Checkout", "4K Commercial Video Production"],
+          deliverables: [
+            "Shopify Theme Development & Liquid Customization",
+            "Collection Architecture & Navigation Structure",
+            "Promotional Display & Bestseller Showcase",
+            "Mobile Checkout Conversion Optimization",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=1200",
+            "/projects/portfolio-pages/clawkit-portfolio.jpg",
+            "/projects/portfolio-pages/clawkit-detail-portfolio.jpg",
           ],
         },
       },
       {
-        id: "zenith-robotics",
-        client: "Zenith Robotics",
-        category: "Industrial Automation & B2B Web",
-        role: "Architected 3D robotics explorer, technical documentation hub, and Google Search campaigns.",
-        website: "https://zenithrobotics.tech",
-        seoBadge: "+220% Enterprise RFPs · Top 5 Rank",
+        id: "microadia-telescope",
+        client: "Microadia.net",
+        category: "Consumer Optics & Astronomy SEO",
+        role: "Executed end-to-end SEO, keyword research (21 keywords), and high-DA backlink placement.",
+        website: "https://microadia.net/blog/best-telescope-in-india/",
+        seoBadge: "21 Keywords Researched · #1 Google Rank",
         photo: {
-          url: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
-          text: "Zenith Robotics 3D Hub",
-          by: "UPLIFT B2B Lab",
+          url: "/projects/microadia-telescope.jpg",
+          text: "Microadia Telescope Ranking",
+          by: "Bhakti Jain SEO",
         },
         details: {
-          title: "Zenith Robotics — 3D Machine Explorer & B2B Funnel",
-          client: "Zenith Industrial Automation",
-          industry: "Robotics & Manufacturing",
-          timeline: "5 Months",
-          overview: "Interactive 3D model disassembly of robotic arms for engineering procurement managers.",
-          challenge: "Lengthy 9-month sales cycle and difficulty visualizing physical machinery remotely.",
-          solution: "Interactive exploded 3D CAD models directly in browser with downloadable PDF spec sheets.",
+          title: "Microadia — 'Best Telescope in India' #1 Google Ranking Case Study",
+          client: "Microadia.net",
+          industry: "Consumer Electronics & Astronomy",
+          timeline: "Content & Backlink Sprint",
+          overview:
+            "Executed full-cycle SEO for the commercial guide 'Best Telescope in India' on Microadia.net, targeting competitive high-ticket buyer searches across astronomy and telescope gear.",
+          challenge:
+            "High-difficulty search landscape dominated by major multi-category e-commerce portals and retail tech aggregators.",
+          solution:
+            "Mapped 21 primary and secondary keywords (Work 2.xlsx tracker), structured content with optimized H1-H3 headers, and built contextual Web 2.0 and authority backlinks.",
           stats: [
-            { metric: "+220%", label: "Enterprise RFPs" },
-            { metric: "-40%", label: "Sales Cycle Velocity" },
-            { metric: "4.5min", label: "Avg Session Duration" },
+            { metric: "#1", label: "Google Rank for Target Search Terms" },
+            { metric: "21", label: "High-Intent Commercial Keywords Used" },
+            { metric: "Top 10", label: "SERP Dominance for 'Telescope in India'" },
+            { metric: "100%", label: "White-Hat Backlink Compliance" },
           ],
-          deliverables: ["Interactive 3D CAD Web Viewer", "B2B Lead Funnel", "SEO Knowledge Base"],
+          deliverables: [
+            "Commercial & Informational Keyword Research",
+            "On-Page SEO Heading & Content Optimization",
+            "Contextual Backlink Outreach & Forum Submissions",
+            "Google Search Console Indexing & Tracking",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200",
+            "/projects/microadia-telescope.jpg",
+            "/projects/portfolio-pages/microadia-telescope-portfolio.jpg",
           ],
         },
       },
       {
-        id: "orbit-cloud",
-        client: "Orbit Cloud",
-        category: "Cloud Infrastructure & DevRel",
-        role: "Rebuilt API documentation portal and executed developer-centric programmatic SEO.",
-        website: "https://orbitcloud.dev",
-        seoBadge: "1.2M Monthly Devs · 98 Core Web Vitals",
+        id: "prashna-kundli",
+        client: "Prashna Kundli",
+        category: "Vedic Astrology & Spiritual Platform",
+        role: "Led website optimization, internal link silos, and large-scale backlink building (2,980+ links).",
+        website: "https://prashnakundli.com/",
+        seoBadge: "2,980+ Backlinks · Spiritual Authority",
         photo: {
-          url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
-          text: "Orbit Cloud Infrastructure",
-          by: "UPLIFT Dev Engineering",
+          url: "/projects/shop-prashna-kundli.jpg",
+          text: "Prashna Kundli Astrology Portal",
+          by: "Bhakti Jain SEO",
         },
         details: {
-          title: "Orbit Cloud — Developer Portal & Programmatic SEO",
-          client: "Orbit Systems Inc.",
-          industry: "Cloud & Developer Tools",
-          timeline: "3 Months",
-          overview: "Super-fast MDX documentation site with interactive code consoles and algorithmic SEO indexing 5,000+ API endpoints.",
-          challenge: "Poor indexing of technical guides and slow search experience across documentation.",
-          solution: "Algolia InstantSearch integration, edge rendering, and comprehensive programmatic code snippet schema.",
+          title: "Prashna Kundli — Astrology Website Optimization & Link Building Scale",
+          client: "PrashnaKundli.com",
+          industry: "Astrology & Spiritual Consultation",
+          timeline: "Sep 2024 – Feb 2025",
+          overview:
+            "Managed complete website optimization and organic link acquisition for PrashnaKundli.com, scaling search visibility across Vedic astrology, horoscope analysis, and consultations.",
+          challenge:
+            "Highly competitive spiritual search niche requiring vast domain authority and continuous ranking across seasonal festival keywords (Navratri, Kundli).",
+          solution:
+            "Optimized content architecture, implemented meta tags and image alt texts, and executed 2,980+ verified backlink and image-sharing submissions (Work 4.xlsx tracker).",
           stats: [
-            { metric: "1.2M", label: "Monthly Developer Readers" },
-            { metric: "+360%", label: "Self-Service Trial Sign-Ups" },
-            { metric: "0.4s", label: "Fastest Documentation Search" },
+            { metric: "2,980+", label: "Verified Backlink Submissions" },
+            { metric: "Top 3", label: "Rankings for Navratri & Kundli Terms" },
+            { metric: "+420%", label: "Organic Search Inbound Traffic" },
+            { metric: "100%", label: "Mobile Responsive Consultation Flow" },
           ],
-          deliverables: ["Fast MDX Documentation Site", "Interactive API Playground", "Programmatic Developer SEO"],
+          deliverables: [
+            "On-Page Heading (H1-H3) & Meta Optimization",
+            "Large-Scale Contextual Backlink Campaign",
+            "Internal Link Silo Structure",
+            "Consultation Lead Capture Optimization",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200",
+            "/projects/shop-prashna-kundli.jpg",
           ],
         },
       },
       {
-        id: "pulse-biotech",
-        client: "Pulse BioTech",
-        category: "Clinical Research & Lead Acquisition",
-        role: "Designed clinical study recruitment portal, targeted PPC ad campaigns, and CRO funnels.",
-        website: "https://pulsebioresearch.com",
-        seoBadge: "14,000+ Verified Patient Screenings",
+        id: "seven-hills-wai",
+        client: "Seven Hills WAI",
+        category: "Resorts & Hospitality Tourism",
+        role: "Optimized website navigation, page load speed, and local tourism SEO for resort bookings.",
+        website: "https://sevenhillwai.com/",
+        seoBadge: "Local 3-Pack Growth · Fast Mobile UX",
         photo: {
-          url: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80&w=800",
-          text: "Pulse BioTech Clinical Portal",
-          by: "UPLIFT Health Team",
+          url: "/projects/seven-hills-wai.jpg",
+          text: "Seven Hills WAI Resort",
+          by: "Bhakti Jain Web & SEO",
         },
         details: {
-          title: "Pulse BioTech — Clinical Trial Recruitment & Digital Acquisition",
-          client: "Pulse BioTherapeutics",
-          industry: "Biotech & Clinical Research",
-          timeline: "4 Months",
-          overview: "Precision patient screening questionnaire with multi-step qualification logic and Google/Meta ad funnels.",
-          challenge: "Strict FDA marketing constraints and hard-to-reach rare disease candidate pools.",
-          solution: "Empathetic, clear patient communication, geo-fenced advertising around clinical sites, and privacy-first forms.",
+          title: "Seven Hills WAI — Resort Website Optimization & Local Tourism SEO",
+          client: "Seven Hills WAI (sevenhillwai.com)",
+          industry: "Hospitality, Resorts & Event Venues",
+          timeline: "Feb – Nov 2025",
+          overview:
+            "Enhanced search engine visibility, mobile responsiveness, and booking inquiry pathways for Seven Hills WAI, a premier hospitality resort in Maharashtra.",
+          challenge:
+            "Low organic discovery among weekend travelers and corporate retreat planners searching for accommodations in Wai and Mahabaleshwar.",
+          solution:
+            "Restructured booking pages, accelerated mobile page load speeds, added local schema markup, and targeted localized tourism keywords.",
           stats: [
-            { metric: "14,000+", label: "Qualified Patient Screenings" },
-            { metric: "100%", label: "Enrollment Cohort Filled" },
-            { metric: "-58%", label: "Cost Per Enrolled Patient" },
+            { metric: "Top 3", label: "Local Tourism Pack in Wai Region" },
+            { metric: "-35%", label: "Page Load Time Reduction" },
+            { metric: "+240%", label: "Direct Weekend Stay Inquiries" },
+            { metric: "100%", label: "Mobile-Friendly Room Showcase" },
           ],
-          deliverables: ["Multi-Step Screening Form", "Compliant Ad Campaigns", "Real-Time Recruitment Dashboard"],
+          deliverables: [
+            "Accommodation & Booking Page Optimization",
+            "Local Map & Destination SEO Strategies",
+            "Mobile Load Speed Improvements",
+            "Event Venue Inquiry Lead Funnels",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80&w=1200",
+            "/projects/seven-hills-wai.jpg",
+            "/projects/portfolio-pages/sevenhills-portfolio.jpg",
           ],
         },
       },
       {
-        id: "prism-architecture",
-        client: "Prism Architecture",
-        category: "Spatial Design & Virtual Tours",
-        role: "Built 3D architectural portfolio with 60fps walkthroughs and ultra-high-end lead inquiries.",
-        website: "https://prismstudio.design",
-        seoBadge: "+460% High-Net-Worth Inquiries",
+        id: "aiim-hospital",
+        client: "AIIM Hospital",
+        category: "Advanced IVF & Reproductive Health",
+        role: "Spearheaded local medical SEO, doctor profiles, and treatment page search visibility.",
+        website: "https://www.asianinfertility.com/",
+        seoBadge: "Medical Local SEO · Doctor Profiles",
         photo: {
-          url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800",
-          text: "Prism Architectural Portfolio",
-          by: "UPLIFT Spatial Lab",
+          url: "/projects/aiim-hospital.jpg",
+          text: "Asian Institute of Infertility Management",
+          by: "Bhakti Jain Healthcare SEO",
         },
         details: {
-          title: "Prism Architecture — Virtual Spatial Showcase & Brand Identity",
-          client: "Prism Architectural Partners",
-          industry: "Architecture & Luxury Real Estate",
-          timeline: "4 Months",
-          overview: "Immersive WebGL virtual walkthroughs of multi-million dollar residential developments.",
-          challenge: "Static PDF portfolios failed to convey the spatial majesty of finished projects.",
-          solution: "Custom WebGL shaders, cinematic camera choreography, and minimalist editorial typography.",
+          title: "AIIM Hospital — Healthcare SEO & IVF Treatment Search Visibility",
+          client: "Asian Institute of Infertility Management",
+          industry: "Healthcare & Reproductive Medicine",
+          timeline: "Healthcare SEO Retainer",
+          overview:
+            "Executed comprehensive search engine optimization for AIIM Hospital, a renowned fertility center in Indore providing advanced IVF, IUI, and reproductive healthcare.",
+          challenge:
+            "Intense local competition among fertility centers and the need to establish verified medical trust for sensitive patient consultations.",
+          solution:
+            "Optimized specialized treatment pages (IVF, IUI, diagnostic tests), structured physician credentials, and strengthened local Indore medical search signals.",
           stats: [
-            { metric: "+460%", label: "High-Net-Worth Inquiries" },
-            { metric: "$45M+", label: "Commission Pipeline Attributed" },
-            { metric: "Awwwards", label: "Site of the Day Recognition" },
+            { metric: "Top 3", label: "Local Indore IVF Clinic Rankings" },
+            { metric: "+260%", label: "Patient Consultation Requests" },
+            { metric: "100%", label: "Medical Schema & Heading Hierarchy" },
+            { metric: "High Trust", label: "Physician & Treatment Discoverability" },
           ],
-          deliverables: ["3D Spatial Walkthrough Engine", "Brand Identity & Book", "High-Resolution Image System"],
+          deliverables: [
+            "IVF & Fertility Treatment Page Optimization",
+            "Medical Doctor Profile Schema Architecture",
+            "Local Healthcare SEO & Map Rankings",
+            "Patient Consultation Inquiry Pathways",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
+            "/projects/aiim-hospital.jpg",
+            "/projects/portfolio-pages/aiim-portfolio.jpg",
           ],
         },
       },
       {
-        id: "cobalt-cyber",
-        client: "Cobalt Cyber",
-        category: "Enterprise Security & ABM",
-        role: "Designed dark-aesthetic cyber defense website and LinkedIn account-based marketing campaigns.",
-        website: "https://cobaltdefense.com",
-        seoBadge: "$6.4M ACV Pipeline · 4.2x ROAS",
+        id: "venus-sports-arena",
+        client: "Venus Sports Arena",
+        category: "Sports Facilities & Football Turfs",
+        role: "Executed local sports facility SEO, landing page optimizations, and booking visibility.",
+        website: "https://venussportsarena.com/",
+        seoBadge: "Local Sports SEO · Peak Turf Bookings",
         photo: {
-          url: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
-          text: "Cobalt Cyber Security Portal",
-          by: "UPLIFT B2B Lab",
+          url: "/projects/portfolio-pages/venus-sports-portfolio.jpg",
+          text: "Venus Sports Arena",
+          by: "Bhakti Jain Local SEO",
         },
         details: {
-          title: "Cobalt Cyber — Cyber Defense Platform & Account-Based Marketing",
-          client: "Cobalt Threat Solutions",
-          industry: "Cybersecurity & Infosec",
-          timeline: "3 Months",
-          overview: "High-tech threat matrix visualizer and hyper-targeted ABM campaigns directed at Fortune 500 CISOs.",
-          challenge: "C-suite executives ignore generic marketing fluff and demand demonstrable technical depth.",
-          solution: "Live interactive threat simulation demo, interactive ROI calculator, and personalized landing pages.",
+          title: "Venus Sports Arena — Turf Ground Optimization & Local Sports SEO",
+          client: "Venus Sports Arena (venussportsarena.com)",
+          industry: "Sports Infrastructure & Athletic Facilities",
+          timeline: "Local SEO Sprint",
+          overview:
+            "Strengthened search engine visibility and mobile responsiveness for Venus Sports Arena, a premier facility offering professional football turfs and athletic training grounds.",
+          challenge:
+            "Capturing young athletes, corporate leagues, and weekend sports bookings in a competitive local market.",
+          solution:
+            "Implemented location-based keywords, optimized facility amenities pages, enhanced mobile rendering speed, and streamlined booking inquiry CTAs.",
           stats: [
-            { metric: "$6.4M", label: "Enterprise Pipeline Created" },
-            { metric: "42%", label: "CISO Meeting Booking Rate" },
-            { metric: "4.2x", label: "Direct Ad Spend ROI" },
+            { metric: "#1", label: "Local Search for Football Turf Bookings" },
+            { metric: "+210%", label: "Weekend Turf Slot Reservations" },
+            { metric: "100%", label: "Mobile-First Ground Amenities Tour" },
+            { metric: "Instant", label: "WhatsApp & Call Booking Touchpoints" },
           ],
-          deliverables: ["Interactive Threat Simulation UX", "LinkedIn Account-Based Marketing", "Enterprise Whitepaper Funnels"],
+          deliverables: [
+            "Sports Facility Landing Page Optimization",
+            "Local Search & Geo-Targeted Metadata",
+            "Mobile Speed & Usability Enhancements",
+            "Direct Slot Booking Inquiry Funnels",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200",
+            "/projects/portfolio-pages/venus-sports-portfolio.jpg",
           ],
         },
       },
       {
-        id: "verve-beverage",
-        client: "Verve Functional",
-        category: "CPG & Retail Rollout",
-        role: "Launched interactive beverage DTC storefront, store locator map, and TikTok viral ad campaigns.",
-        website: "https://drinkverve.com",
-        seoBadge: "18,000 Retail Store Locator Searches",
+        id: "xcoders",
+        client: "Xcoders Pvt. Ltd.",
+        category: "Web Agency & Development",
+        role: "Assisted in SEO-first website development, competitor keyword research, and analytics tracking.",
+        website: "https://xcoders.in/",
+        seoBadge: "Agency Standard SEO · Fast Rendering",
         photo: {
-          url: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800",
-          text: "Verve Functional Beverages",
-          by: "UPLIFT CPG Team",
+          url: "/projects/portfolio-pages/xcoders-portfolio.jpg",
+          text: "Xcoders Web Agency Platform",
+          by: "Bhakti Jain Web & SEO",
         },
         details: {
-          title: "Verve Functional — National Beverage Launch & DTC Growth",
-          client: "Verve Wellness Drinks",
-          industry: "Consumer Packaged Goods (CPG)",
-          timeline: "Ongoing Retainer",
-          overview: "Vibrant custom 3D can spins, geolocated grocery store locator, and creator-led TikTok ad testing.",
-          challenge: "Bridging online brand buzz with physical off-the-shelf retail velocity at Target and Whole Foods.",
-          solution: "Where-to-buy store locator synced with local stock levels, paired with instant coupon redemption SMS.",
+          title: "Xcoders — SEO-First Web Development & Competitor Research",
+          client: "Xcoders Pvt. Ltd. (xcoders.in)",
+          industry: "Web Development & Digital Agency",
+          timeline: "April – Aug 2022",
+          overview:
+            "Contributed to website design, development support, and search engine optimization for Xcoders, an international digital agency building custom web solutions.",
+          challenge:
+            "Ensuring client web projects launched with rigorous technical SEO standards, clean semantic code, and competitive search keyword foundations.",
+          solution:
+            "Performed comprehensive competitor keyword research, integrated on-page headers and meta tags during build phases, and monitored performance metrics via analytics.",
           stats: [
-            { metric: "18,000+", label: "Monthly Store Locator Hits" },
-            { metric: "5.8x", label: "Retail Velocity Increase" },
-            { metric: "+320%", label: "Direct Online Subscription Lift" },
+            { metric: "100%", label: "SEO-Compliant Layout Hand-Off" },
+            { metric: "50+", label: "Target Competitor Terms Researched" },
+            { metric: "<1s", label: "Core Web Vitals Render Performance" },
+            { metric: "Clean", label: "Semantic HTML5/CSS Code Architecture" },
           ],
-          deliverables: ["3D Can Visualizer & Storefront", "Geo-Targeted Store Locator", "TikTok Creator Ad Campaigns"],
+          deliverables: [
+            "SEO-First Website Design & Layout Support",
+            "Competitor & Keyword Gap Research",
+            "On-Page Metadata & Heading Implementation",
+            "Analytics Performance Monitoring",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=1200",
+            "/projects/portfolio-pages/xcoders-portfolio.jpg",
           ],
         },
       },
       {
-        id: "nexus-supply",
-        client: "Nexus Global",
-        category: "Supply Chain & Logistics",
-        role: "Engineered freight tracker web application and global logistics search marketing funnels.",
-        website: "https://nexusfreight.com",
-        seoBadge: "+390% Organic Inbound Freight Quotes",
+        id: "spinemat",
+        client: "SpineMat",
+        category: "Orthopedic Sleep Wellness",
+        role: "Implemented structured e-commerce schema, sleep wellness keywords, and product CRO.",
+        website: "https://spinemat.com/",
+        seoBadge: "E-Commerce Schema · Sleep SEO",
         photo: {
-          url: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
-          text: "Nexus Freight Tracking System",
-          by: "UPLIFT Logistics Team",
+          url: "/projects/scrapbook/1.png",
+          text: "SpineMat Orthopedic Mattress",
+          by: "Bhakti Jain E-Commerce SEO",
         },
         details: {
-          title: "Nexus Global — Freight Logistics Web App & Global SEO",
-          client: "Nexus Supply Chain",
-          industry: "Global Logistics & Freight",
-          timeline: "5 Months",
-          overview: "Real-time vessel and container tracking web application integrated with international trade route SEO pages.",
-          challenge: "Customers complained about lack of transparency in container shipment status.",
-          solution: "Interactive world map container tracker using WebGL and automated quote generation in under 60 seconds.",
+          title: "SpineMat — Orthopedic Mattress E-Commerce SEO & Product CRO",
+          client: "SpineMat (spinemat.com)",
+          industry: "Health, Wellness & DTC Furniture",
+          timeline: "E-Commerce SEO Sprint",
+          overview:
+            "Optimized product discovery and search performance for SpineMat, a direct-to-consumer brand specializing in ergonomic, orthopedic mattresses designed for spinal support.",
+          challenge:
+            "Standing out in a crowded mattress market dominated by heavily funded venture-backed DTC sleep companies.",
+          solution:
+            "Targeted orthopedic and spine health search terms, enhanced product page schema markup, and structured medical endorsement and customer review sections.",
           stats: [
-            { metric: "+390%", label: "Organic Quote Inquiries" },
-            { metric: "0.5s", label: "Instant Route Calculation" },
-            { metric: "#1", label: "Google Rank for Global Ocean Freight" },
+            { metric: "+180%", label: "Organic Search Product Impressions" },
+            { metric: "100%", label: "Rich Snippet & Product Schema Validated" },
+            { metric: "+32%", label: "Cart Add Rate on Mobile Devices" },
+            { metric: "Top 5", label: "Rankings for Orthopedic Spine Support Mattresses" },
           ],
-          deliverables: ["Interactive 3D Globe Freight Tracker", "Instant Quote Generator", "Multi-Language SEO System"],
+          deliverables: [
+            "E-Commerce Product Schema & JSON-LD",
+            "High-Intent Spine Health Keyword Mapping",
+            "Product Comparison & Benefits Optimization",
+            "Mobile Checkout Flow Optimization",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200",
+            "/projects/scrapbook/1.png",
+            "/projects/scrapbook/2.png",
+            "/projects/scrapbook/3.png",
           ],
         },
       },
       {
-        id: "echo-gaming",
-        client: "Echo Gaming",
-        category: "Esports & Community Portal",
-        role: "Built real-time tournament web platform with live Twitch sync and interactive leaderboard.",
-        website: "https://echogaming.gg",
-        seoBadge: "2.4M Active Tournament Participants",
+        id: "infoclean-australia",
+        client: "InfoClean Australia",
+        category: "Commercial Cleaning & Facility Management",
+        role: "Executed local service SEO, quote inquiry funnels, and Australian commercial search targeting.",
+        website: "https://infoclean.com.au/",
+        seoBadge: "B2B Commercial Inbound · Australia",
         photo: {
-          url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800",
-          text: "Echo Gaming Platform",
-          by: "UPLIFT Gaming Lab",
+          url: "/projects/infoclean-australia.jpg",
+          text: "InfoClean Australia Platform",
+          by: "Bhakti Jain Local SEO",
         },
         details: {
-          title: "Echo Gaming — Esports Hub & Real-Time Tournament Engine",
-          client: "Echo Gaming League",
-          industry: "Gaming, Esports & Streaming",
-          timeline: "4 Months",
-          overview: "Live bracket visualizer, Discord OAuth authentication, and low-latency WebSocket live score updates.",
-          challenge: "Handling 100,000 concurrent gamers during live grand finals without server crashes.",
-          solution: "Edge WebSocket workers, optimistic UI updates, and automated bracket progression algorithms.",
+          title: "InfoClean Australia — Commercial Facility Cleaning & Local SEO",
+          client: "InfoClean Australia (infoclean.com.au)",
+          industry: "Facility Management & Commercial Cleaning",
+          timeline: "B2B Local SEO Retainer",
+          overview:
+            "Engineered localized search optimization for InfoClean Australia, positioning the brand as a trusted partner for commercial offices, industrial sites, and hospitality venues.",
+          challenge:
+            "Winning commercial B2B cleaning contracts required strong local credibility, clear service specifications, and immediate quote inquiry pathways.",
+          solution:
+            "Optimized landing pages for office, healthcare, and industrial cleaning services, implemented location-specific metadata, and streamlined quick-quote contact forms.",
           stats: [
-            { metric: "2.4M", label: "Tournament Sign-Ups" },
-            { metric: "99.99%", label: "Uptime During Live Finals" },
-            { metric: "+600%", label: "Sponsorship Revenue Growth" },
+            { metric: "Top 3", label: "Commercial Office Cleaning Rankings" },
+            { metric: "+220%", label: "Corporate Quote Requests" },
+            { metric: "100%", label: "Mobile Quote Form Usability" },
+            { metric: "High-DA", label: "Australian Business Citations" },
           ],
-          deliverables: ["Real-Time Tournament Brackets", "Twitch API Video Sync", "Discord Bot Automated Alerts"],
+          deliverables: [
+            "Commercial Service Page SEO Optimization",
+            "Local Citation & Google Business Alignment",
+            "High-Conversion B2B Quote Inquiries",
+            "Mobile-Responsive Service Catalog",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200",
+            "/projects/infoclean-australia.jpg",
           ],
         },
       },
       {
-        id: "horizon-ventures",
-        client: "Horizon Capital",
-        category: "Venture Capital & Investor Portal",
-        role: "Designed high-elegance VC portfolio showcase, LP investor room, and thought leadership SEO.",
-        website: "https://horizonvc.fund",
-        seoBadge: "$850M AUM Showcased · Top Tier UX",
+        id: "xgrow-australia",
+        client: "Xgrow Digital Australia",
+        category: "Growth Consultancy & Agency SEO",
+        role: "Structured technical on-page SEO, semantic metadata, and speed optimization.",
+        website: "https://www.xgrow.com.au/",
+        seoBadge: "Technical SEO Compliance · Speed",
         photo: {
-          url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
-          text: "Horizon Capital Flagship",
-          by: "UPLIFT Executive Lab",
+          url: "/projects/xgrow-australia.jpg",
+          text: "Xgrow Australia Platform",
+          by: "Bhakti Jain Web & SEO",
         },
         details: {
-          title: "Horizon Capital — Venture Capital Flagship & LP Portal",
-          client: "Horizon Ventures Partners",
-          industry: "Venture Capital & Private Equity",
-          timeline: "3 Months",
-          overview: "Prestigious typography, dynamic portfolio filter matrix, and password-protected LP document vault.",
-          challenge: "Old website looked generic and failed to attract top-tier AI/Web3 founders seeking capital.",
-          solution: "Editorial typography (Cinzel/Plus Jakarta), smooth page transitions, and interactive fund metric charts.",
+          title: "Xgrow Australia — Technical Search Foundation & Agency Platform",
+          client: "Xgrow Digital Australia (xgrow.com.au)",
+          industry: "Digital Growth & Agency Consultancy",
+          timeline: "Technical SEO Optimization",
+          overview:
+            "Structured comprehensive technical SEO and performance optimizations for Xgrow Australia, ensuring the growth consultancy ranks with authority for modern marketing services.",
+          challenge:
+            "Competitive digital marketing agency landscape across Australian metropolitan hubs.",
+          solution:
+            "Audited and resolved crawl errors, integrated semantic schema, optimized site architecture, and streamlined service case study portfolios.",
           stats: [
-            { metric: "$850M", label: "Assets Under Management Displayed" },
-            { metric: "+520%", label: "High-Quality Founder Pitch Decks" },
-            { metric: "100%", label: "Secure LP Portal Adoption" },
+            { metric: "98+", label: "Technical SEO Health Score" },
+            { metric: "<1s", label: "Page Load Time on Desktop & Mobile" },
+            { metric: "100%", label: "Semantic Heading Hierarchy Compliance" },
+            { metric: "+175%", label: "Consultation Inbound Growth" },
           ],
-          deliverables: ["Editorial Portfolio Showcase", "Secure LP Investor Vault", "Founder Submission Funnel"],
+          deliverables: [
+            "Technical SEO Audit & Error Resolution",
+            "Semantic Schema Markup & Case Studies",
+            "Core Web Vitals & Speed Optimization",
+            "B2B Client Inbound Funnels",
+          ],
           gallery: [
-            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200",
+            "/projects/xgrow-australia.jpg",
+          ],
+        },
+      },
+      {
+        id: "wsi-cleaning",
+        client: "WSI Cleaning",
+        category: "Industrial & Commercial Maintenance",
+        role: "Built clean service layout hierarchies, optimized quote CTAs, and on-page SEO.",
+        website: "https://wsicleaning.com/",
+        seoBadge: "Commercial Lead Architecture · CRO",
+        photo: {
+          url: "/projects/scrapbook/4.png",
+          text: "WSI Commercial Cleaning",
+          by: "Bhakti Jain Web Dev",
+        },
+        details: {
+          title: "WSI Cleaning — Industrial Maintenance & Service Lead Funnel",
+          client: "WSI Cleaning (wsicleaning.com)",
+          industry: "Facility Management & Industrial Maintenance",
+          timeline: "Web & SEO Architecture",
+          overview:
+            "Designed and developed a responsive web presence for WSI Commercial Cleaning, highlighting specialized industrial deep-cleaning, warehouse hygiene, and corporate office maintenance.",
+          challenge:
+            "Legacy web presence failed to communicate heavy-duty industrial capabilities or generate corporate RFP inquiries.",
+          solution:
+            "Engineered structured service modules, implemented prominent call-to-action touchpoints, and optimized page speed across all screen sizes.",
+          stats: [
+            { metric: "+195%", label: "Commercial Facility RFP Inquiries" },
+            { metric: "100%", label: "Responsive Mobile/Tablet Navigation" },
+            { metric: "Sub-Second", label: "Asset Loading Speed" },
+            { metric: "Local", label: "SEO Visibility for Industrial Cleaning" },
+          ],
+          deliverables: [
+            "Industrial Service Layout Hierarchy",
+            "Quote Request & RFP Contact Pathways",
+            "On-Page Technical SEO Foundations",
+            "Mobile-Optimized Service Specifications",
+          ],
+          gallery: [
+            "/projects/scrapbook/4.png",
+            "/projects/scrapbook/5.png",
+          ],
+        },
+      },
+      {
+        id: "konverge",
+        client: "Konverge Technologies",
+        category: "IT Infrastructure & Cloud Solutions",
+        role: "Structured enterprise technical service pages, streamlined navigation, and performance optimization.",
+        website: "https://konverge.co.in/",
+        seoBadge: "Enterprise Architecture · Speed",
+        photo: {
+          url: "/projects/scrapbook/6.png",
+          text: "Konverge Enterprise Technology",
+          by: "Bhakti Jain Web & SEO",
+        },
+        details: {
+          title: "Konverge Technologies — IT Infrastructure & Enterprise Architecture",
+          client: "Konverge Technologies (konverge.co.in)",
+          industry: "Enterprise IT, Cloud & Networking",
+          timeline: "Enterprise Web Architecture",
+          overview:
+            "Structured technical service portfolios and performance optimizations for Konverge Technologies, aligning enterprise networking, cloud solutions, and IT infrastructure capabilities with modern buyer expectations.",
+          challenge:
+            "Complex enterprise offerings required crisp visual categorization, rapid page rendering, and effortless lead capture for CIOs and IT directors.",
+          solution:
+            "Re-architected service silos, improved core web vitals, integrated conversion CTAs, and established foundational search metadata.",
+          stats: [
+            { metric: "99+", label: "Desktop Performance Score" },
+            { metric: "+210%", label: "Enterprise Inquiries Generated" },
+            { metric: "100%", label: "Cross-Device Layout Integrity" },
+            { metric: "Structured", label: "Enterprise IT Service Silos" },
+          ],
+          deliverables: [
+            "Enterprise Solutions Information Architecture",
+            "Core Web Vitals Performance Optimization",
+            "Technical SEO Metadata & Heading Hierarchy",
+            "Corporate Inbound Inquiry Funnels",
+          ],
+          gallery: [
+            "/projects/scrapbook/6.png",
+            "/projects/scrapbook/7.png",
           ],
         },
       },
     ],
   },
 
-  // 6. Our Projects (3D Showcase)
+  // 6. Featured Projects (Used by Polaroid Line Carousel on Home and ProjectDetailPage)
   projects: [
-  {
-    "id": "proj-1",
-    "name": "Apex Pulse Autonomous",
-    "title": "Apex Pulse Autonomous",
-    "category": "Web & Paid Acquisition",
-    "metric": "+340% Qualified Inbound",
-    "desc": "Architected a WebGL 3D showcase site and multi-touch Google/LinkedIn ad pipeline for an AI mobility unicorn.",
-    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-996-large.mp4",
-    "tags": [
-      "3D WebGL",
-      "Paid Search",
-      "Conversion Funnels"
-    ],
-    "client": "Apex Pulse Technologies",
-    "industry": "AI Mobility & Autonomous Transit",
-    "timeline": "4 Months",
-    "website": "https://apexpulse.ai",
-    "seoBadge": "+340% Pipeline · 0.58s LCP",
-    "details": {
-      "overview": "Apex Pulse engaged UPLIFT to engineer their flagship digital showcase and scale high-ticket enterprise acquisition.",
-      "challenge": "Elevated customer acquisition costs and low demonstration request rates from enterprise transport authorities.",
-      "solution": "Built a customized Three.js WebGL interactive fleet explorer paired with targeted Google/LinkedIn search funnels.",
-      "stats": [
-        {
-          "metric": "+340%",
-          "label": "Qualified Enterprise Inbound"
-        },
-        {
-          "metric": "0.58s",
-          "label": "Core Web Vitals LCP"
-        },
-        {
-          "metric": "5.8x",
-          "label": "Paid Search ROAS"
-        },
-        {
-          "metric": "48+",
-          "label": "Monthly High-Intent Demos"
-        }
-      ],
-      "deliverables": [
-        "Custom WebGL 3D Fleet Visualizer",
-        "Account-Based Marketing Ad Funnels",
-        "Conversion Rate Optimization (CRO)",
-        "Next.js Headless Architecture"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-2",
-    "name": "Solace Luxury Hospitality",
-    "title": "Solace Luxury Hospitality",
-    "category": "Branding & Social Reach",
-    "metric": "8.2M Viral Impressions",
-    "desc": "Rebranded an ultra-luxury eco-resort network with custom typography, 4K video reels, and VIP booking funnels.",
-    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4",
-    "tags": [
-      "Cinematic Shoots",
-      "Reels",
-      "Brand Identity"
-    ],
-    "client": "Solace Resorts Global",
-    "industry": "Luxury Hospitality & Travel",
-    "timeline": "6 Months",
-    "website": "https://solaceresorts.com",
-    "seoBadge": "8.2M Impressions · +185% Bookings",
-    "details": {
-      "overview": "Redesigned Solace's global hospitality identity, driving direct guest bookings away from high-commission OTA portals.",
-      "challenge": "Over-reliance on third-party aggregators (Booking.com/Expedia) costing 20%+ in direct booking margins.",
-      "solution": "Engineered experiential web booking engine, on-location cinematic 4K production, and viral Instagram/TikTok campaigns.",
-      "stats": [
-        {
-          "metric": "8.2M",
-          "label": "Organic Viral Video Impressions"
-        },
-        {
-          "metric": "+185%",
-          "label": "Direct HNW Guest Bookings"
-        },
-        {
-          "metric": "$3,400",
-          "label": "Average Guest Reservation Value"
-        },
-        {
-          "metric": "100%",
-          "label": "Bespoke Typography System"
-        }
-      ],
-      "deliverables": [
-        "Full Brand Identity & Design System",
-        "High-Definition 4K Aerial Video Reels",
-        "Direct VIP Booking Engine",
-        "Instagram & Meta Acquisition Strategy"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-3",
-    "name": "Nexus BioHealth",
-    "title": "Nexus BioHealth",
-    "category": "SEO & Content Domination",
-    "metric": "#1 Ranking for 85+ Keywords",
-    "desc": "Engineered programmatic content hubs and technical schema that captured over 500,000 monthly organic patients.",
-    "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-futuristic-robotic-arm-working-in-a-laboratory-41486-large.mp4",
-    "tags": [
-      "Technical SEO",
-      "AEO / SXO",
-      "Editorial Authority"
-    ],
-    "client": "Nexus Health Systems",
-    "industry": "HealthTech & Clinical Diagnostics",
-    "timeline": "5 Months",
-    "website": "https://nexusbiohealth.com",
-    "seoBadge": "520K Organic Visitors · 85 #1 Ranks",
-    "details": {
-      "overview": "Developed programmatic clinical search authority capturing high-intent medical queries nationwide.",
-      "challenge": "Outranked by legacy medical dictionaries and paying unsustainable rates on Google Ads keyword auctions.",
-      "solution": "Built automated medical content hubs validated by MD panels with structured schema markup and answer-engine optimization.",
-      "stats": [
-        {
-          "metric": "85+",
-          "label": "Top-1 Google Search Rankings"
-        },
-        {
-          "metric": "+420%",
-          "label": "Organic Patient Appointment Inquiries"
-        },
-        {
-          "metric": "520K+",
-          "label": "Monthly Organic Unique Visitors"
-        },
-        {
-          "metric": "99/100",
-          "label": "Google PageSpeed Core Vitals"
-        }
-      ],
-      "deliverables": [
-        "Programmatic Technical SEO Engine",
-        "Medical Schema & Knowledge Graph Hub",
-        "Automated Patient Booking Integration",
-        "Core Web Vitals Optimization"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-4",
-    "name": "Verve FinTech Platform",
-    "title": "Verve FinTech Platform",
-    "category": "Paid Social & CRO",
-    "metric": "-52% Customer Acquisition Cost",
-    "desc": "Revamped creative hooks and deployed micro-targeted Meta/TikTok campaigns generating 40,000+ app installs in 60 days.",
-    "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-with-a-green-screen-41530-large.mp4",
-    "tags": [
-      "App Acquisition",
-      "TikTok Ads",
-      "Meta Scale"
-    ],
-    "client": "Verve Banking Inc.",
-    "industry": "Financial Services & Neobank",
-    "timeline": "3 Months",
-    "website": "https://vervebanking.io",
-    "seoBadge": "-52% CAC · 40K App Installs",
-    "details": {
-      "overview": "Transformed Verve's mobile app user acquisition with viral UGC creative frameworks and conversion-optimized onboarding funnels.",
-      "challenge": "Skyrocketing CAC across paid social and a 65% drop-off rate during KYC identity verification.",
-      "solution": "Created 80+ dynamic UGC ad angles, streamlined step-by-step onboarding, and implemented server-side CAPI tracking.",
-      "stats": [
-        {
-          "metric": "-52%",
-          "label": "Blended Customer Acquisition Cost"
-        },
-        {
-          "metric": "40,000+",
-          "label": "Verified App Installs in 60 Days"
-        },
-        {
-          "metric": "+74%",
-          "label": "KYC Account Completion Rate"
-        },
-        {
-          "metric": "$12M+",
-          "label": "Total Deposits Seeded"
-        }
-      ],
-      "deliverables": [
-        "High-Impact UGC Ad Creative Library",
-        "Onboarding Conversion Rate Optimization",
-        "TikTok & Meta Performance Campaigns",
-        "Mixpanel Analytics & CAPI Setup"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-5",
-    "name": "Kroma Studio Soundware",
-    "title": "Kroma Studio Soundware",
-    "category": "Commercial Shoots & Product Launch",
-    "metric": "$2.1M Launch Weekend",
-    "desc": "High-octane product reveal film, 3D asset renders, and an international influencer rollout for next-gen audio gear.",
-    "image": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-dj-mixing-music-in-a-club-41712-large.mp4",
-    "tags": [
-      "Commercial Video",
-      "3D Product Renders",
-      "Launch Event"
-    ],
-    "client": "Kroma Audio Labs",
-    "industry": "Consumer Electronics & Audio",
-    "timeline": "4 Months",
-    "website": "https://kromasound.com",
-    "seoBadge": "$2.1M Weekend · 100% Sold Out",
-    "details": {
-      "overview": "Executed a comprehensive global product launch for Kroma's studio-grade planar magnetic headphones.",
-      "challenge": "Standing out in a saturated acoustic market dominated by legacy audio behemoths (Sony/Sennheiser).",
-      "solution": "Produced cinematic 3D exploded assembly videos, staged professional shoots with Grammy-nominated producers, and ran VIP pre-orders.",
-      "stats": [
-        {
-          "metric": "$2.1M",
-          "label": "Gross Revenue in Launch Weekend"
-        },
-        {
-          "metric": "10,000",
-          "label": "Units Sold Out in 48 Hours"
-        },
-        {
-          "metric": "18M+",
-          "label": "Video Views Across YouTube & X"
-        },
-        {
-          "metric": "3.9x",
-          "label": "Direct Advertising ROAS"
-        }
-      ],
-      "deliverables": [
-        "4K Commercial Product Reveal Film",
-        "Exploded 3D WebGL Audio Hardware Visualizer",
-        "Global Tech Influencer Gifting Kit",
-        "High-Converting Shopify Plus Custom Theme"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-6",
-    "name": "Aethelgard High Fashion",
-    "title": "Aethelgard High Fashion",
-    "category": "E-Commerce Headless & Paid Funnel",
-    "metric": "6.8x ROAS Sustained",
-    "desc": "Rebuilt bespoke e-commerce store with seamless checkout flow and automated retention SMS/Email flows.",
-    "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-fashion-model-posing-in-a-photo-studio-41740-large.mp4",
-    "tags": [
-      "Headless E-Com",
-      "Retention Flows",
-      "Paid Meta"
-    ],
-    "client": "Aethelgard Couture Paris",
-    "industry": "Luxury Fashion & Retail",
-    "timeline": "5 Months",
-    "website": "https://aethelgard.fashion",
-    "seoBadge": "6.8x ROAS · +210% AOV",
-    "details": {
-      "overview": "Engineered an ultra-fast headless luxury fashion storefront with bespoke tailoring configurator and automated VIP retention engines.",
-      "challenge": "Legacy e-commerce store suffered from high cart abandonment and slow mobile rendering of high-resolution lookbooks.",
-      "solution": "Migrated to Next.js edge storefront with sub-second image loading, one-click Apple Pay checkout, and Klaviyo automated flows.",
-      "stats": [
-        {
-          "metric": "6.8x",
-          "label": "Sustained Return On Ad Spend"
-        },
-        {
-          "metric": "+210%",
-          "label": "Average Order Value (AOV)"
-        },
-        {
-          "metric": "48%",
-          "label": "Repeat Purchase Rate within 90 Days"
-        },
-        {
-          "metric": "0.45s",
-          "label": "Catalogue Filter Response Time"
-        }
-      ],
-      "deliverables": [
-        "Headless Next.js Global Fashion Flagship",
-        "Automated Klaviyo Omnichannel Retention",
-        "Dynamic Retargeting & Meta VIP Funnels",
-        "Custom Lookbook Video Integrations"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-7",
-    "name": "Cobalt Cyber Defense",
-    "title": "Cobalt Cyber Defense",
-    "category": "Web & Paid Acquisition",
-    "metric": "$6.4M ACV Pipeline",
-    "desc": "Engineered dark-aesthetic enterprise cyber portal with interactive threat customizer and LinkedIn ABM ad funnels.",
-    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-996-large.mp4",
-    "tags": [
-      "Enterprise ABM",
-      "Cyber Security",
-      "Lead Funnels"
-    ],
-    "client": "Cobalt Threat Intelligence",
-    "industry": "Cybersecurity & Defense",
-    "timeline": "4 Months",
-    "website": "https://cobaltdefense.com",
-    "seoBadge": "$6.4M Pipeline · 84 Enterprise Demos",
-    "details": {
-      "overview": "Cobalt hired UPLIFT to reposition their threat intelligence software to Fortune 500 CISOs and security directors.",
-      "challenge": "Legacy marketing was overly technical, bland, and failed to differentiate from generic antivirus providers.",
-      "solution": "Built a high-tech dark mode portal with real-time attack simulations and account-based LinkedIn demand generation.",
-      "stats": [
-        {
-          "metric": "$6.4M",
-          "label": "Annual Contract Value (ACV) Pipeline"
-        },
-        {
-          "metric": "84",
-          "label": "Fortune 1000 CISO Meetings Secured"
-        },
-        {
-          "metric": "+310%",
-          "label": "Whitepaper Downloads to SQL Conversion"
-        },
-        {
-          "metric": "4.2x",
-          "label": "LinkedIn Account-Based Ad ROI"
-        }
-      ],
-      "deliverables": [
-        "Enterprise Brand Positioning & Messaging",
-        "Interactive Threat Matrix Customizer",
-        "Targeted LinkedIn CISO Ad Funnels",
-        "Gated Asset Conversion Strategy"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-8",
-    "name": "Prism Spatial Architecture",
-    "title": "Prism Spatial Architecture",
-    "category": "Branding & Social Reach",
-    "metric": "+460% HNW Inquiries",
-    "desc": "Architectural 3D WebGL tour platform with real-time solar simulation for premier luxury villas and estates.",
-    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4",
-    "tags": [
-      "3D Architecture",
-      "High-Net-Worth",
-      "Virtual Tours"
-    ],
-    "client": "Prism Studio Architecture",
-    "industry": "Luxury Architecture & Real Estate",
-    "timeline": "3 Months",
-    "website": "https://prismstudio.design",
-    "seoBadge": "+460% HNW Inquiries · 60fps 3D",
-    "details": {
-      "overview": "Created a real-time 3D spatial portfolio allowing ultra-high-net-worth clients to explore luxury architectural projects in 60fps WebGL.",
-      "challenge": "Static PDF renderings failed to convey the grandeur of multimillion-dollar bespoke architectural designs.",
-      "solution": "Engineered interactive 3D browser walkthroughs with daytime/nighttime lighting toggles and direct consultation booking.",
-      "stats": [
-        {
-          "metric": "+460%",
-          "label": "High-Net-Worth Client Inquiries"
-        },
-        {
-          "metric": "60fps",
-          "label": "Silky Smooth WebGL Framerate"
-        },
-        {
-          "metric": "$45M+",
-          "label": "Real Estate Value Commissioned"
-        },
-        {
-          "metric": "4.8m",
-          "label": "Average Session Duration on Site"
-        }
-      ],
-      "deliverables": [
-        "Custom 3D WebGL Architectural Visualizer",
-        "Luxury Brand Identity & Editorial Typography",
-        "Private Client Lead Routing Funnel",
-        "Ultra-High Resolution Portfolio Viewer"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-9",
-    "name": "Orbit Cloud Infrastructure",
-    "title": "Orbit Cloud Infrastructure",
-    "category": "SEO & Content Domination",
-    "metric": "1.2M Monthly Devs",
-    "desc": "Programmatic developer documentation portal, benchmarks engine, and technical search authority.",
-    "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-996-large.mp4",
-    "tags": [
-      "Developer Marketing",
-      "Technical SEO",
-      "Docs Portal"
-    ],
-    "client": "Orbit Cloud Compute",
-    "industry": "Cloud Infrastructure & DevOps",
-    "timeline": "6 Months",
-    "website": "https://orbitcloud.dev",
-    "seoBadge": "1.2M Monthly Devs · 98 CWV",
-    "details": {
-      "overview": "Built the developer portal and technical SEO ecosystem that positioned Orbit as the premier developer-first cloud alternative.",
-      "challenge": "High customer acquisition costs via generic Google keywords and poor documentation SEO rankings.",
-      "solution": "Engineered Markdown-based documentation system with interactive terminal code runners and automated performance benchmarks.",
-      "stats": [
-        {
-          "metric": "1.2M+",
-          "label": "Monthly Developer Unique Visitors"
-        },
-        {
-          "metric": "98/100",
-          "label": "Core Web Vitals Accessibility & Speed"
-        },
-        {
-          "metric": "+290%",
-          "label": "Free Tier to Paid Instance Conversions"
-        },
-        {
-          "metric": "15,000+",
-          "label": "GitHub Stars Generated from Dev Hub"
-        }
-      ],
-      "deliverables": [
-        "Full-Stack Developer Portal Architecture",
-        "Interactive Web Terminal & Code Playground",
-        "Programmatic SEO for Cloud Benchmarks",
-        "Developer Community Growth System"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-10",
-    "name": "Aura Haute Horlogerie",
-    "title": "Aura Haute Horlogerie",
-    "category": "E-Commerce Headless & Paid Funnel",
-    "metric": "+280% Private Client Sales",
-    "desc": "Bespoke digital timepiece atelier with 3D dial inspect, VIP concierge routing, and multi-tier retargeting.",
-    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-fashion-model-posing-in-a-photo-studio-41740-large.mp4",
-    "tags": [
-      "Fine Watches",
-      "Concierge Funnel",
-      "3D Dial Viewer"
-    ],
-    "client": "Aura Geneve Horlogerie",
-    "industry": "Luxury Timepieces & Swiss Watches",
-    "timeline": "4 Months",
-    "website": "https://auratimepieces.ch",
-    "seoBadge": "+280% Private Sales · $18K AOV",
-    "details": {
-      "overview": "Created a private client digital salon for Swiss horology collectors, bridging haute horlogerie craftsmanship with modern digital sales.",
-      "challenge": "Timepieces averaging $18,000 required an elite level of digital intimacy and tactile representation before ordering.",
-      "solution": "Engineered ultra-macro 3D dial zoom viewports, WhatsApp concierge integration, and private showroom appointment flows.",
-      "stats": [
-        {
-          "metric": "+280%",
-          "label": "Direct-to-Collector Private Sales"
-        },
-        {
-          "metric": "$18,500",
-          "label": "Average Transaction Value"
-        },
-        {
-          "metric": "92%",
-          "label": "Concierge Chat Booking Rate"
-        },
-        {
-          "metric": "4.6x",
-          "label": "High-Net-Worth Retargeting ROAS"
-        }
-      ],
-      "deliverables": [
-        "Macro 3D Dial & Movement Visualizer",
-        "Private Concierge WhatsApp Routing",
-        "Exclusive VIP Invitation Funnels",
-        "High-Resolution Editorial Product Photography"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-11",
-    "name": "Zenith Renewable Power",
-    "title": "Zenith Renewable Power",
-    "category": "Web & Paid Acquisition",
-    "metric": "+410% Enterprise Contracts",
-    "desc": "Clean energy commercial solar calculator web platform paired with Google Performance Max and account-based ads.",
-    "image": "https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-996-large.mp4",
-    "tags": [
-      "CleanTech",
-      "Performance Max",
-      "Commercial ROI"
-    ],
-    "client": "Zenith Energy Solutions",
-    "industry": "CleanTech & Industrial Solar",
-    "timeline": "4 Months",
-    "website": "https://zenithpower.energy",
-    "seoBadge": "+410% Contracts · $18M Pipeline",
-    "details": {
-      "overview": "Developed commercial solar ROI estimator web apps and high-intent Google B2B search funnels for industrial facilities.",
-      "challenge": "Long 9-month sales cycles and confusing utility rate proposals caused massive prospect abandonment.",
-      "solution": "Built an interactive address-based commercial solar payback calculator that immediately estimates corporate energy savings.",
-      "stats": [
-        {
-          "metric": "+410%",
-          "label": "Signed Commercial EPC Contracts"
-        },
-        {
-          "metric": "$18M+",
-          "label": "Qualified Solar Project Pipeline"
-        },
-        {
-          "metric": "-48%",
-          "label": "Average Sales Cycle Duration"
-        },
-        {
-          "metric": "6.1x",
-          "label": "Google Performance Max Ad ROI"
-        }
-      ],
-      "deliverables": [
-        "Interactive Commercial Solar ROI Calculator",
-        "Google B2B Search & Performance Max Funnels",
-        "Automated Utility Proposal Generator",
-        "Full-Stack Web Application"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-12",
-    "name": "Velox Logistics Network",
-    "title": "Velox Logistics Network",
-    "category": "SEO & Content Domination",
-    "metric": "94% Account Retention",
-    "desc": "Global supply chain freight tracking hub and multi-region programmatic SEO across 40 countries.",
-    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-futuristic-robotic-arm-working-in-a-laboratory-41486-large.mp4",
-    "tags": [
-      "Supply Chain",
-      "Global SEO",
-      "Tracking Hub"
-    ],
-    "client": "Velox Global Freight",
-    "industry": "Global Logistics & Freight Forwarding",
-    "timeline": "5 Months",
-    "website": "https://veloxfreight.com",
-    "seoBadge": "94% Retention · 40 Countries",
-    "details": {
-      "overview": "Engineered an enterprise logistics dashboard and international localized search architecture for freight forwarding across 40 countries.",
-      "challenge": "Legacy portal had zero mobile tracking capabilities and fragmented regional domains confusing global importers.",
-      "solution": "Consolidated multi-country architecture with automated cargo tracking, live vessel maps, and targeted supply chain content.",
-      "stats": [
-        {
-          "metric": "94%",
-          "label": "Enterprise Shipper Account Retention"
-        },
-        {
-          "metric": "40",
-          "label": "Country Regions Localized & Ranked"
-        },
-        {
-          "metric": "+330%",
-          "label": "Inbound Freight Quotation Inquiries"
-        },
-        {
-          "metric": "0.52s",
-          "label": "Live Tracking API Response Time"
-        }
-      ],
-      "deliverables": [
-        "Global Headless Multi-Lingual Architecture",
-        "Real-Time Container Tracking Web App",
-        "International SEO & Schema Markup",
-        "Enterprise Quotation Pipeline System"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-13",
-    "name": "Lumina Dermatology Clinic",
-    "title": "Lumina Dermatology Clinic",
-    "category": "Paid Social & CRO",
-    "metric": "+390% High-Ticket Consults",
-    "desc": "Hyper-local geo-fenced Meta & Google Ads funnel driving pre-paid aesthetics consultations across 12 clinic branches.",
-    "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-with-a-green-screen-41530-large.mp4",
-    "tags": [
-      "Local Ads",
-      "Clinic Funnels",
-      "Pre-Paid Consults"
-    ],
-    "client": "Lumina Aesthetics Group",
-    "industry": "Dermatology & Medical Aesthetics",
-    "timeline": "3 Months",
-    "website": "https://luminaclinic.com",
-    "seoBadge": "+390% Consults · 12 Locations",
-    "details": {
-      "overview": "Scaled high-ticket cosmetic dermatology bookings across Lumina's premier clinic network with geo-fenced paid social funnels.",
-      "challenge": "High no-show rates (35%) on unpaid consultation requests and fierce local competition for laser treatment search terms.",
-      "solution": "Implemented pre-paid consultation booking funnels, automated SMS reminders, and physician-led video testimonial ad creative.",
-      "stats": [
-        {
-          "metric": "+390%",
-          "label": "Pre-Paid High-Ticket Consultations"
-        },
-        {
-          "metric": "4.8%",
-          "label": "Consultation No-Show Rate (Down from 35%)"
-        },
-        {
-          "metric": "$1,850",
-          "label": "Average Patient Lifetime Value"
-        },
-        {
-          "metric": "5.4x",
-          "label": "Local Meta & Google Ads ROI"
-        }
-      ],
-      "deliverables": [
-        "Automated Pre-Payment Booking Funnel",
-        "Hyper-Local Geo-Fenced Meta Ad Campaigns",
-        "SMS & Email Patient Nurture Automation",
-        "Physician Video Social Ad Production"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-14",
-    "name": "Novus AI Copilot",
-    "title": "Novus AI Copilot",
-    "category": "Web & Paid Acquisition",
-    "metric": "250K+ Monthly Active Users",
-    "desc": "Interactive WebGL interactive product demonstration site, product-led SEO loops, and viral X/Twitter growth campaigns.",
-    "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-996-large.mp4",
-    "tags": [
-      "Generative AI",
-      "Product-Led Growth",
-      "Viral Loops"
-    ],
-    "client": "Novus Intelligence Corp",
-    "industry": "Artificial Intelligence & SaaS",
-    "timeline": "3 Months",
-    "website": "https://novusai.tech",
-    "seoBadge": "250K MAUs · $4.8M ARR",
-    "details": {
-      "overview": "Architected the product-led growth website and viral launch mechanics that accelerated Novus AI to 250,000 active enterprise users.",
-      "challenge": "Explaining complex agentic AI workflows simply and getting developers to immediately sign up without sales friction.",
-      "solution": "Created an in-browser live sandbox preview where visitors type natural prompts and watch the AI execute in real time.",
-      "stats": [
-        {
-          "metric": "250,000+",
-          "label": "Monthly Active Users Acquired"
-        },
-        {
-          "metric": "38%",
-          "label": "Homepage Visitor to Free Trial Signup"
-        },
-        {
-          "metric": "$4.8M",
-          "label": "Annual Recurring Revenue (ARR)"
-        },
-        {
-          "metric": "12M+",
-          "label": "Impressions on X Product Launch"
-        }
-      ],
-      "deliverables": [
-        "Real-Time In-Browser AI Sandbox",
-        "Product-Led Growth Onboarding Architecture",
-        "Viral X Launch Campaign Execution",
-        "Next.js Interactive Landing Experience"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-15",
-    "name": "Elysian Fine Spirits",
-    "title": "Elysian Fine Spirits",
-    "category": "Commercial Shoots & Product Launch",
-    "metric": "45M+ Video Views",
-    "desc": "Cinematic barrel-aged visual storytelling, viral social reels, and limited-edition allocation drops selling out in seconds.",
-    "image": "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-dj-mixing-music-in-a-club-41712-large.mp4",
-    "tags": [
-      "Artisanal Spirits",
-      "Viral Reels",
-      "Bottle Drops"
-    ],
-    "client": "Elysian Distillers",
-    "industry": "Craft Spirits & DTC Beverage",
-    "timeline": "4 Months",
-    "website": "https://elysianspirits.com",
-    "seoBadge": "45M Views · Sold Out in 90s",
-    "details": {
-      "overview": "Built an iconic cult luxury spirits brand through atmospheric cinematic filmmaking, viral short-form storytelling, and exclusive bottle drops.",
-      "challenge": "Alcohol advertising faces stringent platform regulations and saturated shelf space in traditional retail outlets.",
-      "solution": "Shifted entirely to organic viral storytelling showcasing copper pot stills and oak barrel aging, backed by SMS waitlists.",
-      "stats": [
-        {
-          "metric": "45M+",
-          "label": "Viral Views on Short-Form Video"
-        },
-        {
-          "metric": "90s",
-          "label": "Batch Allocation Sold Out Record"
-        },
-        {
-          "metric": "65,000+",
-          "label": "SMS VIP Bottle Drop Subscribers"
-        },
-        {
-          "metric": "8.4x",
-          "label": "DTC Revenue Growth Year-Over-Year"
-        }
-      ],
-      "deliverables": [
-        "4K Cinema Craftsmanship Docuseries",
-        "VIP SMS Bottle Drop Architecture",
-        "Shopify Plus Bespoke Dark Flagship",
-        "Viral TikTok & Instagram Production"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-16",
-    "name": "Synapse NeuroTech",
-    "title": "Synapse NeuroTech",
-    "category": "Branding & Social Reach",
-    "metric": "$38M Venture Round Closed",
-    "desc": "Visual brand overhaul, interactive neural interface demo, and investor deck motion graphics for Series B syndicate.",
-    "image": "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-futuristic-robotic-arm-working-in-a-laboratory-41486-large.mp4",
-    "tags": [
-      "DeepTech",
-      "Series B Brand",
-      "Neural WebGL"
-    ],
-    "client": "Synapse Interface Corp",
-    "industry": "Neurotechnology & Brain-Computer Interfaces",
-    "timeline": "2 Months",
-    "website": "https://synapseneuro.io",
-    "seoBadge": "$38M Closed · Series B",
-    "details": {
-      "overview": "Executed the high-profile digital rebrand and interactive WebGL pitch experience that powered Synapse's oversubscribed $38M Series B.",
-      "challenge": "Complex neural biosensors required communicating scientific credibility to institutional investors without alienating tech press.",
-      "solution": "Engineered an interactive 3D brain signal viewer, pristine typography, and a private investor credentials room.",
-      "stats": [
-        {
-          "metric": "$38M",
-          "label": "Series B Venture Capital Closed"
-        },
-        {
-          "metric": "45+",
-          "label": "Top-Tier Tech Crunch & Bloomberg Features"
-        },
-        {
-          "metric": "100%",
-          "label": "Investor Data Room Engagement"
-        },
-        {
-          "metric": "+580%",
-          "label": "Senior AI & Neuroscience Job Applications"
-        }
-      ],
-      "deliverables": [
-        "3D WebGL Neural Interface Simulation",
-        "Interactive Investor Data Room",
-        "Brand Identity & Whitepaper Typography",
-        "Global Press Launch PR Package"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-17",
-    "name": "Crestview Capital Partners",
-    "title": "Crestview Capital Partners",
-    "category": "SEO & Content Domination",
-    "metric": "$1.4B AUM Displayed",
-    "desc": "Ultra-prestigious institutional website, password-secured LP room, and high-net-worth thought leadership publication.",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-996-large.mp4",
-    "tags": [
-      "Private Equity",
-      "LP Portal",
-      "Institutional SEO"
-    ],
-    "client": "Crestview Private Equity",
-    "industry": "Private Equity & Sovereign Wealth",
-    "timeline": "5 Months",
-    "website": "https://crestviewpe.fund",
-    "seoBadge": "$1.4B AUM · Secure LP Vault",
-    "details": {
-      "overview": "Designed and engineered the global digital presence for Crestview Capital, showcasing over $1.4B in private equity transactions.",
-      "challenge": "Legacy private equity website looked dated and lacked secure document streaming for accredited limited partners.",
-      "solution": "Crafted stately editorial typography, interactive portfolio performance metrics, and an end-to-end encrypted LP investor vault.",
-      "stats": [
-        {
-          "metric": "$1.4B",
-          "label": "Assets Under Management Displayed"
-        },
-        {
-          "metric": "100%",
-          "label": "Institutional LP Portal Adoption"
-        },
-        {
-          "metric": "+520%",
-          "label": "High-Quality Proprietary Dealflow Inbound"
-        },
-        {
-          "metric": "0.42s",
-          "label": "Sub-Second Global Page Load"
-        }
-      ],
-      "deliverables": [
-        "Editorial Institutional Fund Website",
-        "Encrypted Limited Partner Document Room",
-        "Interactive Portfolio Fund Filter",
-        "Executive Thought Leadership Publication"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-18",
-    "name": "Terra Outdoor Equipment",
-    "title": "Terra Outdoor Equipment",
-    "category": "E-Commerce Headless & Paid Funnel",
-    "metric": "5.2x Blended ROAS",
-    "desc": "Next.js headless outdoor storefront with interactive gear customizer, automated email flows, and omni-channel paid search.",
-    "image": "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4",
-    "tags": [
-      "Outdoor Gear",
-      "Next.js Headless",
-      "Google PMax"
-    ],
-    "client": "Terra Expedition Equipment",
-    "industry": "Outdoor Apparel & Technical Gear",
-    "timeline": "4 Months",
-    "website": "https://terraoutdoors.co",
-    "seoBadge": "5.2x ROAS · +140% DTC Revenue",
-    "details": {
-      "overview": "Scaled Terra's technical mountain gear DTC revenue with an agile headless storefront and full-funnel search marketing.",
-      "challenge": "High cart abandonment due to complex sizing charts and slow rendering of high-resolution 360-degree product photos.",
-      "solution": "Engineered 360-degree interactive gear customizer, personalized fit quiz, and dynamic Google Shopping Performance Max campaigns.",
-      "stats": [
-        {
-          "metric": "5.2x",
-          "label": "Blended Return On Ad Spend"
-        },
-        {
-          "metric": "+140%",
-          "label": "DTC Revenue Growth Year-Over-Year"
-        },
-        {
-          "metric": "62%",
-          "label": "Fit Quiz Completion Rate"
-        },
-        {
-          "metric": "-32%",
-          "label": "Return Rate Due to Improved Sizing UX"
-        }
-      ],
-      "deliverables": [
-        "Headless Next.js Technical Apparel Store",
-        "Interactive 3D Gear Customizer",
-        "Google Shopping & Search Performance Max",
-        "Automated Post-Purchase Lifecycle Flows"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-19",
-    "name": "Vanguard Autonomous EV",
-    "title": "Vanguard Autonomous EV",
-    "category": "Web & Paid Acquisition",
-    "metric": "+315% Fleet Partnerships",
-    "desc": "Industrial EV fleet management digital dashboard preview, commercial B2B sales funnel, and targeted LinkedIn executive ads.",
-    "image": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-996-large.mp4",
-    "tags": [
-      "EV Fleets",
-      "B2B Sales Funnel",
-      "Fleet Telematics"
-    ],
-    "client": "Vanguard Mobility Systems",
-    "industry": "Commercial EV Fleets & Telematics",
-    "timeline": "5 Months",
-    "website": "https://vanguardfleet.com",
-    "seoBadge": "+315% Contracts · 4,200 Vehicles",
-    "details": {
-      "overview": "Repositioned Vanguard's commercial electric fleet telematics platform to municipal transport directors and logistics leaders.",
-      "challenge": "Complex regulatory and telemetry data overwhelmed prospective fleet operators on the old corporate site.",
-      "solution": "Designed a clean, dark-mode interactive telematics preview with real-time fleet battery efficiency calculators.",
-      "stats": [
-        {
-          "metric": "+315%",
-          "label": "Commercial Fleet Partnership Inquiries"
-        },
-        {
-          "metric": "4,200+",
-          "label": "Commercial EVs Contracted on Platform"
-        },
-        {
-          "metric": "4.8x",
-          "label": "B2B LinkedIn Executive Ad ROI"
-        },
-        {
-          "metric": "$28M",
-          "label": "Total Fleet Contract Value Generated"
-        }
-      ],
-      "deliverables": [
-        "Interactive Telematics Fleet Dashboard Simulator",
-        "Commercial B2B Lead Capture Architecture",
-        "Targeted LinkedIn C-Suite Ad Campaigns",
-        "Enterprise Proposal Generation System"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  },
-  {
-    "id": "proj-20",
-    "name": "Hyperion Creator Media",
-    "title": "Hyperion Creator Media",
-    "category": "Commercial Shoots & Product Launch",
-    "metric": "120M+ Monthly Impressions",
-    "desc": "High-volume short-form content factory, 4K multi-camera studio production, and algorithmic syndication across TikTok/YouTube.",
-    "image": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=1200",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-dj-mixing-music-in-a-club-41712-large.mp4",
-    "tags": [
-      "Creator Studio",
-      "Viral Syndication",
-      "Short-Form Video"
-    ],
-    "client": "Hyperion Studios Los Angeles",
-    "industry": "Digital Media & Creator Economy",
-    "timeline": "Ongoing Retainer",
-    "website": "https://hyperionmedia.agency",
-    "seoBadge": "120M Monthly Views · 4K Cinema",
-    "details": {
-      "overview": "Engineered Hyperion's global short-form video production engine, generating over 120M organic views every month.",
-      "challenge": "Brands and creators struggled with content consistency, high production bottlenecks, and rapidly shifting algorithms.",
-      "solution": "Built a turnkey cinema production studio with dedicated clip editors, A/B thumbnail testing, and algorithmic distribution.",
-      "stats": [
-        {
-          "metric": "120M+",
-          "label": "Monthly Organic Video Views"
-        },
-        {
-          "metric": "240+",
-          "label": "High-Production 4K Clips Delivered/Mo"
-        },
-        {
-          "metric": "12.4%",
-          "label": "Average Audience Engagement Rate"
-        },
-        {
-          "metric": "3.2M",
-          "label": "New Followers Added for Clients"
-        }
-      ],
-      "deliverables": [
-        "4K Multi-Camera Studio Production Facility",
-        "Automated Clip Repurposing & Distribution Pipeline",
-        "Creator Brand Flagship & Talent Showcase",
-        "Real-Time Viral Analytics Dashboard"
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=1200"
-      ]
-    }
-  }
-],
+    {
+      id: "dr-vishal-yadav",
+      name: "Dr. Vishal Yadav",
+      title: "Dr. Vishal Yadav — Orthopedic Medical Website & Local SEO",
+      category: "Web & Paid Acquisition",
+      client: "Dr. Vishal Yadav",
+      industry: "Healthcare & Orthopedic Surgery",
+      timeline: "Complete Architecture & SEO Retainer",
+      website: "https://drvishalyadav.com/",
+      image: "/projects/dr-vishal-yadav.jpg",
+      videoUrl: "/media/wordpress-dr-vishal.mp4",
+      metric: "Top Local Doctor",
+      seoBadge: "Indore Orthopedic Search Leader · Sub-Second Load",
+      desc: "Designed, developed, and optimized the official medical website for Dr. Vishal Yadav, premier orthopedic and joint replacement surgeon in Indore.",
+      tags: ["WordPress", "Medical SEO", "Local Schema", "Appointment CRO"],
+      details: {
+        title: "Dr. Vishal Yadav — Orthopedic Medical Website & Local SEO Architecture",
+        client: "Dr. Vishal Yadav (Orthopedic Surgeon)",
+        industry: "Healthcare & Orthopedic Surgery",
+        timeline: "Complete Architecture & SEO Retainer",
+        overview:
+          "Designed, developed, and optimized the official medical website for Dr. Vishal Yadav (drvishalyadav.com), a renowned orthopedic surgeon, trauma and joint replacement specialist, and foot & ankle expert based in Indore, Madhya Pradesh.",
+        challenge:
+          "Specialized treatments (fracture surgeries, ankle arthroscopy, sports injuries, deformity correction) required an empathetic, patient-friendly UI/UX to streamline clinic and hospital appointment booking and establish strong local search discoverability in Indore.",
+        solution:
+          "Architected the website from scratch with clean semantic code, built dedicated treatment modules, integrated seamless appointment booking pathways for Medicare Hospital & Aarambh Clinic, and implemented local medical schema hierarchies.",
+        stats: [
+          { metric: "#1", label: "Local Orthopedic Specialist in Indore" },
+          { metric: "100%", label: "Mobile-First Patient Accessibility" },
+          { metric: "0.8s", label: "Page Load Speed" },
+          { metric: "24/7", label: "Streamlined Appointment Inquiries" },
+        ],
+        deliverables: [
+          "Complete Responsive Medical Website Architecture",
+          "Specialized Treatment & Orthopedic Care Modules",
+          "Local Medical SEO & Google Maps Optimization",
+          "Clinic & Hospital Appointment Inquiry Funnels",
+        ],
+        gallery: [
+          "/projects/dr-vishal-yadav.jpg",
+          "/projects/portfolio-pages/drvishal-portfolio.jpg",
+        ],
+      },
+    },
+    {
+      id: "carguroo-mechanic",
+      name: "CarGuroo Mechanic",
+      title: "CarGuroo Mechanic — Conversion SEO & Local Search Domination",
+      category: "SEO & Content Domination",
+      client: "CarGuroo Mechanic",
+      industry: "Automotive Services & Mobile Mechanics",
+      timeline: "Monthly Retainer Performance",
+      website: "https://www.carguroo.com.au/",
+      image: "/projects/portfolio-pages/carguroo-portfolio.jpg",
+      metric: "+120.8% Conversions",
+      seoBadge: "+120.8% Conversions MoM · 8.77k Impressions",
+      desc: "Executed comprehensive technical SEO, conversion rate optimization, and local Gold Coast ranking domination for mobile automotive repairs.",
+      tags: ["Technical SEO", "Google Search Console", "Local Citations", "Analytics 4"],
+      details: {
+        title: "CarGuroo Mechanic — Technical SEO, Conversions & Local Search Domination",
+        client: "CarGuroo Mechanic (carguroo.com.au)",
+        industry: "Automotive Services & Mobile Mechanics",
+        timeline: "Monthly Retainer Performance",
+        overview:
+          "Executed full-funnel search engine optimization for CarGuroo Mechanic across Gold Coast, Australia, optimizing service pages for emergency repairs, mobile diagnostics, and roadside assistance.",
+        challenge:
+          "Low organic impressions and weak conversion rates for high-intent emergency automotive searches across Gold Coast suburbs.",
+        solution:
+          "Overhauled on-page metadata, semantic heading hierarchies (H1-H3), internal linking silos, and local citations, supported by detailed monthly Google Search Console attribution reports.",
+        stats: [
+          { metric: "+120.8%", label: "Conversion Clicks Growth MoM" },
+          { metric: "+45.4%", label: "Organic Clicks Surge (152 to 221)" },
+          { metric: "8.77k", label: "Monthly Organic Impressions" },
+          { metric: "2.1%", label: "User Engagement Rate (from 1.2%)" },
+        ],
+        deliverables: [
+          "Technical SEO Architecture & Audit Resolution",
+          "Local SEO Optimization for Gold Coast Suburbs",
+          "High-Intent Keyword Mapping for Mobile Mechanics",
+          "Monthly Attribution & Conversion Reporting",
+        ],
+        gallery: [
+          "/projects/portfolio-pages/carguroo-portfolio.jpg",
+          "/projects/seo-reports/carguroo-seo-p3.jpg",
+          "/projects/seo-reports/carguroo-seo-p4.jpg",
+          "/projects/seo-reports/carguroo-seo-p7.jpg",
+        ],
+      },
+    },
+    {
+      id: "foodbiz-melbourne",
+      name: "Foodbiz Melbourne",
+      title: "Foodbiz Melbourne — B2B Wholesale Food SEO & Backlinks",
+      category: "SEO & Content Domination",
+      client: "Foodbiz Melbourne",
+      industry: "Wholesale Food & Commercial Catering",
+      timeline: "Dec – Jan Growth Campaign",
+      website: "https://foodbizmelbourne.com.au/",
+      image: "/projects/foodbiz-melbourne.jpg",
+      metric: "1.1k Backlinks",
+      seoBadge: "1.1k Backlinks · 97/100 SEO Audit Score",
+      desc: "Optimized website performance, keyword rankings (Top 1-3), and built 1,100+ backlinks for Victoria's leading wholesale food distributor.",
+      tags: ["WordPress", "Backlink Building", "Keyword Research", "B2B SEO"],
+      details: {
+        title: "Foodbiz Melbourne — B2B Food Distribution SEO & Backlink Authority",
+        client: "Foodbiz Melbourne (foodbizzmelbourne.com.au)",
+        industry: "Wholesale Food & Commercial Catering",
+        timeline: "Dec – Jan Growth Campaign",
+        overview:
+          "Optimized search performance, website responsiveness, and backlink authority for Foodbiz Melbourne, Victoria's premier wholesale food supplier to restaurants, cafes, and commercial kitchens.",
+        challenge:
+          "Stiff competition from national distributors and fragmented search presence for commercial catering and bulk food supplies in Melbourne.",
+        solution:
+          "Re-architected product categories, implemented local Melbourne on-page SEO, accelerated page load speeds, and built high-authority dofollow contextual backlinks.",
+        stats: [
+          { metric: "97/100", label: "SEO Audit Health Score" },
+          { metric: "1.1k", label: "Total Backlinks Built (58% Dofollow)" },
+          { metric: "91", label: "Referring Domains (78% Dofollow)" },
+          { metric: "Rank 1–3", label: "Top Wholesale Food Queries Melbourne" },
+        ],
+        deliverables: [
+          "WordPress Website Speed & Structure Optimization",
+          "Commercial Wholesale Keyword Targeting",
+          "High-DA Contextual Backlink Campaign",
+          "Local SEO for Victoria Hospitality Market",
+        ],
+        gallery: [
+          "/projects/foodbiz-melbourne.jpg",
+          "/projects/portfolio-pages/foodbiz-portfolio.jpg",
+          "/projects/seo-reports/foodbiz-seo-p2.jpg",
+          "/projects/seo-reports/foodbiz-seo-p3.jpg",
+        ],
+      },
+    },
+    {
+      id: "medilenz",
+      name: "Medilenz",
+      title: "Medilenz — Legal Healthcare Content SEO & Authority",
+      category: "SEO & Content Domination",
+      client: "Medilenz",
+      industry: "Legal Healthcare & Medical Records",
+      timeline: "Aug – Sept Retainer",
+      website: "https://medilenz.com/",
+      image: "/projects/medilenz.jpg",
+      metric: "+73.7% Clicks",
+      seoBadge: "+73.7% Organic Clicks · 3.9% CTR",
+      desc: "Delivered +73.7% click growth and nearly 3X CTR expansion through targeted medico-legal content strategy and contextual backlink outreach.",
+      tags: ["SEO Blog Content", "Authority Links", "Search Console", "Legal Tech"],
+      details: {
+        title: "Medilenz — Legal Healthcare Content SEO & Authority Building",
+        client: "Medilenz (medilenz.com)",
+        industry: "Legal Healthcare & Medical Records",
+        timeline: "Aug – Sept Retainer",
+        overview:
+          "Spearheaded SEO-driven content development and contextual backlink optimization for Medilenz, a specialized US platform delivering medical record chronologies and review services for litigation.",
+        challenge:
+          "Complex regulatory niche requiring exceptional search trust, high domain authority, and top rankings for competitive California legal search terms.",
+        solution:
+          "Targeted high-intent long-tail keywords (medical chronology California, record review), created structured informational content, and secured high-quality contextual links.",
+        stats: [
+          { metric: "+73.7%", label: "Organic Clicks Growth (198 to 344)" },
+          { metric: "12.9k", label: "Monthly Search Impressions (+24%)" },
+          { metric: "3.9%", label: "Average CTR (Nearly 3X Lift)" },
+          { metric: "Rank 1–3", label: "California Medico-Legal Terms" },
+        ],
+        deliverables: [
+          "Medico-Legal Blog & Content Optimization",
+          "High-Authority Contextual Backlinks",
+          "On-Page Technical & Meta Tag Enhancements",
+          "Search Console Performance Tracking",
+        ],
+        gallery: [
+          "/projects/medilenz.jpg",
+          "/projects/portfolio-pages/medilenz-portfolio.jpg",
+          "/projects/seo-reports/medilenz-seo-p3.jpg",
+          "/projects/seo-reports/medilenz-seo-p7.jpg",
+        ],
+      },
+    },
+    {
+      id: "morning-star-school",
+      name: "Morning Star School",
+      title: "Morning Star School — Educational Website & Local SEO",
+      category: "Web & Paid Acquisition",
+      client: "Morning Star School Ratlam",
+      industry: "Education & Academic Institutions",
+      timeline: "April – May Performance Sprint",
+      website: "https://morningstarratlam.com/",
+      image: "/projects/portfolio-pages/morningstar-portfolio.jpg",
+      metric: "#1 School in Ratlam",
+      seoBadge: "#1 Ranked School in Ratlam · Top SERP",
+      desc: "Re-engineered website layout and executed local SEO, achieving #1 Google ranking in Ratlam for admissions, fees, and campus offerings.",
+      tags: ["WordPress", "Local SEO", "Admissions Portal", "Speed Optimization"],
+      details: {
+        title: "Morning Star School — Educational Website Development & Local SEO",
+        client: "Morning Star School Ratlam",
+        industry: "Education & Academic Institutions",
+        timeline: "April – May Performance Sprint",
+        overview:
+          "Redesigned the official web presence and executed local educational SEO for Morning Star School Ratlam, a leading CBSE-affiliated institution focusing on holistic student development.",
+        challenge:
+          "Prospective parents and students were unable to discover admission criteria, fee structures, and campus facilities via organic search.",
+        solution:
+          "Re-engineered website layout, structured dedicated program modules, optimized page speed and mobile responsiveness, and targeted local Ratlam educational queries.",
+        stats: [
+          { metric: "#1", label: "Rank for 'Morning Star School Ratlam'" },
+          { metric: "Top 1–3", label: "Rank for 'Best School in Ratlam'" },
+          { metric: "100%", label: "Mobile-Responsive Parent Portal" },
+          { metric: "+250%", label: "Online Admission Inquiries" },
+        ],
+        deliverables: [
+          "Complete Educational Website Redesign",
+          "Admissions & Facilities Information Architecture",
+          "Local Educational Search Optimization",
+          "Page Speed & Mobile Performance Enhancements",
+        ],
+        gallery: [
+          "/projects/portfolio-pages/morningstar-portfolio.jpg",
+          "/projects/seo-reports/morningstar-seo-p3.jpg",
+          "/projects/seo-reports/morningstar-seo-p6.jpg",
+          "/projects/seo-reports/morningstar-seo-p7.jpg",
+        ],
+      },
+    },
+    {
+      id: "vijay-mantra",
+      name: "Vijay Mantra",
+      title: "Vijay Mantra — Academic Consultation Platform & Lead Engine",
+      category: "Web & Paid Acquisition",
+      client: "Vijay Mantra",
+      industry: "Higher Education & Career Counseling",
+      timeline: "End-to-End Build & SEO",
+      website: "https://vijaymantra.in/",
+      image: "/projects/vijay-mantra.jpg",
+      metric: "+320% Inquiries",
+      seoBadge: "Mobile-First UX · High Inquiry Funnels",
+      desc: "Designed and engineered the complete website architecture from scratch, optimizing counseling inquiry funnels and mobile responsiveness.",
+      tags: ["Web Engineering", "HTML5 / CSS3", "Inquiry Funnels", "Technical SEO"],
+      details: {
+        title: "Vijay Mantra — Academic Consultation Platform & Lead Engine",
+        client: "Vijay Mantra (vijaymantra.in)",
+        industry: "Higher Education & Career Counseling",
+        timeline: "End-to-End Build & SEO",
+        overview:
+          "Designed, developed, and optimized the complete website for Vijay Mantra, a premier educational services and career consultation platform dedicated to guiding students toward academic success.",
+        challenge:
+          "Outdated web platform lacked clear conversion pathways for counseling bookings and suffered from slow mobile rendering.",
+        solution:
+          "Developed the platform from the ground up using clean modular code, created dedicated academic program modules, and embedded prominent automated lead capture touchpoints.",
+        stats: [
+          { metric: "0.9s", label: "Average Mobile Load Time" },
+          { metric: "+320%", label: "Student Counseling Inquiries" },
+          { metric: "100%", label: "Cross-Device QA Compliance" },
+          { metric: "Top Tier", label: "Local Education Discoverability" },
+        ],
+        deliverables: [
+          "End-to-End Website Design & Development",
+          "High-Conversion Consultation Booking Funnels",
+          "Modular Academic Programs & Entrance Exam Pages",
+          "Foundational Technical SEO Implementation",
+        ],
+        gallery: [
+          "/projects/vijay-mantra.jpg",
+          "/projects/portfolio-pages/vijaymantra-portfolio.jpg",
+        ],
+      },
+    },
+    {
+      id: "valiun-venture",
+      name: "Valiun Venture",
+      title: "Valiun Venture — Enterprise IT Platform & Architecture",
+      category: "Web & Paid Acquisition",
+      client: "Valiun Venture",
+      industry: "Enterprise IT & Software Solutions",
+      timeline: "Full Architecture Build",
+      website: "https://valiun.com/",
+      image: "/projects/portfolio-pages/valiun-portfolio.jpg",
+      videoUrl: "/media/valiun-it-company.mp4",
+      metric: "99+ Core Web Vitals",
+      seoBadge: "Core Web Vitals 99+ · Custom Code",
+      desc: "Delivered custom-coded frontend architecture, modular UI components, and sub-second execution speeds for a modern IT consulting platform.",
+      tags: ["Custom Code", "HTML5 / CSS3", "Core Web Vitals", "B2B Architecture"],
+      details: {
+        title: "Valiun Venture — Modern Business IT Platform & Technical Architecture",
+        client: "Valiun Venture (valiun.com)",
+        industry: "Enterprise IT & Software Solutions",
+        timeline: "Full Architecture Build",
+        overview:
+          "Delivered end-to-end website development, technical architecture, and performance optimization for Valiun Venture, engineering a fast, modern digital presence built for scalability.",
+        challenge:
+          "Required an ultra-fast, modern website interface to present technical consulting capabilities and capture high-value enterprise B2B inquiries.",
+        solution:
+          "Implemented custom modular code with semantic HTML5 and modern CSS, optimized core web vitals, and structured clear call-to-action funnels across service and portfolio sections.",
+        stats: [
+          { metric: "99+", label: "Google Core Web Vitals Score" },
+          { metric: "<1s", label: "Server-Side Script Execution" },
+          { metric: "100%", label: "Cross-Browser Compatibility" },
+          { metric: "+280%", label: "Enterprise Inbound Lead Velocity" },
+        ],
+        deliverables: [
+          "Custom Semantic HTML5 & Modern CSS Layouts",
+          "Scalable Component Architecture",
+          "Core Web Vitals Speed Engineering",
+          "B2B Lead Capture Pathways",
+        ],
+        gallery: [
+          "/projects/portfolio-pages/valiun-portfolio.jpg",
+        ],
+      },
+    },
+    {
+      id: "nathu-mal-ghudoo-mal",
+      name: "Nathu Mal & Ghudoo Mal",
+      title: "Nathu Mal & Ghudoo Mal — Traditional Sweets E-Commerce",
+      category: "Web & Paid Acquisition",
+      client: "Nathu Mal & Ghudoo Mal",
+      industry: "E-Commerce & Confectionery Retail",
+      timeline: "Complete Storefront Launch",
+      website: "https://dmupliftportfolio.vercel.app/",
+      image: "/projects/nathumal/1.png",
+      metric: "Omnichannel Store",
+      seoBadge: "E-Commerce SEO · Omnichannel UX",
+      desc: "Designed and developed a premium digital storefront and product catalog for traditional sweets, festive gifting, and online confectionery sales.",
+      tags: ["E-Commerce", "Product Taxonomy", "On-Page SEO", "Responsive UX"],
+      details: {
+        title: "Nathu Mal & Ghudoo Mal — Traditional Sweets & Gifting E-Commerce",
+        client: "Nathu Mal & Ghudoo Mal",
+        industry: "E-Commerce & Confectionery Retail",
+        timeline: "Complete Storefront Launch",
+        overview:
+          "Planned, designed, and developed an e-commerce platform for Nathu Mal & Ghudoo Mal, creating a premium digital storefront to showcase traditional sweets, festive hampers, and gifting collections.",
+        challenge:
+          "Translating heritage brand identity into a seamless online ordering platform with structured category browsing and mobile-friendly purchasing flows.",
+        solution:
+          "Created responsive product pages, optimized typography and visual hierarchy, streamlined checkout pathways, and implemented on-page e-commerce SEO.",
+        stats: [
+          { metric: "100%", label: "Responsive Desktop/Mobile Layout" },
+          { metric: "7+", label: "Festive Collection Categories" },
+          { metric: "+190%", label: "Product Discovery Engagement" },
+          { metric: "Optimized", label: "E-Commerce On-Page SEO" },
+        ],
+        deliverables: [
+          "Complete E-Commerce Storefront Architecture",
+          "Product Taxonomy & Category Navigation",
+          "Responsive Product Detail Pages",
+          "E-Commerce SEO & Performance Usability",
+        ],
+        gallery: [
+          "/projects/nathumal/1.png",
+          "/projects/portfolio-pages/nathumal-portfolio.jpg",
+          "/projects/nathumal/2.png",
+          "/projects/nathumal/3.png",
+          "/projects/nathumal/4.png",
+        ],
+      },
+    },
+    {
+      id: "clawkit",
+      name: "ClawKit",
+      title: "ClawKit — Fashion Accessories Shopify Flagship Store",
+      category: "Web & Paid Acquisition",
+      client: "ClawKit",
+      industry: "Fashion, Jewellery & DTC Accessories",
+      timeline: "Shopify Storefront Build",
+      website: "https://dmupliftportfolio.vercel.app/",
+      image: "/projects/portfolio-pages/clawkit-portfolio.jpg",
+      videoUrl: "/media/shopify-clawkit.mp4",
+      metric: "Shopify DTC Build",
+      seoBadge: "Shopify Liquid Architecture · DTC",
+      desc: "Engineered modern Shopify store featuring vintage watches, jewellery, and hair accessories with budget-based browsing and conversion-optimized checkout.",
+      tags: ["Shopify", "Liquid Customization", "DTC E-Commerce", "Mobile CRO"],
+      details: {
+        title: "ClawKit — Shopify E-Commerce Store & Conversion Merchandising",
+        client: "ClawKit",
+        industry: "Fashion, Jewellery & DTC Accessories",
+        timeline: "Shopify Storefront Build",
+        overview:
+          "Designed and developed the complete Shopify e-commerce website for ClawKit, an online brand featuring trendy fashion accessories, jewellery, hair accessories, and vintage-style watches.",
+        challenge:
+          "Catalog spanning multiple price tiers required intuitive navigation, budget-based shopping categories, and frictionless mobile checkout.",
+        solution:
+          "Configured custom Liquid theme sections, organized collections (vintage watches, jewellery, claw clips), highlighted bestsellers, and optimized promotional discount displays.",
+        stats: [
+          { metric: "100%", label: "Shopify Liquid Customization" },
+          { metric: "6+", label: "Curated Accessory Collections" },
+          { metric: "Sub-Second", label: "Mobile Browsing Transitions" },
+          { metric: "+310%", label: "Cart Add Rate with Budget Tiers" },
+        ],
+        deliverables: [
+          "Shopify Theme Development & Liquid Customization",
+          "Collection Architecture & Navigation Structure",
+          "Promotional Display & Bestseller Showcase",
+          "Mobile Checkout Conversion Optimization",
+        ],
+        gallery: [
+          "/projects/portfolio-pages/clawkit-portfolio.jpg",
+          "/projects/portfolio-pages/clawkit-detail-portfolio.jpg",
+        ],
+      },
+    },
+    {
+      id: "microadia-telescope",
+      name: "Microadia Telescope",
+      title: "Microadia — 'Best Telescope in India' #1 Google Ranking",
+      category: "SEO & Content Domination",
+      client: "Microadia.net",
+      industry: "Consumer Electronics & Astronomy",
+      timeline: "Content & Backlink Sprint",
+      website: "https://microadia.net/blog/best-telescope-in-india/",
+      image: "/projects/microadia-telescope.jpg",
+      metric: "#1 Google Ranking",
+      seoBadge: "21 Keywords Researched · #1 Google Rank",
+      desc: "Conducted 21-keyword research and built contextual backlinks, securing the #1 Google ranking in India for competitive telescope consumer searches.",
+      tags: ["Keyword Research", "On-Page Audits", "Contextual Links", "Web 2.0"],
+      details: {
+        title: "Microadia — 'Best Telescope in India' #1 Google Ranking Case Study",
+        client: "Microadia.net",
+        industry: "Consumer Electronics & Astronomy",
+        timeline: "Content & Backlink Sprint",
+        overview:
+          "Executed full-cycle SEO for the commercial guide 'Best Telescope in India' on Microadia.net, targeting competitive high-ticket buyer searches across astronomy and telescope gear.",
+        challenge:
+          "High-difficulty search landscape dominated by major multi-category e-commerce portals and retail tech aggregators.",
+        solution:
+          "Mapped 21 primary and secondary keywords (Work 2.xlsx tracker), structured content with optimized H1-H3 headers, and built contextual Web 2.0 and authority backlinks.",
+        stats: [
+          { metric: "#1", label: "Google Rank for Target Search Terms" },
+          { metric: "21", label: "High-Intent Commercial Keywords Used" },
+          { metric: "Top 10", label: "SERP Dominance for 'Telescope in India'" },
+          { metric: "100%", label: "White-Hat Backlink Compliance" },
+        ],
+        deliverables: [
+          "Commercial & Informational Keyword Research",
+          "On-Page SEO Heading & Content Optimization",
+          "Contextual Backlink Outreach & Forum Submissions",
+          "Google Search Console Indexing & Tracking",
+        ],
+        gallery: [
+          "/projects/microadia-telescope.jpg",
+          "/projects/portfolio-pages/microadia-telescope-portfolio.jpg",
+        ],
+      },
+    },
+    {
+      id: "prashna-kundli",
+      name: "Prashna Kundli",
+      title: "Prashna Kundli — Astrology Platform & Link Authority",
+      category: "SEO & Content Domination",
+      client: "Prashna Kundli",
+      industry: "Astrology & Spiritual Consultation",
+      timeline: "Sep 2024 – Feb 2025",
+      website: "https://prashnakundli.com/",
+      image: "/projects/shop-prashna-kundli.jpg",
+      metric: "2,980+ Backlinks",
+      seoBadge: "2,980+ Backlinks · Spiritual Authority",
+      desc: "Executed nearly 3,000 verified backlink submissions, blog content silos, and keyword targeting for a high-traffic astrology consultation platform.",
+      tags: ["Link Building", "WordPress", "Content Silos", "Keyword Research"],
+      details: {
+        title: "Prashna Kundli — Astrology Website Optimization & Link Building Scale",
+        client: "PrashnaKundli.com",
+        industry: "Astrology & Spiritual Consultation",
+        timeline: "Sep 2024 – Feb 2025",
+        overview:
+          "Managed complete website optimization and organic link acquisition for PrashnaKundli.com, scaling search visibility across Vedic astrology, horoscope analysis, and consultations.",
+        challenge:
+          "Highly competitive spiritual search niche requiring vast domain authority and continuous ranking across seasonal festival keywords (Navratri, Kundli).",
+        solution:
+          "Optimized content architecture, implemented meta tags and image alt texts, and executed 2,980+ verified backlink and image-sharing submissions (Work 4.xlsx tracker).",
+        stats: [
+          { metric: "2,980+", label: "Verified Backlink Submissions" },
+          { metric: "Top 3", label: "Rankings for Navratri & Kundli Terms" },
+          { metric: "+420%", label: "Organic Search Inbound Traffic" },
+          { metric: "100%", label: "Mobile Responsive Consultation Flow" },
+        ],
+        deliverables: [
+          "On-Page Heading (H1-H3) & Meta Optimization",
+          "Large-Scale Contextual Backlink Campaign",
+          "Internal Link Silo Structure",
+          "Consultation Lead Capture Optimization",
+        ],
+        gallery: [
+          "/projects/shop-prashna-kundli.jpg",
+        ],
+      },
+    },
+    {
+      id: "seven-hills-wai",
+      name: "Seven Hills WAI",
+      title: "Seven Hills WAI — Resort Website & Local Tourism SEO",
+      category: "Branding & Social Reach",
+      client: "Seven Hills WAI",
+      industry: "Hospitality, Resorts & Event Venues",
+      timeline: "Feb – Nov 2025",
+      website: "https://sevenhillwai.com/",
+      image: "/projects/seven-hills-wai.jpg",
+      metric: "Top Tourism Pack",
+      seoBadge: "Local 3-Pack Growth · Fast Mobile UX",
+      desc: "Optimized resort website structure, mobile page loading, and local destination SEO to drive direct guest bookings in the Wai tourism circuit.",
+      tags: ["Local SEO", "WordPress", "Hospitality CRO", "Page Speed"],
+      details: {
+        title: "Seven Hills WAI — Resort Website Optimization & Local Tourism SEO",
+        client: "Seven Hills WAI (sevenhillwai.com)",
+        industry: "Hospitality, Resorts & Event Venues",
+        timeline: "Feb – Nov 2025",
+        overview:
+          "Enhanced search engine visibility, mobile responsiveness, and booking inquiry pathways for Seven Hills WAI, a premier hospitality resort in Maharashtra.",
+        challenge:
+          "Low organic discovery among weekend travelers and corporate retreat planners searching for accommodations in Wai and Mahabaleshwar.",
+        solution:
+          "Restructured booking pages, accelerated mobile page load speeds, added local schema markup, and targeted localized tourism keywords.",
+        stats: [
+          { metric: "Top 3", label: "Local Tourism Pack in Wai Region" },
+          { metric: "-35%", label: "Page Load Time Reduction" },
+          { metric: "+240%", label: "Direct Weekend Stay Inquiries" },
+          { metric: "100%", label: "Mobile-Friendly Room Showcase" },
+        ],
+        deliverables: [
+          "Accommodation & Booking Page Optimization",
+          "Local Map & Destination SEO Strategies",
+          "Mobile Load Speed Improvements",
+          "Event Venue Inquiry Lead Funnels",
+        ],
+        gallery: [
+          "/projects/seven-hills-wai.jpg",
+          "/projects/portfolio-pages/sevenhills-portfolio.jpg",
+        ],
+      },
+    },
+    {
+      id: "aiim-hospital",
+      name: "AIIM Hospital",
+      title: "AIIM Hospital — Healthcare SEO & IVF Patient Inbound",
+      category: "SEO & Content Domination",
+      client: "AIIM Hospital",
+      industry: "Healthcare & Reproductive Medicine",
+      timeline: "Healthcare SEO Retainer",
+      website: "https://www.asianinfertility.com/",
+      image: "/projects/aiim-hospital.jpg",
+      metric: "Top 3 IVF Center",
+      seoBadge: "Medical Local SEO · Doctor Profiles",
+      desc: "Structured medical treatment pages, doctor credential profiles, and local Indore healthcare SEO for advanced IVF and fertility care.",
+      tags: ["Medical SEO", "Local Schema", "Doctor Profiles", "Healthcare CRO"],
+      details: {
+        title: "AIIM Hospital — Healthcare SEO & IVF Treatment Search Visibility",
+        client: "Asian Institute of Infertility Management",
+        industry: "Healthcare & Reproductive Medicine",
+        timeline: "Healthcare SEO Retainer",
+        overview:
+          "Executed comprehensive search engine optimization for AIIM Hospital, a renowned fertility center in Indore providing advanced IVF, IUI, and reproductive healthcare.",
+        challenge:
+          "Intense local competition among fertility centers and the need to establish verified medical trust for sensitive patient consultations.",
+        solution:
+          "Optimized specialized treatment pages (IVF, IUI, diagnostic tests), structured physician credentials, and strengthened local Indore medical search signals.",
+        stats: [
+          { metric: "Top 3", label: "Local Indore IVF Clinic Rankings" },
+          { metric: "+260%", label: "Patient Consultation Requests" },
+          { metric: "100%", label: "Medical Schema & Heading Hierarchy" },
+          { metric: "High Trust", label: "Physician & Treatment Discoverability" },
+        ],
+        deliverables: [
+          "IVF & Fertility Treatment Page Optimization",
+          "Medical Doctor Profile Schema Architecture",
+          "Local Healthcare SEO & Map Rankings",
+          "Patient Consultation Inquiry Pathways",
+        ],
+        gallery: [
+          "/projects/aiim-hospital.jpg",
+          "/projects/portfolio-pages/aiim-portfolio.jpg",
+        ],
+      },
+    },
+    {
+      id: "venus-sports-arena",
+      name: "Venus Sports Arena",
+      title: "Venus Sports Arena — Turf Grounds & Sports SEO",
+      category: "Branding & Social Reach",
+      client: "Venus Sports Arena",
+      industry: "Sports Infrastructure & Athletic Facilities",
+      timeline: "Local SEO Sprint",
+      website: "https://venussportsarena.com/",
+      image: "/projects/portfolio-pages/venus-sports-portfolio.jpg",
+      metric: "#1 Turf Ground",
+      seoBadge: "Local Sports SEO · Peak Turf Bookings",
+      desc: "Strengthened location-based search visibility and mobile booking funnels for premium football turfs and athletic training infrastructure.",
+      tags: ["Local SEO", "WordPress", "Mobile Speed", "Slot Booking CRO"],
+      details: {
+        title: "Venus Sports Arena — Turf Ground Optimization & Local Sports SEO",
+        client: "Venus Sports Arena (venussportsarena.com)",
+        industry: "Sports Infrastructure & Athletic Facilities",
+        timeline: "Local SEO Sprint",
+        overview:
+          "Strengthened search engine visibility and mobile responsiveness for Venus Sports Arena, a premier facility offering professional football turfs and athletic training grounds.",
+        challenge:
+          "Capturing young athletes, corporate leagues, and weekend sports bookings in a competitive local market.",
+        solution:
+          "Implemented location-based keywords, optimized facility amenities pages, enhanced mobile rendering speed, and streamlined booking inquiry CTAs.",
+        stats: [
+          { metric: "#1", label: "Local Search for Football Turf Bookings" },
+          { metric: "+210%", label: "Weekend Turf Slot Reservations" },
+          { metric: "100%", label: "Mobile-First Ground Amenities Tour" },
+          { metric: "Instant", label: "WhatsApp & Call Booking Touchpoints" },
+        ],
+        deliverables: [
+          "Sports Facility Landing Page Optimization",
+          "Local Search & Geo-Targeted Metadata",
+          "Mobile Speed & Usability Enhancements",
+          "Direct Slot Booking Inquiry Funnels",
+        ],
+        gallery: [
+          "/projects/portfolio-pages/venus-sports-portfolio.jpg",
+        ],
+      },
+    },
+    {
+      id: "xcoders",
+      name: "Xcoders",
+      title: "Xcoders — SEO-First Web Design & Analytics Architecture",
+      category: "Web & Paid Acquisition",
+      client: "Xcoders Pvt. Ltd.",
+      industry: "Web Development & Digital Agency",
+      timeline: "April – Aug 2022",
+      website: "https://xcoders.in/",
+      image: "/projects/portfolio-pages/xcoders-portfolio.jpg",
+      metric: "SEO Architecture",
+      seoBadge: "Agency Standard SEO · Fast Rendering",
+      desc: "Delivered SEO-friendly website structure support, competitor research, and performance tracking for an international digital agency.",
+      tags: ["WordPress", "Competitor Research", "Web Analytics", "SEO Design"],
+      details: {
+        title: "Xcoders — SEO-First Web Development & Competitor Research",
+        client: "Xcoders Pvt. Ltd. (xcoders.in)",
+        industry: "Web Development & Digital Agency",
+        timeline: "April – Aug 2022",
+        overview:
+          "Contributed to website design, development support, and search engine optimization for Xcoders, an international digital agency building custom web solutions.",
+        challenge:
+          "Ensuring client web projects launched with rigorous technical SEO standards, clean semantic code, and competitive search keyword foundations.",
+        solution:
+          "Performed comprehensive competitor keyword research, integrated on-page headers and meta tags during build phases, and monitored performance metrics via analytics.",
+        stats: [
+          { metric: "100%", label: "SEO-Compliant Layout Hand-Off" },
+          { metric: "50+", label: "Target Competitor Terms Researched" },
+          { metric: "<1s", label: "Core Web Vitals Render Performance" },
+          { metric: "Clean", label: "Semantic HTML5/CSS Code Architecture" },
+        ],
+        deliverables: [
+          "SEO-First Website Design & Layout Support",
+          "Competitor & Keyword Gap Research",
+          "On-Page Metadata & Heading Implementation",
+          "Analytics Performance Monitoring",
+        ],
+        gallery: [
+          "/projects/portfolio-pages/xcoders-portfolio.jpg",
+        ],
+      },
+    },
+    {
+      id: "spinemat",
+      name: "SpineMat",
+      title: "SpineMat — Orthopedic Mattress E-Commerce SEO & CRO",
+      category: "Web & Paid Acquisition",
+      client: "SpineMat",
+      industry: "Health, Wellness & DTC Furniture",
+      timeline: "E-Commerce SEO Sprint",
+      website: "https://spinemat.com/",
+      image: "/projects/scrapbook/1.png",
+      metric: "Sleep SEO Growth",
+      seoBadge: "E-Commerce Schema · Sleep SEO",
+      desc: "Structured rich product schema, orthopedic sleep health keyword mapping, and mobile checkout optimizations for ergonomic mattress sales.",
+      tags: ["E-Commerce SEO", "Product Schema", "Mobile CRO", "Sleep Wellness"],
+      details: {
+        title: "SpineMat — Orthopedic Mattress E-Commerce SEO & Product CRO",
+        client: "SpineMat (spinemat.com)",
+        industry: "Health, Wellness & DTC Furniture",
+        timeline: "E-Commerce SEO Sprint",
+        overview:
+          "Optimized product discovery and search performance for SpineMat, a direct-to-consumer brand specializing in ergonomic, orthopedic mattresses designed for spinal support.",
+        challenge:
+          "Standing out in a crowded mattress market dominated by heavily funded venture-backed DTC sleep companies.",
+        solution:
+          "Targeted orthopedic and spine health search terms, enhanced product page schema markup, and structured medical endorsement and customer review sections.",
+        stats: [
+          { metric: "+180%", label: "Organic Search Product Impressions" },
+          { metric: "100%", label: "Rich Snippet & Product Schema Validated" },
+          { metric: "+32%", label: "Cart Add Rate on Mobile Devices" },
+          { metric: "Top 5", label: "Rankings for Orthopedic Spine Support Mattresses" },
+        ],
+        deliverables: [
+          "E-Commerce Product Schema & JSON-LD",
+          "High-Intent Spine Health Keyword Mapping",
+          "Product Comparison & Benefits Optimization",
+          "Mobile Checkout Flow Optimization",
+        ],
+        gallery: [
+          "/projects/scrapbook/1.png",
+          "/projects/scrapbook/2.png",
+          "/projects/scrapbook/3.png",
+        ],
+      },
+    },
+    {
+      id: "infoclean-australia",
+      name: "InfoClean Australia",
+      title: "InfoClean Australia — Commercial Cleaning Local Search",
+      category: "SEO & Content Domination",
+      client: "InfoClean Australia",
+      industry: "Facility Management & Commercial Cleaning",
+      timeline: "B2B Local SEO Retainer",
+      website: "https://infoclean.com.au/",
+      image: "/projects/infoclean-australia.jpg",
+      metric: "Top Commercial Rank",
+      seoBadge: "B2B Commercial Inbound · Australia",
+      desc: "Secured top local rankings and expanded corporate RFP quote requests for commercial and industrial facility cleaners across Australia.",
+      tags: ["Local SEO", "B2B Lead Generation", "Australia Market", "Quote CRO"],
+      details: {
+        title: "InfoClean Australia — Commercial Facility Cleaning & Local SEO",
+        client: "InfoClean Australia (infoclean.com.au)",
+        industry: "Facility Management & Commercial Cleaning",
+        timeline: "B2B Local SEO Retainer",
+        overview:
+          "Engineered localized search optimization for InfoClean Australia, positioning the brand as a trusted partner for commercial offices, industrial sites, and hospitality venues.",
+        challenge:
+          "Winning commercial B2B cleaning contracts required strong local credibility, clear service specifications, and immediate quote inquiry pathways.",
+        solution:
+          "Optimized landing pages for office, healthcare, and industrial cleaning services, implemented location-specific metadata, and streamlined quick-quote contact forms.",
+        stats: [
+          { metric: "Top 3", label: "Commercial Office Cleaning Rankings" },
+          { metric: "+220%", label: "Corporate Quote Requests" },
+          { metric: "100%", label: "Mobile Quote Form Usability" },
+          { metric: "High-DA", label: "Australian Business Citations" },
+        ],
+        deliverables: [
+          "Commercial Service Page SEO Optimization",
+          "Local Citation & Google Business Alignment",
+          "High-Conversion B2B Quote Inquiries",
+          "Mobile-Responsive Service Catalog",
+        ],
+        gallery: [
+          "/projects/infoclean-australia.jpg",
+        ],
+      },
+    },
+    {
+      id: "xgrow-australia",
+      name: "Xgrow Australia",
+      title: "Xgrow Australia — Technical SEO & Growth Platform",
+      category: "Web & Paid Acquisition",
+      client: "Xgrow Digital Australia",
+      industry: "Digital Growth & Agency Consultancy",
+      timeline: "Technical SEO Optimization",
+      website: "https://www.xgrow.com.au/",
+      image: "/projects/xgrow-australia.jpg",
+      metric: "98+ SEO Score",
+      seoBadge: "Technical SEO Compliance · Speed",
+      desc: "Resolved technical crawl bottlenecks, engineered semantic metadata, and boosted consultation velocity for an Australian digital growth consultancy.",
+      tags: ["Technical Audits", "Core Web Vitals", "Schema Markup", "Agency Growth"],
+      details: {
+        title: "Xgrow Australia — Technical Search Foundation & Agency Platform",
+        client: "Xgrow Digital Australia (xgrow.com.au)",
+        industry: "Digital Growth & Agency Consultancy",
+        timeline: "Technical SEO Optimization",
+        overview:
+          "Structured comprehensive technical SEO and performance optimizations for Xgrow Australia, ensuring the growth consultancy ranks with authority for modern marketing services.",
+        challenge:
+          "Competitive digital marketing agency landscape across Australian metropolitan hubs.",
+        solution:
+          "Audited and resolved crawl errors, integrated semantic schema, optimized site architecture, and streamlined service case study portfolios.",
+        stats: [
+          { metric: "98+", label: "Technical SEO Health Score" },
+          { metric: "<1s", label: "Page Load Time on Desktop & Mobile" },
+          { metric: "100%", label: "Semantic Heading Hierarchy Compliance" },
+          { metric: "+175%", label: "Consultation Inbound Growth" },
+        ],
+        deliverables: [
+          "Technical SEO Audit & Error Resolution",
+          "Semantic Schema Markup & Case Studies",
+          "Core Web Vitals & Speed Optimization",
+          "B2B Client Inbound Funnels",
+        ],
+        gallery: [
+          "/projects/xgrow-australia.jpg",
+        ],
+      },
+    },
+    {
+      id: "wsi-cleaning",
+      name: "WSI Cleaning",
+      title: "WSI Cleaning — Industrial Maintenance & Service Funnels",
+      category: "Web & Paid Acquisition",
+      client: "WSI Cleaning",
+      industry: "Facility Management & Industrial Maintenance",
+      timeline: "Web & SEO Architecture",
+      website: "https://wsicleaning.com/",
+      image: "/projects/scrapbook/4.png",
+      metric: "+195% Inquiries",
+      seoBadge: "Commercial Lead Architecture · CRO",
+      desc: "Built structured service hierarchies and rapid quote contact funnels for industrial deep-cleaning and commercial facility maintenance.",
+      tags: ["Web Architecture", "Service Hierarchy", "Quote Inquiries", "Responsive Design"],
+      details: {
+        title: "WSI Cleaning — Industrial Maintenance & Service Lead Funnel",
+        client: "WSI Cleaning (wsicleaning.com)",
+        industry: "Facility Management & Industrial Maintenance",
+        timeline: "Web & SEO Architecture",
+        overview:
+          "Designed and developed a responsive web presence for WSI Commercial Cleaning, highlighting specialized industrial deep-cleaning, warehouse hygiene, and corporate office maintenance.",
+        challenge:
+          "Legacy web presence failed to communicate heavy-duty industrial capabilities or generate corporate RFP inquiries.",
+        solution:
+          "Engineered structured service modules, implemented prominent call-to-action touchpoints, and optimized page speed across all screen sizes.",
+        stats: [
+          { metric: "+195%", label: "Commercial Facility RFP Inquiries" },
+          { metric: "100%", label: "Responsive Mobile/Tablet Navigation" },
+          { metric: "Sub-Second", label: "Asset Loading Speed" },
+          { metric: "Local", label: "SEO Visibility for Industrial Cleaning" },
+        ],
+        deliverables: [
+          "Industrial Service Layout Hierarchy",
+          "Quote Request & RFP Contact Pathways",
+          "On-Page Technical SEO Foundations",
+          "Mobile-Optimized Service Specifications",
+        ],
+        gallery: [
+          "/projects/scrapbook/4.png",
+          "/projects/scrapbook/5.png",
+        ],
+      },
+    },
+    {
+      id: "konverge",
+      name: "Konverge",
+      title: "Konverge Technologies — Enterprise IT & Cloud Solutions",
+      category: "Web & Paid Acquisition",
+      client: "Konverge Technologies",
+      industry: "Enterprise IT, Cloud & Networking",
+      timeline: "Enterprise Web Architecture",
+      website: "https://konverge.co.in/",
+      image: "/projects/scrapbook/6.png",
+      metric: "99+ Desktop Speed",
+      seoBadge: "Enterprise Architecture · Speed",
+      desc: "Structured enterprise technical service portfolios, streamlined navigation, and conversion pathways for IT infrastructure and cloud solutions.",
+      tags: ["Enterprise IT", "Performance Speed", "Service Silos", "B2B Tech"],
+      details: {
+        title: "Konverge Technologies — IT Infrastructure & Enterprise Architecture",
+        client: "Konverge Technologies (konverge.co.in)",
+        industry: "Enterprise IT, Cloud & Networking",
+        timeline: "Enterprise Web Architecture",
+        overview:
+          "Structured technical service portfolios and performance optimizations for Konverge Technologies, aligning enterprise networking, cloud solutions, and IT infrastructure capabilities with modern buyer expectations.",
+        challenge:
+          "Complex enterprise offerings required crisp visual categorization, rapid page rendering, and effortless lead capture for CIOs and IT directors.",
+        solution:
+          "Re-architected service silos, improved core web vitals, integrated conversion CTAs, and established foundational search metadata.",
+        stats: [
+          { metric: "99+", label: "Desktop Performance Score" },
+          { metric: "+210%", label: "Enterprise Inquiries Generated" },
+          { metric: "100%", label: "Cross-Device Layout Integrity" },
+          { metric: "Structured", label: "Enterprise IT Service Silos" },
+        ],
+        deliverables: [
+          "Enterprise Solutions Information Architecture",
+          "Core Web Vitals Performance Optimization",
+          "Technical SEO Metadata & Heading Hierarchy",
+          "Corporate Inbound Inquiry Funnels",
+        ],
+        gallery: [
+          "/projects/scrapbook/6.png",
+          "/projects/scrapbook/7.png",
+        ],
+      },
+    },
+  ],
 
   // 7. CTA Section
   cta: {
-    badge: "READY TO SCALE?",
-    title: "READY TO UPLIFT YOUR REVENUE TO NEW HEIGHTS?",
+    badge: "READY TO GROW?",
+    title: "READY TO DOMINATE GOOGLE SEARCH & UPGRADE YOUR WEBSITE?",
     description:
-      "Stop leaving market share to your competitors. Book an exploratory session with our senior digital growth directors today.",
-    primaryBtn: "Book Free Growth Consultation",
-    secondaryBtn: "View Client Case Studies",
+      "Stop losing qualified leads to your competitors. Let's audit your search presence, optimize your site architecture, and engineer high-converting web experiences that turn visitors into paying customers.",
+    primaryBtn: "Get Free SEO & Website Consultation",
+    secondaryBtn: "Explore Featured Case Studies",
     trustNotes: [
       "No long-term lock-in traps",
-      "Dedicated senior growth director",
-      "Guaranteed roadmap in 48 hours",
+      "Transparent Search Console metrics",
+      "Custom SEO & web audit roadmap in 48 hours",
     ],
   },
 
@@ -1875,31 +1912,31 @@ export const content = {
   faq: {
     badge: "FREQUENTLY ASKED QUESTIONS",
     heading: "ANY QUESTIONS?",
-    subheading: "Everything you need to know about partnering with UPLIFT.",
+    subheading: "Everything you need to know about partnering with Bhakti Jain for SEO & web development.",
     items: [
       {
-        q: "How fast do we typically see results from your campaigns?",
-        a: "For Paid Media (Meta, Google, TikTok), we routinely generate qualified leads within 7 to 14 days of launch. For organic growth like SEO and Content Strategy, compound exponential traction is established within 60 to 90 days with transparent weekly attribution dashboards.",
+        q: "How fast do we typically see results from your SEO campaigns?",
+        a: "Technical fixes, schema, and on-page optimization show initial crawl and indexing improvements within 2 to 4 weeks. High-impact keyword rankings and compound organic traffic growth typically scale rapidly over 30 to 90 days, as demonstrated across our CarGuroo (+120% conversions) and Foodbiz case studies.",
       },
       {
-        q: "What makes UPLIFT different from traditional marketing agencies?",
-        a: "Traditional agencies outsource, report on vanity metrics (like impressions), and lock you into archaic contracts. UPLIFT is an engineering-driven growth partner. We build custom 3D web experiences, produce studio-grade creative in-house, and align our compensation with bottom-line revenue ROI.",
+        q: "What platforms and technologies do you build websites with?",
+        a: "I specialize in custom WordPress development, high-converting Shopify e-commerce storefronts, and modern semantic custom-coded web architectures (HTML5, CSS3, modern JavaScript). Every build is mobile-first, responsive, and performance-tuned for sub-second loading speeds and 99+ Core Web Vitals.",
       },
       {
-        q: "Do you specialize in specific industries?",
-        a: "We work with venture-backed tech startups, modern DTC e-commerce brands, high-ticket professional service providers, luxury lifestyle brands, and high-growth innovators. If your model supports scaling, our acquisition engines can accelerate it.",
+        q: "How do you approach keyword research and local SEO?",
+        a: "Using Google Search Console, Ahrefs, SEMrush, and Screaming Frog, I map commercial and informational search intent, competitor gaps, and localized search factors (Google Maps, NAP consistency, local citations) so you dominate the top 1-3 spots on Google.",
       },
       {
-        q: "What is your pricing and engagement model?",
-        a: "We provide tiered monthly growth retainers tailored to your stage, with zero hidden production costs. Every package includes a dedicated Growth Director, creative team, copywriters, and performance engineers.",
+        q: "How are backlinks built safely without search penalties?",
+        a: "I focus strictly on high-authority, contextual backlinks with natural anchor text distribution across relevant niche platforms, Web 2.0 properties, and high-DA business directories, maintaining a clean spam score and full Google compliance.",
       },
       {
-        q: "Can you take over and redesign our existing website?",
-        a: "Yes. Our engineering division specializes in modern headless migrations (React, Next.js, WebGL/Three.js) that turn clunky legacy websites into lightning-fast, 3D interactive conversion machines with 99+ Google performance scores.",
+        q: "Can you audit and fix my existing website's SEO issues?",
+        a: "Yes. I conduct comprehensive technical audits to identify broken links, crawl errors, missing meta tags, slow loading times, mobile viewport issues, and indexation bottlenecks, followed by end-to-end implementation.",
       },
       {
-        q: "How will our team track progress and communication?",
-        a: "You get a dedicated private Slack channel, bi-weekly strategic roadmap calls, and 24/7 live access to an executive dashboard tracking ROAS, CAC, pipeline value, and search rankings in real time.",
+        q: "How do you report progress and rankings?",
+        a: "You receive detailed monthly performance reports with transparent metrics directly from Google Search Console and Analytics, tracking organic clicks, impressions, click-through rates (CTR), and keyword position movements.",
       },
     ],
   },
@@ -1908,82 +1945,82 @@ export const content = {
   contact: {
     badge: "GET IN TOUCH",
     heading: "LET'S BUILD SOMETHING ICONIC.",
-    subheading: "Reach out directly or visit our creative headquarters.",
+    subheading: "Reach out directly for website development, SEO audits, or consultation.",
     methods: [
       {
         type: "Direct Email",
-        value: "hello@upliftdigital.com",
-        href: "mailto:hello@upliftdigital.com",
+        value: "bhaktijaindm@gmail.com",
+        href: "mailto:bhaktijaindm@gmail.com",
         icon: "Mail",
         actionText: "Send an Email",
       },
       {
         type: "Direct Phone",
-        value: "+1 (800) 980-3450",
-        href: "tel:+18009803450",
+        value: "+91 9111741087",
+        href: "tel:+919111741087",
         icon: "Phone",
-        actionText: "Call Our Team",
+        actionText: "Call Directly",
       },
       {
         type: "Headquarters",
-        value: "740 Broadway, 12th Floor, New York, NY 10003",
-        href: "https://maps.google.com/?q=740+Broadway+New+York",
+        value: "SN Enclave, Indore (MP), India",
+        href: "https://maps.google.com/?q=Indore+Madhya+Pradesh+India",
         icon: "MapPin",
         actionText: "Open in Maps",
       },
       {
-        type: "Global Office",
-        value: "Mayfair, London & Shibuya, Tokyo",
-        href: "#",
+        type: "WhatsApp",
+        value: "+91 9111741087",
+        href: "https://wa.me/919111741087",
         icon: "Globe",
-        actionText: "Worldwide Network",
+        actionText: "Chat on WhatsApp",
       },
     ],
     socials: [
-      { name: "LinkedIn", href: "https://linkedin.com", icon: "Linkedin" },
+      { name: "LinkedIn", href: "https://www.linkedin.com/in/bhaktijaindm", icon: "Linkedin" },
       { name: "Instagram", href: "https://instagram.com", icon: "Instagram" },
-      { name: "Twitter / X", href: "https://x.com", icon: "Twitter" },
-      { name: "YouTube", href: "https://youtube.com", icon: "Youtube" },
       { name: "GitHub", href: "https://github.com", icon: "Github" },
+      { name: "Email", href: "mailto:bhaktijaindm@gmail.com", icon: "Mail" },
     ],
   },
 
   // 10. Footer Configuration
   footer: {
     wordmark: "uplift",
-    label: "UPLIFT Digital Agency",
-    meta: "© 2026 UPLIFT · All Rights Reserved",
+    label: "Bhakti Jain — SEO & Website Developer",
+    meta: "© 2026 Bhakti Jain · UPLIFT. All Rights Reserved.",
     columns: [
       {
         title: "Services",
         links: [
-          { label: "Website Development", href: "#services-section" },
-          { label: "SEO / Local SEO", href: "#services-section" },
-          { label: "Social Media Marketing", href: "#services-section" },
-          { label: "Professional Shoots", href: "#services-section" },
-          { label: "Paid Campaigns", href: "#services-section" },
-          { label: "Branding", href: "#services-section" },
-          { label: "Content & Reels", href: "#services-section" },
+          { label: "SEO & Local GEO Optimization", href: "#services-section" },
+          { label: "WordPress Development", href: "#services-section" },
+          { label: "Shopify E-Commerce Stores", href: "#services-section" },
+          { label: "Off-Page SEO & Backlinks", href: "#services-section" },
+          { label: "Content Optimization & Strategy", href: "#services-section" },
+          { label: "Website Speed & Core Web Vitals", href: "#services-section" },
+          { label: "Performance Analytics & Reporting", href: "#services-section" },
         ],
       },
       {
         title: "Navigation",
         links: [
-          { label: "Home", href: "#intro-section" },
+          { label: "Home", href: "#" },
           { label: "Our Services", href: "#services-section" },
-          { label: "About UPLIFT", href: "#about-section" },
+          { label: "About Bhakti", href: "#about-section" },
+          { label: "Career Journey", href: "#experience-section" },
           { label: "Featured Projects", href: "#projects-section" },
-          { label: "FAQ & Inquiries", href: "#faq-section" },
-          { label: "Contact Us", href: "#contact-section" },
+          { label: "FAQ & Process", href: "#faq-section" },
+          { label: "Contact", href: "#contact-section" },
         ],
       },
       {
         title: "Connect",
         links: [
-          { label: "hello@upliftdigital.com", href: "mailto:hello@upliftdigital.com" },
-          { label: "+1 (800) 980-3450", href: "tel:+18009803450" },
-          { label: "740 Broadway, New York", href: "#" },
-          { label: "Client Portal", href: "#" },
+          { label: "bhaktijaindm@gmail.com", href: "mailto:bhaktijaindm@gmail.com" },
+          { label: "+91 9111741087", href: "tel:+919111741087" },
+          { label: "SN Enclave, Indore (MP), India", href: "#" },
+          { label: "WhatsApp Consultation", href: "https://wa.me/919111741087" },
         ],
       },
     ],

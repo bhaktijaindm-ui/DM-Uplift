@@ -97,53 +97,53 @@ const MilestoneCard = ({
 };
 
 export default function ExperienceJourney() {
-  // 4 Outlets & Companies spanning the 1-Year Experience Journey
+  // 4 Core Milestones from Bhakti Jain's Professional Track Record
   const milestones = [
     {
       number: "01",
-      period: "Q1 · Months 01–03",
-      company: "Apex Pulse Autonomous",
-      outlet: "EV Mobility & Showrooms",
-      title: "Headless WebGL Funnel Engine",
+      period: "April 2026 – Present",
+      company: "Uplift Digi",
+      outlet: "SEO & Website Head",
+      title: "Full-Funnel Organic Growth & Web Architecture",
       description:
-        "Engineered an interactive 3D vehicle configurator and search acquisition funnel, expanding enterprise B2B fleet booking pipeline by +340%.",
-      metric: "+340% Enterprise Demos",
+        "Directing end-to-end SEO, technical website builds, and multi-channel marketing campaigns across global clients. Leading high-impact organic traffic scaling, CRO, and analytics tracking.",
+      metric: "Agency Leadership & Scale",
       rotate: "md:rotate-2 md:hover:rotate-0",
       position: "md:absolute md:top-0 md:left-[6%] lg:left-[10%]",
     },
     {
       number: "02",
-      period: "Q2 · Months 04–06",
-      company: "Cobalt Cyber Defense",
-      outlet: "Enterprise SecOps Outlets",
-      title: "Interactive Threat ABM Engine",
+      period: "Nov 2025 – April 2026",
+      company: "Valiun Venture IT Company",
+      outlet: "SEO Lead",
+      title: "Global Technical SEO & International Positioning",
       description:
-        "Designed live cybersecurity simulation demos tailored for enterprise CISOs, achieving a 42% executive meeting rate with Fortune 500 decision-makers.",
-      metric: "42% CISO Meeting Rate",
+        "Formulated technical SEO architecture, on-page optimization, and high-authority link strategies across Australian & US accounts. Scaled organic impressions and keyword visibility.",
+      metric: "+120% Conversion Surge",
       rotate: "md:-rotate-2 md:hover:rotate-0",
       position: "md:absolute md:top-[220px] md:right-[6%] lg:right-[10%]",
     },
     {
       number: "03",
-      period: "Q3 · Months 07–09",
-      company: "Solace Luxury Resorts",
-      outlet: "4 Premier Boutique Outlets",
-      title: "Direct HNW Booking Platform",
+      period: "Feb 2025 – Nov 2025",
+      company: "Seven Hills",
+      outlet: "WordPress & SEO Junior",
+      title: "Custom CMS Architecture & Organic Acquisition",
       description:
-        "Re-architected the direct guest booking engine across 4 premier boutique resort destinations, generating $42M in direct commission-free reservations.",
-      metric: "$42M Direct Revenue",
+        "Engineered responsive WordPress portals, optimized page speed and core web vitals, and implemented local SEO targeting to capture top search engine positions.",
+      metric: "Top 3 Search Rankings",
       rotate: "md:rotate-2 md:hover:rotate-0",
       position: "md:absolute md:top-[460px] md:left-[6%] lg:left-[10%]",
     },
     {
       number: "04",
-      period: "Q4 · Months 10–12",
-      company: "Kroma Studio Sound",
-      outlet: "Flagship DTC Audio Outlets",
-      title: "3D Spatial Acoustic DTC Launch",
+      period: "Sep 2024 – Feb 2025",
+      company: "Prashna Kundli",
+      outlet: "SEO & WordPress Specialist",
+      title: "E-Commerce SEO & Scaled Link Engineering",
       description:
-        "Spearheaded a multi-channel spatial sound visualizer and DTC performance marketing campaign across 24 retail partner outlets, delivering 6.8X ROAS.",
-      metric: "6.8X DTC Ad ROAS",
+        "Developed and managed custom e-commerce web platform, executed high-volume verified link building (2,980+ submissions), and boosted keyword rankings across high-intent queries.",
+      metric: "2,980+ Backlink Engine",
       rotate: "md:-rotate-2 md:hover:rotate-0",
       position: "md:absolute md:top-[680px] md:right-[6%] lg:right-[10%]",
     },
@@ -152,20 +152,20 @@ export default function ExperienceJourney() {
   const height = 980;
 
   return (
-    <div className="relative w-full py-10 sm:py-14">
+    <div id="experience-section" className="relative w-full py-10 sm:py-14">
       {/* Sub-Header inside About Us */}
       <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-10 sm:mb-12">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0A1530] border border-[#2E7BFF]/40 text-[#00B4FF] text-[11px] font-bold tracking-widest uppercase mb-3 shadow-[0_0_15px_rgba(0,180,255,0.25)]">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>OUR 1-YEAR MILESTONE JOURNEY</span>
+          <span>CAREER & TRACK RECORD</span>
         </div>
 
         <h3 className="font-['Cinzel'] text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight uppercase leading-tight mb-2.5">
-          1 YEAR OF <span className="bg-gradient-to-r from-white via-[#00B4FF] to-[#2E7BFF] bg-clip-text text-transparent">EXPONENTIAL SCALE</span>
+          PROFESSIONAL JOURNEY OF <span className="bg-gradient-to-r from-white via-[#00B4FF] to-[#2E7BFF] bg-clip-text text-transparent">EXPONENTIAL GROWTH</span>
         </h3>
 
         <p className="text-xs sm:text-sm text-[#CBD5E1] font-normal leading-relaxed max-w-lg">
-          From our founding sprint to empowering category-defining brand outlets: 12 months of relentless execution across marquee enterprises.
+          From foundational SEO sprints to leading digital agency web & organic scale: a relentless track record of measurable technical performance and client ROI.
         </p>
       </div>
 

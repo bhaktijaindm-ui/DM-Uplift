@@ -8,9 +8,9 @@ export default function TopHeroSection() {
   const [headlineIndex, setHeadlineIndex] = useState(0);
 
   const headlines = [
-    "WE UPLIFT BRANDS.",
-    "DESIGN THAT MOVES.",
-    "EXPONENTIAL SCALE.",
+    "BHAKTI JAIN.",
+    "ORGANIC SCALE.",
+    "WEB ARCHITECT.",
   ];
 
   const currentHeadline = headlines[headlineIndex];
@@ -41,8 +41,8 @@ export default function TopHeroSection() {
         grid={[20, 13]}
         scrollScatter={false}
         scrollHint={false}
-        eyebrow="PERFORMANCE MARKETING & 3D DIGITAL CREATIVE"
-        description="Engineered full-funnel acquisition, cinematic 3D web experiences, and high-conversion headless architecture designed for exponential business scale."
+        eyebrow="BHAKTI JAIN · SEO SPECIALIST & WEB DEVELOPER"
+        description="Engineered full-funnel organic search, high-performance web architecture, and data-driven digital growth designed for exponential client scale."
         actions={
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             {/* Primary Consultation CTA */}
@@ -86,7 +86,7 @@ export default function TopHeroSection() {
         >
           <Play className="w-3 h-3 text-[#00B4FF]" />
           <span className="hidden sm:inline">Text:</span>
-          <span>{headlineIndex === 0 ? "Uplift" : headlineIndex === 1 ? "Moves" : "Scale"}</span>
+          <span>{headlineIndex === 0 ? "Bhakti" : headlineIndex === 1 ? "Organic" : "Web"}</span>
         </button>
 
         {/* Scatter / Gather */}
