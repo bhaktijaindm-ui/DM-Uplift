@@ -1,6 +1,8 @@
+import { lazy, Suspense } from "react";
 import { ArrowUpRight, ChevronRight, Zap } from "lucide-react";
-import Hero3DScene from "./Hero3DScene";
 import { content } from "../../data/content";
+
+const Hero3DScene = lazy(() => import("./Hero3DScene"));
 
 /**
  * HeroSection
@@ -88,7 +90,15 @@ export default function HeroSection() {
 
               {/* Gentle floating motion container: translateY ±12px, 7s ease-in-out */}
               <div className="relative w-full h-[420px] sm:h-[480px] md:h-[540px] lg:h-[620px] overflow-visible pointer-events-auto animate-hero-float">
-                <Hero3DScene />
+                <Suspense
+                  fallback={
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="w-28 h-28 rounded-full border border-[#00B4FF]/30 animate-pulse bg-[#00B4FF]/5" />
+                    </div>
+                  }
+                >
+                  <Hero3DScene />
+                </Suspense>
               </div>
             </div>
           </div>

@@ -4,7 +4,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import TopHeroSection from "../components/ui/TopHeroSection";
-import HeroSection from "../components/ui/HeroSection";
 import ServicesSection from "../components/ui/ServicesSection";
 import AboutSection from "../components/ui/AboutSection";
 import ProjectsSection from "../components/ui/ProjectsSection";
@@ -88,15 +87,8 @@ export default function PortfolioPage() {
       */}
       <TopHeroSection />
 
-
       {/* 
-        2. HERO BANNER (Compact)
-        Short punchy headline, one-line subtext, 2 buttons, 3D floating elements with mouse parallax
-      */}
-      <HeroSection />
-
-      {/* 
-        3. OUR SERVICES
+        2. OUR SERVICES
         3D interactive layout: list on one side, 3D rotating stack of image cards on the other
       */}
       <ServicesSection />

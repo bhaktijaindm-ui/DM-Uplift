@@ -38,6 +38,8 @@ function Photo({ item, thumbnail = false }) {
           src={currentSrc}
           alt={thumbnail ? "" : (item?.alt || "Service")}
           draggable={false}
+          loading="lazy"
+          decoding="async"
           onLoad={() => setLoading(false)}
           onError={handleError}
           className={cn(

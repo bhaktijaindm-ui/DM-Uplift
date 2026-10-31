@@ -550,6 +550,7 @@ export default function PolaroidLineCarousel({
                       muted
                       loop
                       playsInline
+                      preload="metadata"
                       className="w-full h-full object-cover"
                     />
                   ) : (
@@ -557,6 +558,8 @@ export default function PolaroidLineCarousel({
                       src={imageSrc}
                       alt={proj.name || proj.title || "Project preview"}
                       draggable={false}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover"
                     />
                   )}

@@ -2,14 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#040814" />
     <title>UPLIFT — Digital Marketing Agency & 3D Web Creative</title>
     <meta name="description" content="UPLIFT is a performance-driven digital marketing agency specializing in 3D web experiences, SEO, paid ads, and brand acceleration." />
+    
+    <!-- DNS prefetch & Preconnect for external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Geist:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <!-- Non-blocking asynchronous font loading -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Geist:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Geist:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Geist:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" />
+    </noscript>
+
+    <!-- Instant critical frame 0 paint styling to avoid any blank flash -->
+    <style>
+      html, body {
+        background-color: #040814;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+      #root {
+        min-height: 100vh;
+        background-color: #040814;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

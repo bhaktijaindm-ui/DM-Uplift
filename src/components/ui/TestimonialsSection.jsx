@@ -337,6 +337,8 @@ export default function TestimonialsSection() {
                       <img
                         src={t.avatar}
                         alt={t.author}
+                        loading="lazy"
+                        decoding="async"
                         className={cn(
                           "w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover transition-all duration-400 ease-[cubic-bezier(0.4,0,0.2,1)]",
                           isActive ? "ring-2 ring-white/80 scale-105" : "ring-1 ring-white/10",

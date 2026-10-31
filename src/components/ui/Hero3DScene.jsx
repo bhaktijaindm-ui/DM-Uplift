@@ -367,7 +367,7 @@ export default function Hero3DScene({ className = "" }) {
       renderer.render(scene, camera);
     };
 
-    // Pause when off-screen
+    // Pause when off-screen, auto-start when approaching viewport
     const intersectionObserver = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -384,11 +384,9 @@ export default function Hero3DScene({ className = "" }) {
           }
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.01, rootMargin: "250px" }
     );
     intersectionObserver.observe(container);
-
-    animate();
 
     // 10. Comprehensive Cleanup
     return () => {

@@ -43,8 +43,8 @@ export const DotField = forwardRef(function DotField(
   const copyRef = useRef(null);
   const hintRef = useRef(null);
   const hintLabelRef = useRef(null);
-  const [ready, setReady] = useState(false);
-  const readyRef = useRef(false);
+  const [ready, setReady] = useState(true);
+  const readyRef = useRef(true);
 
   // Everything the 60fps render loop needs lives in one mutable ref object
   const S = useRef({
@@ -231,11 +231,11 @@ export const DotField = forwardRef(function DotField(
         P[o + 6] = tx;
         P[o + 7] = ty;
         P[o + 9] = 1;
-        // Dots near the centre land first, so the headline grows from the inside out
+        // Fast snap assembly: dots land swiftly within 0.04s to 0.22s
         P[o + 8] =
-          0.15 +
-          Math.min(0.9, Math.hypot(tx - s.W / 2, ty - s.H * 0.44) / diag) * 1.1 +
-          Math.random() * 0.25;
+          0.02 +
+          Math.min(0.18, (Math.hypot(tx - s.W / 2, ty - s.H * 0.44) / diag) * 0.16) +
+          Math.random() * 0.04;
       }
       s.P = P;
     };
@@ -269,18 +269,10 @@ export const DotField = forwardRef(function DotField(
       readFg();
       build();
       s.t0 = performance.now();
-      readyRef.current = false;
-      setReady(false);
-      window.clearTimeout(readyTimer);
-      readyTimer = window.setTimeout(
-        () => {
-          readyRef.current = true;
-          setReady(true);
-          setCopy();
-          opts.current.onReady?.();
-        },
-        reduce ? 0 : 1700
-      );
+      readyRef.current = true;
+      setReady(true);
+      setCopy();
+      opts.current.onReady?.();
     };
     s.restart = restart;
 
@@ -321,9 +313,9 @@ export const DotField = forwardRef(function DotField(
               const d = Math.min(1, SC * (0.8 + P[o + 8] * 0.6));
               tx = P[o + 6] + (P[o + 4] - P[o + 6]) * d;
               ty = P[o + 7] + (P[o + 5] - P[o + 7]) * d;
-              k = Math.min(0.09, 0.02 + local * 0.08);
+              k = Math.min(0.24, 0.08 + local * 0.22);
             }
-            fl = local > -1 ? Math.max(0, 1 - Math.max(0, local) * 1.4) : 0;
+            fl = local > -1 ? Math.max(0, 1 - Math.max(0, local) * 2.2) : 0;
           }
           if (s.kick > 0.01) fl = Math.max(fl, Math.min(1, s.kick) * 0.9);
 
@@ -432,20 +424,20 @@ export const DotField = forwardRef(function DotField(
       capture: true,
     });
 
-    const fontReady = document.fonts?.load
-      ? document.fonts
-          .load(`${opts.current.fontWeight} 100px ${opts.current.fontFamily}`)
-          .catch(() => [])
-      : Promise.resolve([]);
+    // Start immediately on frame 0 without blocking on font network requests
+    restart();
+    onScroll();
+    ro.observe(stage);
+    io.observe(stage);
+    raf = requestAnimationFrame(frame);
 
-    fontReady.then(() => {
-      if (!alive) return;
-      restart();
-      onScroll();
-      ro.observe(stage);
-      io.observe(stage);
-      raf = requestAnimationFrame(frame);
-    });
+    // If web fonts finish loading later, smoothly re-sample text coordinates
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        if (!alive) return;
+        build();
+      });
+    }
 
     return () => {
       alive = false;
@@ -460,8 +452,8 @@ export const DotField = forwardRef(function DotField(
     };
   }, [headline, fontFamily, fontWeight, grid, scrollScatter, scrollHint]);
 
-  const fade = `transition-[opacity,transform] duration-1000 [transition-timing-function:cubic-bezier(.2,.9,.25,1)] ${
-    ready ? "translate-y-0 opacity-100" : "translate-y-2.5 opacity-0"
+  const fade = `transition-[opacity,transform] duration-300 ease-out ${
+    ready ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
   }`;
 
   return (
